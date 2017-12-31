@@ -1,0 +1,4 @@
+br\com\sistema\mcosta\McostaApplication.class
+br\com\sistema\mcosta\controlador\IndexControlador.class
+br\com\sistema\mcosta\MvcConfig.class
+br\com\sistema\mcosta\CacheConfig.class
