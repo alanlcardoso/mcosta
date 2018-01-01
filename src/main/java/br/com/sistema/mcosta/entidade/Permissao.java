@@ -1,4 +1,4 @@
-package entidade;
+package br.com.sistema.mcosta.entidade;
 
 
 import java.io.Serializable;

@@ -1,185 +1,92 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="pt-br">
-<head>
-  	<title>MCosta Engenharia</title>
-	<meta charset="utf-8"/>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-	<meta name="description" content=""/>
-	<meta name="author" content=""/>
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
 
-  <!-- Favicons -->
-  <link th:href="@{/img/favicon.png}" rel="icon">
-  <link th:href="@{/img/apple-touch-icon.png}" rel="apple-touch-icon">
+<section layout:fragment="conteudo" id="contact">
+	<div class="container wow fadeInUp">
+		<div class="section-header">
+			<h3 class="section-title">Sobre</h3>
+			<p class="section-description">Cadastro</p>
+		</div>
+	</div>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
+	<div class="container wow fadeInUp">
+		<div class="row justify-content-center">
 
-  <!-- Bootstrap CSS File -->
-  <link th:href="@{/lib/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
-  <link th:href="@{/lib/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
-  <link th:href="@{/lib/animate/animate.min.css}" rel="stylesheet" type="text/css">
-  <link th:href="@{css/style.css}" rel="stylesheet">
+			<div class="col-lg-3 col-md-4">
 
-</head>
+				<div class="info">
+					<div>
+						<i class="fa fa-map-marker"></i>
+						<p>Título</p>
+					</div>
 
-<body>
+					<div>
+						<i class="fa fa-map-marker"></i>
+						<p>Descrição</p>
+					</div>
 
-  <!--==========================
-  Header
-  ============================-->
-  <header id="header">
-    <div class="container">
+					<div style="padding-top: 80px">
+						<i class="fa fa-envelope"></i>
+						<p>Atribuição</p>
+					</div>
 
-      <div id="logo" class="pull-left">
-        <a href="#hero"><img src="img/logo2.jpg" alt="" title="" /></img></a>
-      </div>
+					<div>
+						<i class="fa fa-phone"></i>
+						<p>Descrição Atribuição</p>
+					</div>
 
-      <nav id="nav-menu-container">
-        <ul class="nav-menu">
-          <li class="menu-active"><a href="#hero"><i class="fa fa-home" aria-hidden="true"></i></a></li>
-          <li><a href="#about">Empresa</a></li>
-          <li><a href="#services">Serviços</a></li>
-          <li><a href="#portfolio">Clientes</a></li>
-          <li><a href="#contact">Contato</a></li>
-        </ul>
-      </nav><!-- #nav-menu-container -->
-    </div>
-  </header><!-- #header -->
+					<div style="padding-top: 80px">
+						<i class="fa fa-phone"></i>
+						<p>Ícone</p>
+					</div>
+				</div>
 
-  <!--==========================
-    Hero Section
-  ============================-->
-  <section id="hero">
-    <div class="hero-container">
-      <h1>MCosta Engenharia</h1>
-      <h2>Uma frase chocante</h2>
-      <a href="#about" class="btn-get-started">Sobre nós</a>
-    </div>
-  </section><!-- #hero -->
+			</div>
 
-  <main id="main">
+			<div class="col-lg-5 col-md-8">
+				<div class="form">
+					<div id="sendmessage">Mensagem enviada com sucesso. Obrigado!</div>
+					<div id="errormessage"></div>
+					<form action="" method="post" role="form" class="contactForm">
+						<div class="form-group">
+							<input type="text" name="titulo" class="form-control" id="titulo"
+								placeholder="Título" />
+							<div class="validation"></div>
+						</div>
+						<div class="form-group">
+							<textarea class="form-control" name="descricao" rows="5"
+								data-rule="required" data-msg="Descrição"
+								placeholder="Descrição"></textarea>
+							<div class="validation"></div>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" name="atribuicao"
+								id="atribuicao" placeholder="Atribuição" data-rule="email"
+								data-msg="E-mail inválido" />
+							<div class="validation"></div>
+						</div>
+						<div class="form-group">
+							<textarea class="form-control" name="desc-atribuicao" rows="5"
+								data-rule="required" data-msg="Descrição Atribuição"
+								placeholder="Descrição Atribuição"></textarea>
+							<div class="validation"></div>
+						</div>
+						<div class="form-group">
+							<input type="file" name="icone" class="form-control" id="icone" />
+							<div class="validation"></div>
+						</div>
+						<div class="text-center">
+							<button type="submit">Enviar</button>
+						</div>
+					</form>
+				</div>
+			</div>
 
-    <!--==========================
-      Contact Section
-    ============================-->
-    <section id="contact">
-      <div class="container wow fadeInUp">
-        <div class="section-header">
-          <h3 class="section-title">Sobre</h3>
-          <p class="section-description">Cadastro</p>
-        </div>
-      </div>
+		</div>
 
-      <div class="container wow fadeInUp">
-        <div class="row justify-content-center">
-
-          <div class="col-lg-3 col-md-4">
-
-            <div class="info">
-              <div>
-                <i class="fa fa-map-marker"></i>
-                <p>Título</p>
-              </div>
-              
-              <div>
-                <i class="fa fa-map-marker"></i>
-                <p>Descrição</p>
-              </div>
-
-              <div style="padding-top: 80px">
-                <i class="fa fa-envelope"></i>
-                <p>Atribuição</p>
-              </div>
-
-              <div>
-                <i class="fa fa-phone"></i>
-                <p>Descrição Atribuição</p>
-              </div>
-              
-              <div style="padding-top: 80px">
-                <i class="fa fa-phone"></i>
-                <p>Ícone</p>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="col-lg-5 col-md-8">
-            <div class="form">
-              <div id="sendmessage">Mensagem enviada com sucesso. Obrigado!</div>
-              <div id="errormessage"></div>
-              <form action="" method="post" role="form" class="contactForm">
-                <div class="form-group">
-                  <input type="text" name="titulo" class="form-control" id="titulo" placeholder="Título" />
-                  <div class="validation"></div>
-                </div>
-                <div class="form-group">
-                  <textarea class="form-control" name="descricao" rows="5" data-rule="required" data-msg="Descrição" placeholder="Descrição"></textarea>
-                  <div class="validation"></div>
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" name="atribuicao" id="atribuicao" placeholder="Atribuição" data-rule="email" data-msg="E-mail inválido" />
-                  <div class="validation"></div>
-                </div>
-                <div class="form-group">
-                  <textarea class="form-control" name="desc-atribuicao" rows="5" data-rule="required" data-msg="Descrição Atribuição" placeholder="Descrição Atribuição"></textarea>
-                  <div class="validation"></div>
-                </div>
-                <div class="form-group">
-                  <input type="file" name="icone" class="form-control" id="icone" />
-                  <div class="validation"></div>
-                </div>
-                <div class="text-center"><button type="submit">Enviar</button></div>
-              </form>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- #contact -->
-
-  </main>
-
-  <!--==========================
-    Footer
-  ============================-->
-  <footer id="footer">
-    <div class="footer-top">
-      <div class="container">
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="credits">
-        Desenvolvido por <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-  </footer><!-- #footer -->
-
-  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-
-  <!-- JavaScript Libraries -->
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/jquery/jquery-migrate.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="lib/easing/easing.min.js"></script>
-  <script src="lib/wow/wow.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8HeI8o-c1NppZA-92oYlXakhDPYR7XMY"></script>
-
-  <script src="lib/waypoints/waypoints.min.js"></script>
-  <script src="lib/counterup/counterup.min.js"></script>
-  <script src="lib/superfish/hoverIntent.js"></script>
-  <script src="lib/superfish/superfish.min.js"></script>
-
-  <!-- Contact Form JavaScript File -->
-  <script src="contactform/contactform.js"></script>
-
-  <!-- Template Main Javascript File -->
-  <script src="js/main.js"></script>
-
-</body>
+	</div>
+</section>
 </html>

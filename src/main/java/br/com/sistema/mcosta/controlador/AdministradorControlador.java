@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class SobreControlador {
+public class AdministradorControlador {
 
 	@GetMapping("/administracao/sobre/novo")
 	public ModelAndView cadastro() {
-		return new ModelAndView("CadastroSobre");
+		return new ModelAndView("cadastroSobre");
 	}
 
 }
