@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: mcosta
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: pedro
+Built-By: alanl
 Implementation-Vendor-Id: br.com.sistema
 Build-Jdk: 1.8.0_151
 Implementation-URL: http://projects.spring.io/spring-boot/mcosta/
