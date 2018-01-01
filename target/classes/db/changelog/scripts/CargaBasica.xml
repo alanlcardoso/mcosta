@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+	<changeSet author="Alan" id="201711191958-1">
+
+		<createTable tableName="usuario ">
+
+			<column name="id" type="numeric(18)">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="pk_usuario" />
+			</column>
+
+			<column name="nome" type="varchar(20)">
+				<constraints nullable="false" />
+			</column>
+
+			<column name="email" type="varchar(100)">
+				<constraints nullable="false" />
+			</column>
+
+			<column name="senha" type="varchar(80)">
+				<constraints nullable="false" />
+			</column>
+
+		</createTable>
+
+		<createTable tableName="permissao">
+
+			<column name="id" type="numeric(18)">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="pk_permissao" />
+			</column>
+
+			<column name="descricao " type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+
+		</createTable>
+
+		<createTable tableName="usuario_permissao">
+
+			<column name="id" type="numeric(18)">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="pk_usuario_permissao" />
+			</column>
+
+			<column name="id_usuario " type="numeric(18)">
+				<constraints nullable="false" />
+			</column>
+
+			<column name="id_permissao" type="numeric(18)">
+				<constraints nullable="false" />
+			</column>
+
+		</createTable>
+
+		<createTable tableName="servico">
+
+			<column name="id" type="numeric(18)">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="pk_servico" />
+			</column>
+
+			<column name="nome " type="numeric(18)">
+				<constraints nullable="false" />
+			</column>
+
+			<column name="descricao " type="numeric(18)">
+				<constraints nullable="false" />
+			</column>
+
+			<column name="imagem" type="blob">
+				<constraints nullable="true" />
+			</column>
+
+		</createTable>
+
+
+	</changeSet>
+
+</databaseChangeLog>
