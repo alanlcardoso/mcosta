@@ -1,76 +1,111 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layout}">
+<html lang="en">
+<head>
+  <title>MCosta Engenharia</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
 
-<section layout:fragment="conteudo" id="contact">
-	<div class="container wow fadeInUp">
-		<div class="section-header">
-			<h3 class="section-title">Sobre</h3>
-			<p class="section-description">Cadastro</p>
-		</div>
-	</div>
-
-	<div class="container wow fadeInUp">
+<div class="container">
+  <h2>Sobre nós</h2>
+  	<form class="form-horizontal" method="POST" action="/administracao/sobre" th:object="${sobre}">
+		<!-- <div layout:include="Mensagem"></div> -->
 	
-		<div class="alert alert-success" th:if="${!#strings.isEmpty(mensagem)}">
-			<span th:text="${mensagem}">Sobre cadastrado com sucesso!</span>
-		</div>
-	
-		<div class="row justify-content-center">
-
-			<div class="col-lg-3 col-md-4">
-
-				<div class="info">
-					<div>
-						<i class="fa fa-map-marker"></i>
-						<p>Nome</p>
-					</div>
-
-					<div>
-						<i class="fa fa-map-marker"></i>
-						<p>Descrição</p>
-					</div>
-
-					<div style="padding-top: 80px">
-						<i class="fa fa-phone"></i>
-						<p>Ícone</p>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="clearfix">
+	   				<h1 class="panel-title aw-titulo-panel">Cadastro</h1>
+	   			</div>
+			</div>
+			
+			<div class="panel-body">
+				<p>Sobre</p>
+				<div class="form-group" th:classappend="${#fields.hasErrors('titulo')} ? has-error">
+					<label for="titulo" class="col-sm-2 control-label">Título</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="titulo" placeholder="Título" th:field="*{titulo}" />
 					</div>
 				</div>
-
-			</div>
-
-			<div class="col-lg-5 col-md-8">
-				<div class="form">
-					<div id="sendmessage">Mensagem enviada com sucesso. Obrigado!</div>
-					<div id="errormessage"></div>
-					<form action="/administracao/sobre" method="post" role="form" class="contactForm">
-						
-						<div class="form-group">
-							<input type="text" name="nome" class="form-control" id="nome"
-								placeholder="Nome" />
-							<div class="validation"></div>
-						</div>
-						<div class="form-group">
-							<textarea class="form-control" name="descricao" rows="5"
-								data-rule="required" data-msg="Descrição"
-								placeholder="Descrição"></textarea>
-							<div class="validation"></div>
-						</div>
-						<div class="form-group">
-							<input type="text" name="icone" class="form-control" id="icone" placeholder="Ícone" />
-							<div class="validation"></div>
-						</div>
-						<div class="text-center">
-							<button type="submit">Salvar</button>
-						</div>
-					</form>
+				<div class="form-group" th:classappend="${#fields.hasErrors('descricao')} ? has-error">
+					<label for="descricao" class="col-sm-2 control-label">Descrição</label>
+					<div class="col-sm-4">
+						<textarea class="form-control" id="descricao" name="message" rows="5" placeholder="Descrição" th:field="*{descricao}"></textarea>
+					</div>
+				</div>
+				<hr/>
+				<p>Detalhe 1</p>
+				<div class="form-group" th:classappend="${#fields.hasErrors('sobreDetalhe1.nome')} ? has-error">
+					<label for="nome1" class="col-sm-2 control-label">Nome</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="nome1" placeholder="Nome" th:field="*{sobreDetalhe1.nome}" />
+					</div>
+				</div>
+				<div class="form-group" th:classappend="${#fields.hasErrors('sobreDetalhe1.descricao')} ? has-error">
+					<label for="descricao1" class="col-sm-2 control-label">Descrição</label>
+					<div class="col-sm-4">
+						<textarea class="form-control" id="descricao1" name="message" rows="5" placeholder="Descrição" th:field="*{sobreDetalhe1.descricao}"></textarea>
+					</div>
+				</div>
+				<div class="form-group" th:classappend="${#fields.hasErrors('sobreDetalhe1.icone')} ? has-error">
+					<label for="icone1" class="col-sm-2 control-label">Ícone</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="icone1" placeholder="Ícone" th:field="*{sobreDetalhe1.icone}" />
+					</div>
+				</div>
+				<hr/>
+				<p>Detalhe 2</p>
+				<div class="form-group" th:classappend="${#fields.hasErrors('sobreDetalhe2.nome')} ? has-error">
+					<label for="nome2" class="col-sm-2 control-label">Nome</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="nome2" placeholder="Nome" th:field="*{sobreDetalhe2.nome}" />
+					</div>
+				</div>
+				<div class="form-group" th:classappend="${#fields.hasErrors('sobreDetalhe2.descricao')} ? has-error">
+					<label for="descricao2" class="col-sm-2 control-label">Descrição</label>
+					<div class="col-sm-4">
+						<textarea class="form-control" id="descricao2" name="message" rows="5" placeholder="Descrição" th:field="*{sobreDetalhe2.descricao}"></textarea>
+					</div>
+				</div>
+				<div class="form-group" th:classappend="${#fields.hasErrors('sobreDetalhe2.icone')} ? has-error">
+					<label for="icone2" class="col-sm-2 control-label">Ícone</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="icone2" placeholder="Ícone" th:field="*{sobreDetalhe2.icone}" />
+					</div>
+				</div>
+				<hr/>
+				<p>Detalhe 3</p>
+				<div class="form-group" th:classappend="${#fields.hasErrors('sobreDetalhe3.nome')} ? has-error">
+					<label for="nome3" class="col-sm-2 control-label">Nome</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="nome3" placeholder="Nome" th:field="*{sobreDetalhe3.nome}" />
+					</div>
+				</div>
+				<div class="form-group" th:classappend="${#fields.hasErrors('sobreDetalhe3.descricao')} ? has-error">
+					<label for="descricao3" class="col-sm-2 control-label">Descrição</label>
+					<div class="col-sm-4">
+						<textarea class="form-control" id="descricao3" name="message" rows="5" placeholder="Descrição" th:field="*{sobreDetalhe3.descricao}"></textarea>
+					</div>
+				</div>
+				<div class="form-group" th:classappend="${#fields.hasErrors('sobreDetalhe3.icone')} ? has-error">
+					<label for="icone3" class="col-sm-2 control-label">Ícone</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="icone3" placeholder="Ícone" th:field="*{sobreDetalhe3.icone}" />
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary">Salvar</button>
+					</div>
 				</div>
 			</div>
-
 		</div>
+	</form>
+</div>
 
-	</div>
-</section>
+</body>
 </html>

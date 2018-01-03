@@ -70,21 +70,37 @@
 			<div class="row about-container">
 
 				<div class="col-lg-6 content order-lg-1 order-2">
-					<h2 class="title">Sobre nós</h2>
-					<p>A M. Costa Engenharia é representada pelo engenheiro Marco
-						Costa, que ao longo de sua carreira realizou, e vem realizando
-						grandes obras. Com sede em Campinas - São Paulo, há mais de dez
-						anos nos segmentos de terraplenagem, pavimentação, galeria de
-						águas pluviais, redes de água e esgoto, guias e sarjetas..</p>
+					<h2 class="title" th:text="${sobre.titulo}"></h2>
+					<p th:text="${sobre.descricao}"></p>
 
-					<div class="icon-box wow fadeInUp" th:each="sobre: ${sobres}">
+					<div class="icon-box wow fadeInUp">
 						<div class="icon">
-							<i th:classappend="${sobre.icone}"></i>
+							<i th:classappend="${sobre.sobreDetalhe1.icone}"></i>
 						</div>
 						<h4 class="title">
-							<a href="" th:text="${sobre.nome}"></a>
+							<a href="" th:text="${sobre.sobreDetalhe1.nome}"></a>
 						</h4>
-						<p class="description" th:text="${sobre.descricao}"></p>
+						<p class="description" th:text="${sobre.sobreDetalhe1.descricao}"></p>
+					</div>
+					
+					<div class="icon-box wow fadeInUp">
+						<div class="icon">
+							<i th:classappend="${sobre.sobreDetalhe2.icone}"></i>
+						</div>
+						<h4 class="title">
+							<a href="" th:text="${sobre.sobreDetalhe2.nome}"></a>
+						</h4>
+						<p class="description" th:text="${sobre.sobreDetalhe2.descricao}"></p>
+					</div>
+					
+					<div class="icon-box wow fadeInUp">
+						<div class="icon">
+							<i th:classappend="${sobre.sobreDetalhe3.icone}"></i>
+						</div>
+						<h4 class="title">
+							<a href="" th:text="${sobre.sobreDetalhe3.nome}"></a>
+						</h4>
+						<p class="description" th:text="${sobre.sobreDetalhe3.descricao}"></p>
 					</div>
 				</div>
 

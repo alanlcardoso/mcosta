@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
-	<changeSet author="Alan" id="201711191958-3">
+	<changeSet author="Alan" id="201711191958-4">
 
 		<createTable tableName="usuario ">
 
@@ -84,6 +84,23 @@
 					primaryKeyName="pk_sobre" />
 			</column>
 
+			<column name="titulo " type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+
+			<column name="descricao " type="varchar(300)">
+				<constraints nullable="false" />
+			</column>
+
+		</createTable>
+		
+		<createTable tableName="sobre_detalhe">
+
+			<column name="id" type="numeric(18)">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="pk_sobre_detalhe" />
+			</column>
+
 			<column name="nome " type="varchar(50)">
 				<constraints nullable="false" />
 			</column>
@@ -93,6 +110,23 @@
 			</column>
 
 			<column name="icone" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+
+		</createTable>
+		
+		<createTable tableName="identificacao_sobre_detalhe">
+
+			<column name="id" type="numeric(18)">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="pk_identificacao_sobre_detalhe" />
+			</column>
+
+			<column name="id_sobre " type="numeric(18)">
+				<constraints nullable="false" />
+			</column>
+
+			<column name="id_sobre_detalhe " type="numeric(18)">
 				<constraints nullable="false" />
 			</column>
 

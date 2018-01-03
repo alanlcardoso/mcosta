@@ -1,11 +1,14 @@
 package br.com.sistema.mcosta.entidade;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.NotBlank;
@@ -21,14 +24,23 @@ public class Sobre implements Serializable {
 	@GeneratedValue(generator = "generator_sobre")
 	private Long id;
 
-	@NotBlank(message = "Nome é obrigatório.")
-	private String nome;
+	@NotBlank(message = "Título é obrigatório.")
+	private String titulo;
 	
 	@NotBlank(message = "Descrição é obrigatória.")
 	private String descricao;
 	
-	@NotBlank(message = "Ícone é obrigatório.")
-	private String icone;
+	@OneToMany(mappedBy="sobre")
+	private List<IdentificacaoSobreDetalhe> detalhes;
+	
+	@Transient
+	private SobreDetalhe sobreDetalhe1;
+	
+	@Transient
+	private SobreDetalhe sobreDetalhe2;
+	
+	@Transient
+	private SobreDetalhe sobreDetalhe3;
 	
 	public Sobre() {
 	}
@@ -41,12 +53,12 @@ public class Sobre implements Serializable {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getTitulo() {
+		return titulo;
 	}
 	
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
 	public String getDescricao() {
@@ -56,13 +68,37 @@ public class Sobre implements Serializable {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+	
+	public List<IdentificacaoSobreDetalhe> getDetalhes() {
+		return detalhes;
+	}
+	
+	public void setDetalhes(List<IdentificacaoSobreDetalhe> detalhes) {
+		this.detalhes = detalhes;
+	}
+	
+	public SobreDetalhe getSobreDetalhe1() {
+		return sobreDetalhe1;
+	}
+	
+	public void setSobreDetalhe1(SobreDetalhe sobreDetalhe1) {
+		this.sobreDetalhe1 = sobreDetalhe1;
+	}
+	
+	public SobreDetalhe getSobreDetalhe2() {
+		return sobreDetalhe2;
+	}
+	
+	public void setSobreDetalhe2(SobreDetalhe sobreDetalhe2) {
+		this.sobreDetalhe2 = sobreDetalhe2;
+	}
+	
+	public SobreDetalhe getSobreDetalhe3() {
+		return sobreDetalhe3;
+	}
+	
+	public void setSobreDetalhe3(SobreDetalhe sobreDetalhe3) {
+		this.sobreDetalhe3 = sobreDetalhe3;
+	}
 
-	public String getIcone() {
-		return icone;
-	}
-	
-	public void setIcone(String icone) {
-		this.icone = icone;
-	}
-	
 }

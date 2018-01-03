@@ -1,7 +1,5 @@
 package br.com.sistema.mcosta.controlador;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,10 +16,10 @@ public class IndexControlador {
 
 	@GetMapping("/")
 	public ModelAndView index() {
-		List<Sobre> sobres = sobreBO.buscarTodos();
+		Sobre sobre = sobreBO.buscaDetalheSobre();
 		
 		ModelAndView mv= new ModelAndView("index");
-		mv.addObject("sobres", sobres);
+		mv.addObject("sobre", sobre);
 		return mv;
 	}
 
