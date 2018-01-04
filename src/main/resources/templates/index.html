@@ -67,7 +67,7 @@
     ============================-->
 	<section id="about">
 		<div class="container">
-			<div class="row about-container">
+			<div class="row about-container" th:if="${sobre != null}">
 
 				<div class="col-lg-6 content order-lg-1 order-2">
 					<h2 class="title" th:text="${sobre.titulo}"></h2>

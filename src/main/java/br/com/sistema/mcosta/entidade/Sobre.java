@@ -42,9 +42,6 @@ public class Sobre implements Serializable {
 	@Transient
 	private SobreDetalhe sobreDetalhe3;
 	
-	public Sobre() {
-	}
-
 	public Long getId() {
 		return id;
 	}

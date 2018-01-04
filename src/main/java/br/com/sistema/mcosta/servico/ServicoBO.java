@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.sistema.mcosta.entidade.Servico;
 import br.com.sistema.mcosta.repositorio.IServicoRepositorio;
@@ -26,6 +27,7 @@ public class ServicoBO {
         servicoRepositorio.delete(servico);
     }
 
+    @Transactional(readOnly = true)
     public List<Servico> buscarTodos() {
         return servicoRepositorio.findAll();
     }

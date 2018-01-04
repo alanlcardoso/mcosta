@@ -21,7 +21,6 @@ public interface ISobreRepositorio extends JpaRepository<Sobre, Long> {
 			    "(select sd.descricao from sobre_detalhe sd where sd.id = (select i.id_sobre_detalhe from identificacao_sobre_detalhe i where i.id_sobre = s.id and i.id_sobre_detalhe = sd.id) limit 1 offset 2) as descricao_detalhe_3, " +
 			    "(select sd.icone from sobre_detalhe sd where sd.id = (select i.id_sobre_detalhe from identificacao_sobre_detalhe i where i.id_sobre = s.id and i.id_sobre_detalhe = sd.id) limit 1 offset 2) as icone_detalhe_3 " +
 		    "from sobre s";
-	
 	@Query(value = QUERY, nativeQuery = true)
 	Object[][] buscaDetalheSobre();
 	
