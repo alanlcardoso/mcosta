@@ -16,7 +16,7 @@ public class IndexControlador {
 
 	@GetMapping("/")
 	public ModelAndView index() {
-		Sobre sobre = sobreBO.buscaDetalheSobre();
+		Sobre sobre = sobreBO.buscaDetalheSobre().get(0);
 		
 		ModelAndView mv= new ModelAndView("index");
 		mv.addObject("sobre", sobre);

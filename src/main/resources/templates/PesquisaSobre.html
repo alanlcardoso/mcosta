@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="pt-br"
+	layout:decorate="~{layout}">
+	
+<section layout:fragment="conteudo" id="pesquisa">
+	<div class="container">
+	  	<h2>Sobre nós</h2>
+	  	<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="clearfix">
+	  				<h1 class="panel-title titulo-panel">Pesquisa</h1>
+	  				<a class="btn btn-link link-panel" href="/administracao/sobre/novo">Cadastro</a>
+	  			</div>
+			</div>
+		
+			<div class="panel-body">
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>Título</th>
+							<th>Descrição</th>
+							<th>1º Nome</th>
+							<th>1º Descrição</th>
+							<th>1º Ícone</th>
+							<th>2º Nome</th>
+							<th>2º Descrição</th>
+							<th>2º Ícone</th>
+							<th>3º Nome</th>
+							<th>3º Descrição</th>
+							<th>3º Ícone</th>
+							<th class="col-md-1"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="sobre : ${todosSobre}">
+							<td th:text="${sobre.titulo}"></td>
+							<td th:text="${sobre.descricao}"></td>
+							<td th:text="${sobre.sobreDetalhe1.nome}"></td>
+							<td th:text="${sobre.sobreDetalhe1.descricao}"></td>
+							<td th:text="${sobre.sobreDetalhe1.icone}"></td>
+							<td th:text="${sobre.sobreDetalhe2.nome}"></td>
+							<td th:text="${sobre.sobreDetalhe2.descricao}"></td>
+							<td th:text="${sobre.sobreDetalhe2.icone}"></td>
+							<td th:text="${sobre.sobreDetalhe3.nome}"></td>
+							<td th:text="${sobre.sobreDetalhe3.descricao}"></td>
+							<td th:text="${sobre.sobreDetalhe3.icone}"></td>
+							<td class="text-center">
+								<a class="btn btn-link btn-xs" th:href="@{/administracao/sobre/{id}(id=${sobre.id})}">
+									<span class="glyphicon glyphicon-pencil"></span>
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="12" th:if="${#lists.isEmpty(todosSobre)}">Nenhum cadastro encontrado</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</section>
+</html>

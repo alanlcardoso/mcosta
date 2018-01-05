@@ -948,3 +948,16 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-size: 13px;
   color: #ccc;
 }
+
+/*--------------------------------------------------------------
+# Personalização
+--------------------------------------------------------------*/
+.link-panel {
+	float: right;
+	padding: 0;
+}
+
+.titulo-panel {
+	float: left;
+	padding-top: 2px;
+}

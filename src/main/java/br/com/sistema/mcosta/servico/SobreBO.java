@@ -1,5 +1,6 @@
 package br.com.sistema.mcosta.servico;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,27 +77,49 @@ public class SobreBO {
 	}
 
 	@Cacheable("paginaInicial")
-	public Sobre buscaDetalheSobre() {
+	public List<Sobre> buscaDetalheSobre() {
 		Object[][] obj = sobreRepositorio.buscaDetalheSobre();
 
 		if (obj.length == 0) {
 			return null;
 		}
 
+		List<Sobre> listaSobre = new ArrayList<>();
+		
+		for (int i = 0; i < obj.length; i++) {
+			Sobre sobre = montaSobre(obj, i);
+			listaSobre.add(sobre);
+		}
+		
+		return listaSobre;
+	}
+	
+	public Sobre buscaDetalheSobrePorId(Long id) {
+		Object[][] obj = sobreRepositorio.buscaDetalheSobrePorId(id);
+
+		if (obj.length == 0) {
+			return null;
+		}
+
+		return montaSobre(obj, 0);
+	}
+	
+	private Sobre montaSobre(Object[][] obj, int i) {
 		Sobre sobre = new Sobre();
 
-		sobre.setTitulo(obj[0][0].toString());
-		sobre.setDescricao(obj[0][1].toString());
+		sobre.setId(Long.valueOf(obj[i][0].toString()));
+		sobre.setTitulo(obj[i][1].toString());
+		sobre.setDescricao(obj[i][2].toString());
 
-		SobreDetalhe sobreDetalhe = new SobreDetalhe(obj[0][2].toString(), obj[0][3].toString(), obj[0][4].toString());
+		SobreDetalhe sobreDetalhe = new SobreDetalhe(obj[i][3].toString(), obj[i][4].toString(), obj[i][5].toString());
 		sobre.setSobreDetalhe1(sobreDetalhe);
 
-		sobreDetalhe = new SobreDetalhe(obj[0][5].toString(), obj[0][6].toString(), obj[0][7].toString());
+		sobreDetalhe = new SobreDetalhe(obj[i][6].toString(), obj[i][7].toString(), obj[i][8].toString());
 		sobre.setSobreDetalhe2(sobreDetalhe);
 
-		sobreDetalhe = new SobreDetalhe(obj[0][8].toString(), obj[0][9].toString(), obj[0][10].toString());
+		sobreDetalhe = new SobreDetalhe(obj[i][9].toString(), obj[i][10].toString(), obj[i][11].toString());
 		sobre.setSobreDetalhe3(sobreDetalhe);
-
+		
 		return sobre;
 	}
 }

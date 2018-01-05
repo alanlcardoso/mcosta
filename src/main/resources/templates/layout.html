@@ -13,70 +13,23 @@
   <link th:href="@{/img/favicon.png}" rel="icon">
   <link th:href="@{/img/apple-touch-icon.png}" rel="apple-touch-icon">
 
-  <link th:href="@{/lib/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- <link th:href="@{/lib/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css"> -->
   <link th:href="@{/lib/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
   <link th:href="@{/lib/animate/animate.min.css}" rel="stylesheet" type="text/css">
   <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
   
-
 </head>
 
 <body>
-
-  <!--==========================
-  Header
-  ============================-->
-  <header id="header">
-    <div class="container">
-
-      <div id="logo" class="pull-left">
-        <a href="#hero"><img src="img/logo2.jpg" alt="" title="" /></img></a>
-      </div>
-
-      <nav id="nav-menu-container">
-        <ul class="nav-menu">
-          <li class="menu-active"><a href="#hero"><i class="fa fa-home" aria-hidden="true"></i></a></li>
-          <li><a href="#about">Empresa</a></li>
-          <li><a href="#services">Serviços</a></li>
-          <li><a href="#portfolio">Clientes</a></li>
-          <li><a href="#contact">Contato</a></li>
-        </ul>
-      </nav><!-- #nav-menu-container -->
-    </div>
-  </header><!-- #header -->
-
-  <!--==========================
-    Hero Section
-  ============================-->
-  <section id="hero">
-    <div class="hero-container">
-      <h1>MCosta Engenharia</h1>
-      <h2>Uma frase chocante</h2>
-      <a href="#about" class="btn-get-started">Sobre nós</a>
-    </div>
-  </section><!-- #hero -->
 
   <main id="main">	
 	<section layout:fragment="conteudo"></section>
   </main>
 
-  <!--==========================
-    Footer
-  ============================-->
-  <footer id="footer">
-    <div class="footer-top">
-      <div class="container">
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="credits">
-        Desenvolvido por <a href="https://www.linkedin.com/in/pedro-j%C3%BAnior-927b0b45/">Pedro Jr.</a>
-      </div>
-    </div>
-  </footer><!-- #footer -->
-
   <th:block layout:fragment="javascript-extra"></th:block>
+  <script th:src="@{/lib/bootstrap/js/bootstrap.min.js}"></script>
+  <script th:src="@{/lib/jquery/jquery.min.js}"></script>
 
 </body>
 </html>
