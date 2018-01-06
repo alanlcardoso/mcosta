@@ -146,5 +146,51 @@
 	    </addColumn>
 	    
 	</changeSet>
+	
+	<changeSet author="Alan L Cardoso" id="201801061410">
+
+		<createTable tableName="cliente">
+	
+			<column name="id" type="numeric(18)">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="pk_cliente" />
+			</column>
+	
+			<column name="nome " type="varchar(60)">
+				<constraints nullable="false" />
+			</column>
+	
+			<column name="logo " type="blob">
+				<constraints nullable="false" />
+			</column>
+	
+		</createTable>
+		
+		<createTable tableName="cliente_servico">
+	
+			<column name="id" type="numeric(18)">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="pk_cliente_servico" />
+			</column>
+	
+			<column name="id_cliente" type="numeric(18)">
+				<constraints nullable="false" />
+			</column>
+			
+			<column name="id_servico" type="numeric(18)">
+				<constraints nullable="false" />
+			</column>
+	
+		</createTable>
+		
+		<addForeignKeyConstraint baseColumnNames="id_servico"
+            baseTableName="cliente_servico"
+            constraintName="fk_cliente_servico"
+            onDelete="CASCADE"
+            onUpdate="RESTRICT"
+            referencedColumnNames="id"
+            referencedTableName="servico"/>
+	
+	</changeSet>
 
 </databaseChangeLog>

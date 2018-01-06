@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="pt-br"
+	layout:decorate="~{layout}">
+	
+<section layout:fragment="conteudo" id="cadastro">
+	<div class="container">
+	  <h2>Cliente</h2>
+	  	<form class="form-horizontal" method="POST" action="/administracao/cliente" th:object="${cliente}">
+			<div layout:include="mensagem"></div>
+		
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="clearfix">
+	  				<h1 class="panel-title titulo-panel">Cadastro</h1>
+	  				<a class="btn btn-link link-panel" href="/administracao/cliente">Pesquisa</a>
+	  			</div>
+				</div>
+				
+				<div class="panel-body">
+					<input type="hidden" th:field="*{id}"/>
+				
+					<div class="form-group" th:classappend="${#fields.hasErrors('nome')} ? has-error">
+						<label for="nome" class="col-sm-1 control-label">Nome:</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="nome" maxlength="60" placeholder="Nome" th:field="*{nome}" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-offset-1 col-sm-10">
+							<button type="submit" class="btn btn-primary">Salvar</button>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</form>
+	</div>
+</section>
+</html>

@@ -2,6 +2,7 @@ package br.com.sistema.mcosta.entidade;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -22,9 +23,21 @@ public class Cliente {
 
 	@NotBlank(message = "Nome é obrigatório.")
 	private String nome;
+	
+	@Column(name = "logo", nullable = true, unique = false)
+	private Byte[] logo;
 
 	@OneToMany(mappedBy = "cliente")
 	private List<ClienteServico> servicos;
+	
+	
+	public Cliente() {
+	}
+
+	public Cliente(Long id, String nome) {
+		this.id = id;
+		this.nome = nome;
+	}
 
 	public Long getId() {
 		return id;

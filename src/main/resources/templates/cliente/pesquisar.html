@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="pt-br"
+	layout:decorate="~{layout}">
+
+<section layout:fragment="conteudo" id="pesquisa">
+	<div class="container">
+
+		<h2>Clientes</h2>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="clearfix">
+					<h1 class="panel-title titulo-panel">Pesquisa</h1>
+					<a class="btn btn-link link-panel"
+						href="/administracao/cliente/novo">Cadastro</a>
+				</div>
+			</div>
+
+			<div class="panel-body">
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>Nome</th>
+							<th class="col-md-1"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="item : ${clientes}">
+							<td th:text="${item.nome}"></td>
+							<td class="text-center"><a class="btn btn-link btn-xs"
+								th:href="@{/administracao/cliente/{id}(id=${id.id})}"> <span
+									class="glyphicon glyphicon-pencil"></span>
+							</a></td>
+						</tr>
+						<tr>
+							<td colspan="12" th:if="${#lists.isEmpty(clientes)}">Nenhum registro encontrado</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</section>
+</html>
