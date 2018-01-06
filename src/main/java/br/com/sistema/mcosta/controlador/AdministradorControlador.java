@@ -60,5 +60,10 @@ public class AdministradorControlador {
 		mv.addObject(sobre);
 		return mv;
 	}
+	
+	public static void main(String[] args) {
+		String a = "Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e ve";
+		System.out.println(a.length());
+	}
 
 }

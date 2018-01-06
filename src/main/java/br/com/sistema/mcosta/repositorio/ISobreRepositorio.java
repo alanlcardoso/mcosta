@@ -12,6 +12,8 @@ public interface ISobreRepositorio extends JpaRepository<Sobre, Long> {
 				"s.id, " +
 				"s.titulo, " +
 				"s.descricao, " +
+				"s.qtd_projetos, " +
+			    "s.horas_trabalho, " +
 				"(select sd.id from sobre_detalhe sd where sd.id = (select i.id_sobre_detalhe from identificacao_sobre_detalhe i where i.id_sobre = s.id and i.id_sobre_detalhe = sd.id) limit 1 offset 0) as id_detalhe_1, " +
 				"(select sd.nome from sobre_detalhe sd where sd.id = (select i.id_sobre_detalhe from identificacao_sobre_detalhe i where i.id_sobre = s.id and i.id_sobre_detalhe = sd.id) limit 1 offset 0) as nome_detalhe_1, " +
 				"(select sd.descricao from sobre_detalhe sd where sd.id = (select i.id_sobre_detalhe from identificacao_sobre_detalhe i where i.id_sobre = s.id and i.id_sobre_detalhe = sd.id) limit 1 offset 0) as descricao_detalhe_1, " +

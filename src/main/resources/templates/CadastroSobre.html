@@ -34,6 +34,18 @@
 							<textarea class="form-control" id="descricao" name="message" rows="5" placeholder="Descrição" th:field="*{descricao}"></textarea>
 						</div>
 					</div>
+					<div class="form-group" th:classappend="${#fields.hasErrors('qtdProjetos')} ? has-error">
+						<label for="qtdProjetos" class="col-sm-2 control-label">Quantidade de Projetos</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="qtdProjetos" placeholder="Quantidade de Projetos" th:field="*{qtdProjetos}" />
+						</div>
+					</div>
+					<div class="form-group" th:classappend="${#fields.hasErrors('horasTrabalho')} ? has-error">
+						<label for="horasTrabalho" class="col-sm-2 control-label">Horas de Trabalho</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="horasTrabalho" placeholder="Horas de Trabalho" th:field="*{horasTrabalho}" />
+						</div>
+					</div>
 					<hr/>
 					<p>Detalhe 1</p>
 					<input type="hidden" th:field="*{sobreDetalhe1.id}"/>

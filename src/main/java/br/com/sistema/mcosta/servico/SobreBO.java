@@ -123,17 +123,19 @@ public class SobreBO {
 		sobre.setId(Long.valueOf(obj[i][0].toString()));
 		sobre.setTitulo(obj[i][1].toString());
 		sobre.setDescricao(obj[i][2].toString());
+		sobre.setQtdProjetos(Integer.valueOf(obj[i][3].toString()));
+		sobre.setHorasTrabalho(Integer.valueOf(obj[i][4].toString()));
 
-		SobreDetalhe sobreDetalhe = new SobreDetalhe(Long.valueOf(obj[i][3].toString()), obj[i][4].toString(),
-				obj[i][5].toString(), obj[i][6].toString());
+		SobreDetalhe sobreDetalhe = new SobreDetalhe(Long.valueOf(obj[i][5].toString()), obj[i][6].toString(),
+				obj[i][7].toString(), obj[i][8].toString());
 		sobre.setSobreDetalhe1(sobreDetalhe);
 
-		sobreDetalhe = new SobreDetalhe(Long.valueOf(obj[i][7].toString()), obj[i][8].toString(), obj[i][9].toString(),
-				obj[i][10].toString());
+		sobreDetalhe = new SobreDetalhe(Long.valueOf(obj[i][9].toString()), obj[i][10].toString(), obj[i][11].toString(),
+				obj[i][12].toString());
 		sobre.setSobreDetalhe2(sobreDetalhe);
 
-		sobreDetalhe = new SobreDetalhe(Long.valueOf(obj[i][11].toString()), obj[i][12].toString(),
-				obj[i][13].toString(), obj[i][14].toString());
+		sobreDetalhe = new SobreDetalhe(Long.valueOf(obj[i][13].toString()), obj[i][14].toString(),
+				obj[i][15].toString(), obj[i][16].toString());
 		sobre.setSobreDetalhe3(sobreDetalhe);
 
 		return sobre;

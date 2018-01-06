@@ -9,9 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.NumberFormat;
 
 @Entity
 @Table(name = "sobre")
@@ -29,6 +31,14 @@ public class Sobre implements Serializable {
 	
 	@NotBlank(message = "Descrição é obrigatória.")
 	private String descricao;
+	
+	@NotNull(message = "Quantidade de projetos é obrigatória.")
+	@NumberFormat(pattern = "#,##0")
+	private Integer qtdProjetos;
+	
+	@NotNull(message = "Horas de trabalho é obrigatória.")
+	@NumberFormat(pattern = "#,##0")
+	private Integer horasTrabalho;
 	
 	@OneToMany(mappedBy="sobre")
 	private List<IdentificacaoSobreDetalhe> detalhes;
@@ -64,6 +74,22 @@ public class Sobre implements Serializable {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+	
+	public Integer getQtdProjetos() {
+		return qtdProjetos;
+	}
+	
+	public void setQtdProjetos(Integer qtdProjetos) {
+		this.qtdProjetos = qtdProjetos;
+	}
+	
+	public Integer getHorasTrabalho() {
+		return horasTrabalho;
+	}
+	
+	public void setHorasTrabalho(Integer horasTrabalho) {
+		this.horasTrabalho = horasTrabalho;
 	}
 	
 	public List<IdentificacaoSobreDetalhe> getDetalhes() {

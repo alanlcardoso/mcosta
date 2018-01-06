@@ -11,7 +11,7 @@
 			<div class="panel-heading">
 				<div class="clearfix">
 	  				<h1 class="panel-title titulo-panel">Pesquisa</h1>
-	  				<a class="btn btn-link link-panel" href="/administracao/sobre/novo">Cadastro</a>
+	  				<a class="btn btn-link link-panel" href="/administracao/sobre/novo" th:if="${todosSobre == null}">Cadastro</a>
 	  			</div>
 			</div>
 		
@@ -21,6 +21,8 @@
 						<tr>
 							<th>Título</th>
 							<th>Descrição</th>
+							<th>Qtd Projetos</th>
+							<th>Horas de Trabalho</th>
 							<th>1º Nome</th>
 							<th>1º Descrição</th>
 							<th>1º Ícone</th>
@@ -37,6 +39,8 @@
 						<tr th:each="sobre : ${todosSobre}">
 							<td th:text="${sobre.titulo}"></td>
 							<td th:text="${sobre.descricao}"></td>
+							<td th:text="${{sobre.qtdProjetos}}"></td>
+							<td th:text="${{sobre.horasTrabalho}}"></td>
 							<td th:text="${sobre.sobreDetalhe1.nome}"></td>
 							<td th:text="${sobre.sobreDetalhe1.descricao}"></td>
 							<td th:text="${sobre.sobreDetalhe1.icone}"></td>
