@@ -79,8 +79,7 @@ public class ClienteControlador {
 	}
 
 	@PostMapping(value = "/upload")
-	public ModelAndView tratarArquivoUpload(@RequestParam("file") MultipartFile file, @RequestParam(required = false) Long clienteId,
-			ModelAndView mv) {
+	public ModelAndView tratarArquivoUpload(@RequestParam("file") MultipartFile file, ModelAndView mv) {
 
 		try {
 
