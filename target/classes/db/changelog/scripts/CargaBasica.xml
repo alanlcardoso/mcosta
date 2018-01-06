@@ -134,5 +134,17 @@
 
 
 	</changeSet>
+	
+	<changeSet author="Pedro" id="201711191958-5">
+	
+		<addColumn tableName="sobre">
+	        <column name="qtd_projetos" type="integer"/>
+	    </addColumn>
+	    
+	    <addColumn tableName="sobre">
+	        <column name="horas_trabalho" type="integer"/>
+	    </addColumn>
+	    
+	</changeSet>
 
 </databaseChangeLog>
