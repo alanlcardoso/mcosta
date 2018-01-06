@@ -28,37 +28,44 @@ public class SobreBO {
 	@Autowired
 	private IIdentificacaoSobreDetalheRepositorio identificacaoSobreDetalheRepositorio;
 
+	@Transactional(propagation = Propagation.REQUIRED)
+	public Sobre salvarSobre(Sobre sobre) {
+
+		if (sobre.getId() == null) {
+			sobre = salvar(sobre);
+			
+			novo(sobre, sobre.getSobreDetalhe1().getNome(), sobre.getSobreDetalhe1().getDescricao(), sobre.getSobreDetalhe1().getIcone());
+			novo(sobre, sobre.getSobreDetalhe2().getNome(), sobre.getSobreDetalhe2().getDescricao(), sobre.getSobreDetalhe2().getIcone());
+			novo(sobre, sobre.getSobreDetalhe3().getNome(), sobre.getSobreDetalhe3().getDescricao(), sobre.getSobreDetalhe3().getIcone());
+			
+			return sobre;
+		}
+		
+		salvar(sobre.getSobreDetalhe1());
+		salvar(sobre.getSobreDetalhe2());
+		salvar(sobre.getSobreDetalhe3());
+
+		return salvar(sobre);
+	}
+	
+	public Sobre salvar(Sobre sobre) {
+		return sobreRepositorio.save(sobre);
+	}
+	
 	public SobreDetalhe salvar(SobreDetalhe sobreDetalhe) {
 		return sobreDetalheRepositorio.save(sobreDetalhe);
 	}
-
-	@Transactional(propagation = Propagation.REQUIRED)
-	public Sobre salvar(Sobre sobre) {
-
-		sobre = sobreRepositorio.save(sobre);
-
-		SobreDetalhe sobreDetalhe = salvarSobreDetalhe(sobre.getSobreDetalhe1().getNome(),
-				sobre.getSobreDetalhe1().getDescricao(), sobre.getSobreDetalhe1().getIcone());
-		salvarIdentificacaoSobreDetalhe(new IdentificacaoSobreDetalhe(sobre, sobreDetalhe));
-
-		sobreDetalhe = salvarSobreDetalhe(sobre.getSobreDetalhe2().getNome(), sobre.getSobreDetalhe2().getDescricao(),
-				sobre.getSobreDetalhe2().getIcone());
-		salvarIdentificacaoSobreDetalhe(new IdentificacaoSobreDetalhe(sobre, sobreDetalhe));
-
-		sobreDetalhe = salvarSobreDetalhe(sobre.getSobreDetalhe3().getNome(), sobre.getSobreDetalhe3().getDescricao(),
-				sobre.getSobreDetalhe3().getIcone());
-		salvarIdentificacaoSobreDetalhe(new IdentificacaoSobreDetalhe(sobre, sobreDetalhe));
-
-		return sobreRepositorio.save(sobre);
-	}
-
-	private IdentificacaoSobreDetalhe salvarIdentificacaoSobreDetalhe(
-			IdentificacaoSobreDetalhe identificacaoSobreDetalhe) {
+	
+	public IdentificacaoSobreDetalhe salvar(IdentificacaoSobreDetalhe identificacaoSobreDetalhe) {
 		return identificacaoSobreDetalheRepositorio.save(identificacaoSobreDetalhe);
 	}
-
-	private SobreDetalhe salvarSobreDetalhe(String nome, String descricao, String icone) {
-		return sobreDetalheRepositorio.save(new SobreDetalhe(nome, descricao, icone));
+	
+	private void novo(Sobre sobre, String nome, String descricao, String icone) {
+		SobreDetalhe sobreDetalhe = new SobreDetalhe(nome, descricao, icone);
+		salvar(sobreDetalhe);
+		
+		IdentificacaoSobreDetalhe detalhe = new IdentificacaoSobreDetalhe(sobre, sobreDetalhe);
+		salvar(detalhe);
 	}
 
 	@Transactional(readOnly = true)
@@ -111,13 +118,13 @@ public class SobreBO {
 		sobre.setTitulo(obj[i][1].toString());
 		sobre.setDescricao(obj[i][2].toString());
 
-		SobreDetalhe sobreDetalhe = new SobreDetalhe(obj[i][3].toString(), obj[i][4].toString(), obj[i][5].toString());
+		SobreDetalhe sobreDetalhe = new SobreDetalhe(Long.valueOf(obj[i][3].toString()), obj[i][4].toString(), obj[i][5].toString(), obj[i][6].toString());
 		sobre.setSobreDetalhe1(sobreDetalhe);
 
-		sobreDetalhe = new SobreDetalhe(obj[i][6].toString(), obj[i][7].toString(), obj[i][8].toString());
+		sobreDetalhe = new SobreDetalhe(Long.valueOf(obj[i][7].toString()), obj[i][8].toString(), obj[i][9].toString(), obj[i][10].toString());
 		sobre.setSobreDetalhe2(sobreDetalhe);
 
-		sobreDetalhe = new SobreDetalhe(obj[i][9].toString(), obj[i][10].toString(), obj[i][11].toString());
+		sobreDetalhe = new SobreDetalhe(Long.valueOf(obj[i][11].toString()), obj[i][12].toString(), obj[i][13].toString(), obj[i][14].toString());
 		sobre.setSobreDetalhe3(sobreDetalhe);
 		
 		return sobre;

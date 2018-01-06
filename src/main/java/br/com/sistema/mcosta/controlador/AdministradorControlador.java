@@ -38,7 +38,7 @@ public class AdministradorControlador {
 			return CADASTRO_SOBRE;
 		}
 		
-		sobreBO.salvar(sobre);
+		sobreBO.salvarSobre(sobre);
 		attributes.addFlashAttribute("mensagem", "Sobre salvo com sucesso!");
 		return "redirect:/administracao/sobre/novo";
 	}

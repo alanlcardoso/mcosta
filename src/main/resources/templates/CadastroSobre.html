@@ -36,6 +36,7 @@
 					</div>
 					<hr/>
 					<p>Detalhe 1</p>
+					<input type="hidden" th:field="*{sobreDetalhe1.id}"/>
 					<div class="form-group" th:classappend="${#fields.hasErrors('sobreDetalhe1.nome')} ? has-error">
 						<label for="nome1" class="col-sm-2 control-label">Nome</label>
 						<div class="col-sm-4">
@@ -56,6 +57,7 @@
 					</div>
 					<hr/>
 					<p>Detalhe 2</p>
+					<input type="hidden" th:field="*{sobreDetalhe2.id}"/>
 					<div class="form-group" th:classappend="${#fields.hasErrors('sobreDetalhe2.nome')} ? has-error">
 						<label for="nome2" class="col-sm-2 control-label">Nome</label>
 						<div class="col-sm-4">
@@ -76,6 +78,7 @@
 					</div>
 					<hr/>
 					<p>Detalhe 3</p>
+					<input type="hidden" th:field="*{sobreDetalhe3.id}"/>
 					<div class="form-group" th:classappend="${#fields.hasErrors('sobreDetalhe3.nome')} ? has-error">
 						<label for="nome3" class="col-sm-2 control-label">Nome</label>
 						<div class="col-sm-4">

@@ -43,6 +43,13 @@ public class SobreDetalhe implements Serializable {
 		this.descricao = descricao;
 		this.icone = icone;
 	}
+	
+	public SobreDetalhe(Long id, String nome, String descricao, String icone) {
+		this.id = id;
+		this.nome = nome;
+		this.descricao = descricao;
+		this.icone = icone;
+	}
 
 	public Long getId() {
 		return id;
