@@ -192,5 +192,15 @@
             referencedTableName="servico"/>
 	
 	</changeSet>
+	
+	<changeSet author="Pedro" id="201711191958-6">
+	    <modifyDataType columnName="descricao"
+	            newDataType="varchar(500)"
+	            tableName="sobre"/>
+	            
+	    <modifyDataType columnName="descricao"
+	            newDataType="varchar(500)"
+	            tableName="sobre_detalhe"/>
+	</changeSet>
 
 </databaseChangeLog>

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.sistema.mcosta.entidade.Sobre;
+import br.com.sistema.mcosta.servico.ClienteBO;
 import br.com.sistema.mcosta.servico.SobreBO;
 
 @Controller
@@ -15,6 +16,9 @@ public class IndexControlador {
 
 	@Autowired
 	private SobreBO sobreBO;
+	
+	@Autowired
+	private ClienteBO clienteBO;
 
 	@GetMapping("/")
 	public ModelAndView index() {
@@ -23,9 +27,10 @@ public class IndexControlador {
 		if (!sobres.isEmpty()) {
 			sobre = sobres.get(0);
 		}
-
+		
 		ModelAndView mv = new ModelAndView("index");
 		mv.addObject("sobre", sobre);
+		mv.addObject("totalCliente", clienteBO.buscarTotalCliente());
 		return mv;
 	}
 

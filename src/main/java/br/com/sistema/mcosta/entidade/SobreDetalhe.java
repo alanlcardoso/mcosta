@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.NotBlank;
@@ -24,9 +25,11 @@ public class SobreDetalhe implements Serializable {
 	private Long id;
 
 	@NotBlank(message = "Nome é obrigatório.")
+	@Size(max = 50, message = "O nome não pode conter mais de 50 caracteres")
 	private String nome;
 	
 	@NotBlank(message = "Descrição é obrigatória.")
+	@Size(max = 500, message = "A descrição não pode conter mais de 500 caracteres")
 	private String descricao;
 	
 	@NotBlank(message = "Ícone é obrigatório.")
