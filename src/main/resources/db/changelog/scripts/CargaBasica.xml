@@ -202,5 +202,11 @@
 	            newDataType="varchar(500)"
 	            tableName="sobre_detalhe"/>
 	</changeSet>
+	
+	<changeSet author="Alan" id="201801061619-1">
+		<dropNotNullConstraint columnDataType="blob"
+		            columnName="logo"		            
+		            tableName="cliente"/>
+	</changeSet>
 
 </databaseChangeLog>

@@ -41,9 +41,9 @@
         <ul class="nav-menu">
           <li class="menu-active"><a href="#hero"><i class="fa fa-home" aria-hidden="true"></i></a></li>
           <li><a href="#about" th:if="${sobre != null}">Empresa</a></li>
-          <li><a href="#services">Serviços</a></li>
-          <li><a href="#portfolio">Clientes</a></li>
-          <li><a href="#contact">Contato</a></li>
+          <li><a href="#services"  th:if="${totalServico > 0}">Serviços</a></li>
+          <li><a href="#portfolio" th:if="${totalCliente > 0}">Clientes</a></li>
+          <li><a href="#contact"   th:if="${contato != null}">Contato</a></li>
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>
@@ -55,7 +55,7 @@
   <section id="hero">
     <div class="hero-container">
       <h1>MCosta Engenharia</h1>
-      <h2>Uma frase chocante</h2>
+<!--       <h2>Uma frase chocante</h2> -->
       <a href="#about" class="btn-get-started">Sobre nós</a>
     </div>
   </section><!-- #hero -->
@@ -423,7 +423,6 @@
               </form>
             </div>
           </div>
-
         </div>
 
       </div>

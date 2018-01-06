@@ -38,6 +38,14 @@ public class Cliente {
 		this.id = id;
 		this.nome = nome;
 	}
+	
+	public Byte[] getLogo() {
+		return logo;
+	}
+
+	public void setLogo(Byte[] logo) {
+		this.logo = logo;
+	}
 
 	public Long getId() {
 		return id;

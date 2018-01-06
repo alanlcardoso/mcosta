@@ -3,6 +3,8 @@ package br.com.sistema.mcosta.entidade;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -16,8 +18,12 @@ public class ClienteServico {
 	@GeneratedValue(generator = "generator_cliente")
 	private Long id;
 
-	private Servico cliente;
+	@ManyToOne
+	@JoinColumn(name = "id_cliente", nullable = false, unique = false)
+	private Cliente cliente;
 
+	@ManyToOne
+	@JoinColumn(name = "id_servico", nullable = false, unique = false)
 	private Servico servico;
 
 	public Long getId() {
@@ -28,11 +34,11 @@ public class ClienteServico {
 		this.id = id;
 	}
 
-	public Servico getCliente() {
+	public Cliente getCliente() {
 		return cliente;
 	}
 
-	public void setCliente(Servico cliente) {
+	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
 

@@ -22,7 +22,8 @@ public class IndexControlador {
 
 	@GetMapping("/")
 	public ModelAndView index() {
-		List<Sobre> sobres = sobreBO.buscaDetalheSobre();
+		
+		List<Sobre> sobres = sobreBO.buscaDetalheSobre();		
 		Sobre sobre = null;
 		if (!sobres.isEmpty()) {
 			sobre = sobres.get(0);
@@ -31,6 +32,8 @@ public class IndexControlador {
 		ModelAndView mv = new ModelAndView("index");
 		mv.addObject("sobre", sobre);
 		mv.addObject("totalCliente", clienteBO.buscarTotalCliente());
+		mv.addObject("totalServico", 0);
+		mv.addObject("contato", null);
 		return mv;
 	}
 

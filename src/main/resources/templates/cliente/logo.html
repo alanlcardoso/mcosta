@@ -8,13 +8,13 @@
 	<div class="container">
 		
 		<br/>
-		<form class="form-horizontal" method="POST" action="/administracao/cliente" th:object="${cliente}">
+		<form class="form-horizontal" enctype="multipart/form-data" method="POST" action="/administracao/cliente/upload" th:object="${cliente}">
 			<div layout:replace="mensagem"></div>
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<div class="clearfix">
-						<h1 class="panel-title titulo-panel">Cadastro de Cliente</h1>
+						<h1 class="panel-title titulo-panel">Upload de Logo</h1>
 						<a class="btn btn-link link-panel" href="/administracao/cliente" title="Voltar para pesquisa">Pesquisa</a>
 					</div>
 				</div>
@@ -22,24 +22,13 @@
 				<div class="panel-body">
 					<input type="hidden" th:field="*{id}" />
 					<input type="hidden" th:field="*{logo}" />
-
-					<div class="form-group"
-						th:classappend="${#fields.hasErrors('nome')} ? has-error">
-						<label for="nome" class="col-sm-1 control-label">Nome:</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" id="nome" maxlength="60"
-								placeholder="Nome" th:field="*{nome}" />
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div class="col-sm-offset-1 col-sm-10">
-							<button type="submit" class="btn btn-primary" title="Salvar">Salvar</button>
-						</div>
-					</div>
+					
+					<input type="file" name="file" />
+					<input type="submit" value="Enviar" />
 				</div>
 			</div>
 		</form>
+		
 	</div>
 </section>
 </html>

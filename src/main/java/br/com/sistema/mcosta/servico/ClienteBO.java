@@ -26,11 +26,18 @@ public class ClienteBO {
 
 		List<ClienteServico> servicos = cliente.getServicos();
 		cliente = clienteRepositorio.save(cliente);
-
-		clienteServicoRepositorio.deleteByClienteId(cliente.getId());
-		servicos.forEach(clienteServicoRepositorio::save);
+		
+		if (servicos != null) {
+			clienteServicoRepositorio.deleteByClienteId(cliente.getId());
+			servicos.forEach(clienteServicoRepositorio::save);
+		}
 
 		return cliente;
+	}
+	
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void salvarImagem(Cliente cliente) {
+		clienteRepositorio.save(cliente);
 	}
 
 	@Transactional(readOnly = true)
@@ -59,4 +66,11 @@ public class ClienteBO {
 	public long buscarTotalCliente() {
 		return clienteRepositorio.count();
 	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void excluir(Long id) {
+		clienteServicoRepositorio.deleteByClienteId(id);
+		clienteRepositorio.deleteById(id);
+	}
+
 }
