@@ -1,7 +1,6 @@
 package br.com.sistema.mcosta.controlador;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.sistema.mcosta.entidade.Cliente;
 import br.com.sistema.mcosta.servico.ClienteBO;
+import br.com.sistema.mcosta.util.Util;
 
 @Controller
 @RequestMapping("/administracao/cliente")
@@ -91,14 +91,10 @@ public class ClienteControlador {
 				return mv;
 			}
 
-			byte[] bytes = file.getBytes();
-			Byte[] imagem = new Byte[bytes.length];
-			Arrays.setAll(imagem, n -> bytes[n]);
-
 			if (this.cliente == null) {
 				this.cliente = new Cliente();
 			}
-			cliente.setLogo(imagem);
+			cliente.setLogo(Util.toObjects(file.getBytes()));
 			clienteBO.salvarImagem(cliente);
 
 		} catch (IOException e) {

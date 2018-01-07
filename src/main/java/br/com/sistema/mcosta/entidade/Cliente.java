@@ -1,5 +1,6 @@
 package br.com.sistema.mcosta.entidade;
 
+import java.util.Base64;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -11,6 +12,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.NotBlank;
+
+import br.com.sistema.mcosta.util.Util;
 
 @Entity
 @Table(name = "cliente")
@@ -45,6 +48,10 @@ public class Cliente {
 
 	public void setLogo(Byte[] logo) {
 		this.logo = logo;
+	}
+	
+	public String getLogoBase64() {
+		return Base64.getEncoder().encodeToString(Util.toPrimitives(this.logo));
 	}
 
 	public Long getId() {

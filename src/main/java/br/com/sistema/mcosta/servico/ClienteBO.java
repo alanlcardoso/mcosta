@@ -3,6 +3,8 @@ package br.com.sistema.mcosta.servico;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,7 +28,7 @@ public class ClienteBO {
 
 		List<ClienteServico> servicos = cliente.getServicos();
 		cliente = clienteRepositorio.save(cliente);
-		
+
 		if (servicos != null) {
 			clienteServicoRepositorio.deleteByClienteId(cliente.getId());
 			servicos.forEach(clienteServicoRepositorio::save);
@@ -34,7 +36,7 @@ public class ClienteBO {
 
 		return cliente;
 	}
-	
+
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void salvarImagem(Cliente cliente) {
 		clienteRepositorio.save(cliente);
@@ -61,10 +63,15 @@ public class ClienteBO {
 		cliente.setServicos(clienteServicoRepositorio.findByClienteId(id));
 		return cliente;
 	}
-	
+
 	@Transactional(readOnly = true)
 	public long buscarTotalCliente() {
 		return clienteRepositorio.count();
+	}
+
+	@Transactional(readOnly = true)
+	public Page<Cliente> buscarClientesPorPagina(int quantidade) {
+		return clienteRepositorio.buscarTodosPaginaPrincipal(new PageRequest(0, quantidade));
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)

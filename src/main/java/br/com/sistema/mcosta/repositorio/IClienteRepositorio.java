@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -20,5 +22,8 @@ public interface IClienteRepositorio extends JpaRepository<Cliente, Long> {
 	@Transactional
 	@Query("DELETE Cliente x WHERE x.id = :id")
 	void deleteById(@Param("id") Long id);
+	
+	@Query("FROM Cliente c ")
+	Page<Cliente> buscarTodosPaginaPrincipal(Pageable pageRequest);
 	
 }

@@ -32,6 +32,7 @@ public class IndexControlador {
 		ModelAndView mv = new ModelAndView("index");
 		mv.addObject("sobre", sobre);
 		mv.addObject("totalCliente", clienteBO.buscarTotalCliente());
+		mv.addObject("clientes", clienteBO.buscarClientesPorPagina(12));
 		mv.addObject("totalServico", 0);
 		mv.addObject("contato", null);
 		return mv;
