@@ -957,3 +957,11 @@ body.mobile-nav-active #mobile-nav-toggle {
     margin-top: 3px;
     margin-left: -5px;
 }
+
+div.tab-pane {
+    margin-top: 15px;
+}
+
+li > a, li > a:hover {
+	color: #337ab7;
+}

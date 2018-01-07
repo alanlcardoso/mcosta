@@ -208,5 +208,25 @@
 		            columnName="logo"		            
 		            tableName="cliente"/>
 	</changeSet>
+	
+	<changeSet author="Pedro" id="201801071306-1">
+	    <modifyDataType columnName="imagem"
+	            newDataType="varchar(50)"
+	            tableName="servico"/>
+	</changeSet>
+	
+	<changeSet author="Pedro" id="201801071351-2">
+	    <modifyDataType columnName="nome"
+	            newDataType="varchar(50)"
+	            tableName="servico"/>
+	            
+	    <modifyDataType columnName="descricao"
+	            newDataType="varchar(500)"
+	            tableName="servico"/>
+	            
+        <addNotNullConstraint columnDataType="varchar(50)"
+            columnName="imagem"
+            tableName="servico"/>
+	</changeSet>
 
 </databaseChangeLog>

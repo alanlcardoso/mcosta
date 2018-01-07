@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.sistema.mcosta.entidade.Sobre;
 import br.com.sistema.mcosta.servico.ClienteBO;
+import br.com.sistema.mcosta.servico.ServicoBO;
 import br.com.sistema.mcosta.servico.SobreBO;
 
 @Controller
@@ -19,6 +20,9 @@ public class IndexControlador {
 	
 	@Autowired
 	private ClienteBO clienteBO;
+	
+	@Autowired
+	private ServicoBO servicoBO;
 
 	@GetMapping("/")
 	public ModelAndView index() {
@@ -32,7 +36,7 @@ public class IndexControlador {
 		ModelAndView mv = new ModelAndView("index");
 		mv.addObject("sobre", sobre);
 		mv.addObject("totalCliente", clienteBO.buscarTotalCliente());
-		mv.addObject("totalServico", 0);
+		mv.addObject("totalServico", servicoBO.buscarTodos());
 		mv.addObject("contato", null);
 		return mv;
 	}

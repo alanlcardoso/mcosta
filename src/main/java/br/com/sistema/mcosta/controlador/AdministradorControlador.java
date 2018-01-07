@@ -15,60 +15,59 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.sistema.mcosta.entidade.Sobre;
 import br.com.sistema.mcosta.servico.SobreBO;
+import br.com.sistema.mcosta.util.Validacao;
 
 @Controller
 @RequestMapping("/administracao")
 public class AdministradorControlador {
 	
-	private static final String CADASTRO_SOBRE = "cadastroSobre";
+	private static final String CADASTRO = "sobre/novo";
+	private static final String PESQUISAR = "sobre/pesquisar";
 	
 	@Autowired
 	private SobreBO sobreBO;
 	
 	@GetMapping("/sobre/novo")
 	public ModelAndView cadastro() {
-		ModelAndView mv = new ModelAndView(CADASTRO_SOBRE);
+		ModelAndView mv = new ModelAndView(CADASTRO);
 		mv.addObject(new Sobre());
 		return mv;
 	}
 	
 	@PostMapping(value = "/sobre")
 	public ModelAndView salvar(@Validated Sobre sobre, Errors errors, RedirectAttributes attributes) {
-		ModelAndView mv = new ModelAndView(CADASTRO_SOBRE);
+		ModelAndView mv = new ModelAndView(CADASTRO);
 		
 		if (errors.hasErrors()) {
 			return mv;
 		}
 		
-		if(!iconeValido(sobre.getSobreDetalhe1().getIcone())) {
+		if(!Validacao.iconeValido(sobre.getSobreDetalhe1().getIcone())) {
 			mv.addObject("mensagemErro", "Ícone do 1º detalhe com formato inválido!");
 			return mv;
 		}
 		
-		if(!iconeValido(sobre.getSobreDetalhe2().getIcone())) {
+		if(!Validacao.iconeValido(sobre.getSobreDetalhe2().getIcone())) {
 			mv.addObject("mensagemErro", "Ícone do 2º detalhe com formato inválido!");
 			return mv;
 		}
 		
-		if(!iconeValido(sobre.getSobreDetalhe3().getIcone())) {
+		if(!Validacao.iconeValido(sobre.getSobreDetalhe3().getIcone())) {
 			mv.addObject("mensagemErro", "Ícone do 3º detalhe com formato inválido!");
 			return mv;
 		}
 		
 		sobreBO.salvarSobre(sobre);
-		mv.addObject("mensagem", "Sobre salvo com sucesso!");
+		mv.addObject("mensagem", "Salvo com sucesso!");
+		mv.addObject(new Sobre());
 		return mv;
-	}
-	
-	private boolean iconeValido(String icone) {
-		return icone.startsWith("fa-");
 	}
 	
 	@GetMapping("/sobre")
 	public ModelAndView pesquisar() {
 		List<Sobre> sobres = sobreBO.buscaDetalheSobre();
 		
-		ModelAndView mv= new ModelAndView("pesquisaSobre");
+		ModelAndView mv= new ModelAndView(PESQUISAR);
 		mv.addObject("todosSobre", sobres);
 		return mv;
 	}
@@ -77,7 +76,7 @@ public class AdministradorControlador {
 	public ModelAndView edicao(@PathVariable Long id) {
 		Sobre sobre = sobreBO.buscaDetalheSobrePorId(id);
 		
-		ModelAndView mv = new ModelAndView(CADASTRO_SOBRE);
+		ModelAndView mv = new ModelAndView(CADASTRO);
 		mv.addObject(sobre);
 		return mv;
 	}
