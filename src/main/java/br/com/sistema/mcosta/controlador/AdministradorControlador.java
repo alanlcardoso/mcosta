@@ -40,29 +40,17 @@ public class AdministradorControlador {
 			return mv;
 		}
 		
-		String icone = sobre.getSobreDetalhe1().getIcone();
-		
-		if(iconeValido(icone)) {
-			sobre.getSobreDetalhe1().setIcone("fa ".concat(icone));
-		} else {
+		if(!iconeValido(sobre.getSobreDetalhe1().getIcone())) {
 			mv.addObject("mensagemErro", "Ícone do 1º detalhe com formato inválido!");
 			return mv;
 		}
 		
-		icone = sobre.getSobreDetalhe2().getIcone();
-		
-		if(iconeValido(icone)) {
-			sobre.getSobreDetalhe2().setIcone("fa ".concat(icone));
-		} else {
+		if(!iconeValido(sobre.getSobreDetalhe2().getIcone())) {
 			mv.addObject("mensagemErro", "Ícone do 2º detalhe com formato inválido!");
 			return mv;
 		}
 		
-		icone = sobre.getSobreDetalhe3().getIcone();
-		
-		if(iconeValido(icone)) {
-			sobre.getSobreDetalhe3().setIcone("fa ".concat(icone));
-		} else {
+		if(!iconeValido(sobre.getSobreDetalhe3().getIcone())) {
 			mv.addObject("mensagemErro", "Ícone do 3º detalhe com formato inválido!");
 			return mv;
 		}
@@ -80,36 +68,14 @@ public class AdministradorControlador {
 	public ModelAndView pesquisar() {
 		List<Sobre> sobres = sobreBO.buscaDetalheSobre();
 		
-		for (Sobre sobre : sobres) {
-			sobre = ajustaIcone(sobre);
-		}
-		
 		ModelAndView mv= new ModelAndView("pesquisaSobre");
 		mv.addObject("todosSobre", sobres);
 		return mv;
-	}
-	
-	private Sobre ajustaIcone(Sobre sobre) {
-		String icone = replaceIcone(sobre.getSobreDetalhe1().getIcone());
-		sobre.getSobreDetalhe1().setIcone(icone);
-		
-		icone = replaceIcone(sobre.getSobreDetalhe2().getIcone());
-		sobre.getSobreDetalhe2().setIcone(icone);
-		
-		icone = replaceIcone(sobre.getSobreDetalhe3().getIcone());
-		sobre.getSobreDetalhe3().setIcone(icone);
-		
-		return sobre;
-	}
-
-	private String replaceIcone(String icone) {
-		return icone.replaceAll("fa ", "");
 	}
 
 	@GetMapping("/sobre/{id}")
 	public ModelAndView edicao(@PathVariable Long id) {
 		Sobre sobre = sobreBO.buscaDetalheSobrePorId(id);
-		sobre = ajustaIcone(sobre);
 		
 		ModelAndView mv = new ModelAndView(CADASTRO_SOBRE);
 		mv.addObject(sobre);
