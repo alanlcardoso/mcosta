@@ -31,4 +31,9 @@ public class ServicoBO {
     public List<Servico> buscarTodos() {
         return servicoRepositorio.findAll();
     }
+    
+    @Transactional(readOnly = true)
+    public Servico buscarPorId(Long id) {
+        return servicoRepositorio.findOne(id);
+    }
 }

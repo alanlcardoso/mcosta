@@ -33,6 +33,7 @@ public class SobreDetalhe implements Serializable {
 	private String descricao;
 	
 	@NotBlank(message = "Ícone é obrigatório.")
+	@Size(max = 50, message = "O ícone não pode conter mais de 50 caracteres")
 	private String icone;
 	
 	@OneToMany(mappedBy="sobreDetalhe")
