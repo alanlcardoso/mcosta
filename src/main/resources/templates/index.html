@@ -236,21 +236,24 @@
             <div class="form">
               <div id="sendmessage">Mensagem enviada com sucesso. Obrigado!</div>
               <div id="errormessage"></div>
-              <form action="" method="post" role="form" class="contactForm">
+              <form method="POST" action="/enviar" th:object="${mensagem}" role="form" class="contactForm">
                 <div class="form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Nome" />
+                  <input type="text" class="form-control" id="name" placeholder="Nome" th:field="*{nome}" />
                   <div class="validation"></div>
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="E-mail" data-rule="email" data-msg="E-mail inválido" />
+                  <input type="email" class="form-control" id="email" placeholder="E-mail" data-rule="email" 
+                  		data-msg="E-mail inválido" th:field="*{remetente}" />
                   <div class="validation"></div>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Assunto" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                  <input type="text" class="form-control" id="subject" placeholder="Assunto" data-rule="minlen:4" 
+                  		data-msg="Please enter at least 8 chars of subject" th:field="*{assunto}" />
                   <div class="validation"></div>
                 </div>
                 <div class="form-group">
-                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Mensagem" placeholder="Mensagem"></textarea>
+                  <textarea class="form-control" rows="5" data-rule="required"
+                   		data-msg="Mensagem" placeholder="Mensagem" th:field="*{corpo}"></textarea>
                   <div class="validation"></div>
                 </div>
                 <div class="text-center"><button type="submit">Enviar</button></div>
