@@ -8,10 +8,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.com.sistema.mcosta.entidade.Servico;
 import br.com.sistema.mcosta.entidade.Sobre;
 import br.com.sistema.mcosta.mail.Mailer;
 import br.com.sistema.mcosta.mail.Mensagem;
@@ -23,6 +25,7 @@ import br.com.sistema.mcosta.servico.SobreBO;
 public class IndexControlador {
 	
 	private static final String INDEX = "index";
+	private static final String SERVICO_DETALHE = "servico/detalhe";
 
 	@Autowired
 	private SobreBO sobreBO;
@@ -42,11 +45,20 @@ public class IndexControlador {
 			sobre = sobres.get(0);
 		}
 		
+		List<Servico> servicos = servicoBO.buscarTodos();
+		servicos.forEach(servico -> {
+			String descricao = servico.getDescricao();
+			int tamanho = 110;
+			if (descricao.length() >= tamanho) {
+				servico.setDescricao(descricao.substring(0, tamanho) + "...");
+			}
+		});
+		
 		ModelAndView mv = new ModelAndView(INDEX);
 		mv.addObject("sobre", sobre);
 		mv.addObject("totalCliente", clienteBO.buscarTotalCliente());
 		mv.addObject("clientes", clienteBO.buscarClientesPorPagina(12));
-		mv.addObject("totalServico", servicoBO.buscarTodos());
+		mv.addObject("totalServico", servicos);
 		mv.addObject("contato", null);
 		mv.addObject(new Mensagem());
 		return mv;
@@ -72,6 +84,15 @@ public class IndexControlador {
 		mailer.enviar(mensagem);
 		
 		mv.addObject("mensagem", "Salvo com sucesso!");
+		return mv;
+	}
+	
+	@GetMapping("/servico/{id}")
+	public ModelAndView edicao(@PathVariable Long id) {
+		Servico servico = servicoBO.buscarPorId(id);
+		
+		ModelAndView mv = new ModelAndView(SERVICO_DETALHE);
+		mv.addObject(servico);
 		return mv;
 	}
 

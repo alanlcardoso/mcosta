@@ -56,7 +56,7 @@
     <div class="hero-container">
       <h1>MCosta Engenharia</h1>
 <!--       <h2>Uma frase chocante</h2> -->
-      <a href="#about" class="btn-get-started">Sobre nós</a>
+      <a href="#about" class="btn-get-started" th:if="${sobre != null}">Sobre nós</a>
     </div>
   </section><!-- #hero -->
 
@@ -155,10 +155,10 @@
 				<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s" th:each="servico : ${totalServico}">
 					<div class="box">
 						<div class="icon">
-							<a href=""><i th:classappend="'fa ' + ${servico.imagem}"></i></a>
+							<a th:href="@{/servico/{id}(id=${servico.id})}"><i th:classappend="'fa ' + ${servico.imagem}"></i></a>
 						</div>
 						<h4 class="title">
-							<a href="" th:text="${servico.nome}"></a>
+							<a th:href="@{/servico/{id}(id=${servico.id})}" th:text="${servico.nome}"></a>
 						</h4>
 						<p class="description" th:text="${servico.descricao}"></p>
 					</div>

@@ -57,6 +57,7 @@ public class AdministradorControlador {
 			return mv;
 		}
 		
+		sobre.setTitulo(sobre.getTitulo().toUpperCase());
 		sobreBO.salvarSobre(sobre);
 		mv.addObject("mensagem", "Salvo com sucesso!");
 		mv.addObject(new Sobre());
