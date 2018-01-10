@@ -965,3 +965,17 @@ div.tab-pane {
 li > a, li > a:hover {
 	color: #337ab7;
 }
+
+.icon i {
+	height: 25px;
+	width: 25px;
+}
+
+.detalhe-servico {
+	margin-left: 100px;
+	margin-right: 100px;
+}
+
+.conteudo-servico {
+	margin-top: 50px;
+}
