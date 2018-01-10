@@ -35,12 +35,18 @@
 	</properties>
 
 	<dependencies>
-	
+
+	<dependency>
+    <groupId>org.thymeleaf.extras</groupId>
+    <artifactId>thymeleaf-extras-springsecurity4</artifactId>
+    <version>2.1.2.RELEASE</version>
+</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -90,7 +96,7 @@
 			<artifactId>spring-context-support</artifactId>
 			<version>4.3.13.RELEASE</version><!--$NO-MVN-MAN-VER$ -->
 		</dependency>
-		
+
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>

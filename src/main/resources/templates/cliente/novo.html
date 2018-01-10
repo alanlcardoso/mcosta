@@ -9,7 +9,7 @@
 
 		<br />
 		<form class="form-horizontal" method="POST"
-			action="/administracao/cliente" th:object="${cliente}">
+			th:action="@{/administracao/cliente}" th:object="${cliente}">
 			<div layout:replace="mensagem"></div>
 
 			<div class="panel panel-default">
@@ -39,17 +39,30 @@
 							<button type="submit" class="btn btn-primary" title="Salvar">Salvar</button>
 						</div>
 					</div>
+				</div>
+			</div>
 
-					<div class="col-sm-offset-1 col-sm-6">
-						<table id="servicos" class="table table-striped">
-							<tr th:each="item,rowStat : ${servicos}">
-								<td th:hidden="${disable}"><span id="removeLinhaSpan"
-									title='Remover Serviço' class="fa fa-trash text-danger"
-									rel="tooltip" data-placement="top"></span></td>
-								<td class="center middle" th:text="${item}"></td>
-							</tr>
-						</table>
-					</div>
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-10">
+					<button type="button" class="btn btn-default" data-toggle="modal"
+						th:disabled="${disable}" rel="tooltip" data-placement="right"
+						title="Adicionar Serviço" data-target="#modalAdicionarServico">
+						<span class="glyphicon glyphicon-plus-sign"></span> Adicionar Serviço
+					</button>
+				</div>
+			</div>
+			<div class="col-sm-offset-1 col-sm-6">
+				<table id="servicos" class="table table-striped">
+					<tr th:each="item,rowStat : ${servicos}">
+						<td th:hidden="${disable}"><span id="removeLinhaSpan"
+							title='Remover Serviço' class="fa fa-trash text-danger"
+							rel="tooltip" data-placement="top"></span></td>
+						<td class="center middle"
+							th:text="${item}"></td>
+					</tr>
+				</table>
+			</div>
+
 		</form>
 	</div>
 </section>

@@ -152,7 +152,8 @@
 				<p class="section-description"></p>
 			</div>
 			<div class="row">
-				<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s" th:each="servico : ${totalServico}">
+				<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s"
+					th:each="servico : ${totalServico}">
 					<div class="box">
 						<div class="icon">
 							<a href=""><i th:classappend="'fa ' + ${servico.imagem}"></i></a>
@@ -164,7 +165,12 @@
 					</div>
 				</div>
 			</div>
-
+			<br/>
+            <div class="row">
+            	<div class="col-md-12">
+                	<a href="xxx.html" class="btn btn-default"><i class="fa fa-newspaper-o"></i> Todos Serviços</a>
+                </div>
+            </div>
 		</div>
 	</section>
 	<!-- #services -->
@@ -173,27 +179,32 @@
       Portfolio Section
     ============================-->
     <section id="portfolio">
-      <div class="container wow fadeInUp">
-        <div class="section-header">
-          <h3 class="section-title">Clientes</h3>
-          <p class="section-description"></p>
-        </div>
-        <div class="row">
-
-        <div class="row" id="portfolio-wrapper">
-        
-          <div th:each="item : ${clientes}" class="col-lg-3 col-md-6 portfolio-item filter-app">
-            <a href="">
-              <img th:src="@{'data:image/jpeg;base64,'+${item.getLogoBase64()}}" th:title="${item.nome}" alt="">
-              <div class="details">
-                <h4 th:text="${item.nome}"></h4>
-              </div>
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- #portfolio -->
+		<div class="container wow fadeInUp">
+			<div class="section-header">
+				<h3 class="section-title">Clientes</h3>
+				<p class="section-description"></p>
+			</div>
+			<div class="row">
+				<div class="row" id="portfolio-wrapper">
+					<div th:each="item : ${clientes}"
+						class="col-lg-3 col-md-6 portfolio-item filter-app">
+						<a href=""> <img
+							th:src="@{'data:image/jpeg;base64,'+${item.getLogoBase64()}}"
+							th:title="${item.nome}" alt="">
+							<div class="details">
+								<h4 th:text="${item.nome}"></h4>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+			<br/>
+            <div class="row">
+            	<div class="col-md-12">
+                	<a href="xxx.html" class="btn btn-default"><i class="fa fa-newspaper-o"></i> Todos Clientes</a>
+                </div>
+            </div>
+	</section><!-- #portfolio -->
 
     <!--==========================
       Contact Section
