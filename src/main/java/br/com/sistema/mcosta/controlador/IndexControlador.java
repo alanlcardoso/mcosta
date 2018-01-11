@@ -18,6 +18,7 @@ import br.com.sistema.mcosta.entidade.Sobre;
 import br.com.sistema.mcosta.mail.Mailer;
 import br.com.sistema.mcosta.mail.Mensagem;
 import br.com.sistema.mcosta.servico.ClienteBO;
+import br.com.sistema.mcosta.servico.ContatoBO;
 import br.com.sistema.mcosta.servico.ServicoBO;
 import br.com.sistema.mcosta.servico.SobreBO;
 
@@ -35,6 +36,9 @@ public class IndexControlador {
 	
 	@Autowired
 	private ServicoBO servicoBO;
+	
+	@Autowired
+	private ContatoBO contatoBO;
 
 	@GetMapping("/")
 	public ModelAndView index() {
@@ -59,7 +63,7 @@ public class IndexControlador {
 		mv.addObject("totalCliente", clienteBO.buscarTotalCliente());
 		mv.addObject("clientes", clienteBO.buscarClientesPorPagina(12));
 		mv.addObject("totalServico", servicos);
-		mv.addObject("contato", null);
+		mv.addObject("contato", contatoBO.buscarTodos().get(0));
 		mv.addObject(new Mensagem());
 		return mv;
 	}

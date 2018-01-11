@@ -153,10 +153,10 @@
     <!--==========================
       Contact Section
     ============================-->
-    <section id="contact">
+    <section id="contact" th:if="${contato != null}">
       <div class="container wow fadeInUp">
         <div class="section-header">
-          <h3 class="section-title">Vamos Conversar?</h3>
+          <h3 class="section-title" th:text="${contato.titulo}"></h3>
           <p class="section-description">Entre em contato conosco</p>
         </div>
       </div>
@@ -171,7 +171,7 @@
             <div class="info">
               <div>
                 <i class="fa fa-map-marker"></i>
-                <p>R. Eduardo de Oliveira, 279 - 4<br>NCazeca, Uberlândia - MG, 38400-011</p>
+                <p>R. Eduardo de Oliveira, 279 Cazeca, Uberlândia - MG, 38400-011</p>
               </div>
 
               <div>

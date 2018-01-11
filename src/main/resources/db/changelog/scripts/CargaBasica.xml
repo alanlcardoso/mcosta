@@ -228,5 +228,62 @@
             columnName="imagem"
             tableName="servico"/>
 	</changeSet>
+	
+	<changeSet author="Pedro" id="201801101143">
+
+		<createTable tableName="contato">
+	
+			<column name="id" type="numeric(18)">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="pk_cliente" />
+			</column>
+	
+			<column name="titulo" type="varchar(60)">
+				<constraints nullable="false" />
+			</column>
+	
+			<column name="tipo_logradouro" type="varchar(20)">
+				<constraints nullable="false" />
+			</column>
+			
+			<column name="logradouro" type="varchar(80)">
+				<constraints nullable="false" />
+			</column>
+			
+			<column name="numero" type="numeric(18)">
+				<constraints nullable="false" />
+			</column>
+			
+			<column name="bairro" type="varchar(60)">
+				<constraints nullable="false" />
+			</column>
+			
+			<column name="cidade" type="varchar(60)">
+				<constraints nullable="false" />
+			</column>
+			
+			<column name="estado" type="varchar(2)">
+				<constraints nullable="false" />
+			</column>
+			
+			<column name="latitude" type="varchar(20)">
+				<constraints nullable="false" />
+			</column>
+			
+			<column name="longitude" type="varchar(20)">
+				<constraints nullable="false" />
+			</column>
+			
+			<column name="email" type="varchar(100)">
+				<constraints nullable="false" />
+			</column>
+			
+			<column name="telefone" type="varchar(11)">
+				<constraints nullable="false" />
+			</column>
+	
+		</createTable>
+		
+	</changeSet>
 
 </databaseChangeLog>
