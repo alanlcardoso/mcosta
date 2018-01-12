@@ -7,11 +7,15 @@
 <section layout:fragment="conteudo" id="contato">
 	<div class="container">
 		<h2>Contato</h2>
-		<div class="panel panel-default">
+		<div class="panel panel-primary">
 			<div class="panel-heading">			
 				<div class="clearfix">					
 					<h1 class="panel-title titulo-panel">Pesquisa</h1>
-					<a class="btn btn-link link-panel" href="/administracao/contato/novo" th:if="${#lists.isEmpty(contatos)}" title="Novo Serviço">Cadastro</a>
+					<a class="btn btn-link link-panel" 
+						href="/administracao/contato/novo" 
+						th:if="${#lists.isEmpty(contatos)}" 
+						title="Novo Serviço"
+						style="color: #fff">Cadastro</a>
 				</div>
 			</div>
 
@@ -27,6 +31,7 @@
 							<th>Bairro</th>
 							<th>Cidade</th>
 							<th>Estado</th>
+							<th>CEP</th>
 							<th>Latitude</th>
 							<th>Longitude</th>
 							<th>Email</th>
@@ -44,6 +49,7 @@
 							<td th:text="${item.bairro}"></td>
 							<td th:text="${item.cidade}"></td>
 							<td th:text="${item.estado}"></td>
+							<td th:text="${item.cep}"></td>
 							<td th:text="${item.latitude}"></td>
 							<td th:text="${item.longitude}"></td>
 							<td th:text="${item.email}"></td>

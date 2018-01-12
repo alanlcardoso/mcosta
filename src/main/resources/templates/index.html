@@ -161,7 +161,7 @@
         </div>
       </div>
 
-      <div id="google-map" data-latitude="-18.920223" data-longitude="-48.272103"></div>
+      <div id="google-map" th:data-latitude="${contato.latitude}" th:data-longitude="${contato.longitude}"></div>
 
       <div class="container wow fadeInUp">
         <div class="row justify-content-center">
@@ -171,17 +171,23 @@
             <div class="info">
               <div>
                 <i class="fa fa-map-marker"></i>
-                <p>R. Eduardo de Oliveira, 279 Cazeca, Uberlândia - MG, 38400-011</p>
+                <p th:text="${contato.tipoLogradouro.descricao} + ' ' +
+                	${contato.logradouro} + ', ' +
+                	${contato.numero} + ' ' +
+                	${contato.bairro} + ', ' +
+                	${contato.cidade} + ' - ' +
+                	${contato.estado}+ ' ' +
+                	${contato.cep}"></p>
               </div>
 
               <div>
                 <i class="fa fa-envelope"></i>
-                <p>marco@mcosta.com.br</p>
+                <p th:text="${contato.email}"></p>
               </div>
 
               <div>
                 <i class="fa fa-phone"></i>
-                <p>(34) 99887-7267</p>
+                <p th:text="${{contato.telefone}}"></p>
               </div>
             </div>
 

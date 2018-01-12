@@ -11,12 +11,12 @@
 		<form class="form-horizontal" method="POST" th:action="@{/administracao/contato}" th:object="${contato}">
 			<div layout:replace="mensagem"></div>
 
-			<div class="panel panel-default">
+			<div class="panel panel-primary">
 				<div class="panel-heading">
 					<div class="clearfix">
 						<h1 class="panel-title titulo-panel">Cadastro</h1>
 						<a class="btn btn-link link-panel" href="/administracao/contato"
-							title="Voltar para pesquisa">Pesquisa</a>
+							title="Voltar para pesquisa" style="color: #fff">Pesquisa</a>
 					</div>
 				</div>
 
@@ -25,91 +25,102 @@
 
 					<div class="form-group"
 						th:classappend="${#fields.hasErrors('titulo')} ? has-error">
-						<label for="titulo" class="col-sm-2 control-label">Título</label>
-						<div class="col-sm-4">
+						<label for="titulo" class="col-sm-1 control-label">Título</label>
+						<div class="col-sm-11">
 							<input type="text" class="form-control" id="titulo"
 								placeholder="Título" maxlength="50" th:field="*{titulo}" />
 						</div>
 					</div>
+					<hr/>
 					<div class="form-group">
-						<label for="rua" class="col-sm-2 control-label">Tipo Logradouro</label>
-						<div class="col-sm-4">
-							<select class="form-control" name="tipoLogradouro">
-								<option th:each="item: ${tiposLogradouro}" th:value="${item}" th:text="${item.descricao}"></option>
-							</select>
+						<div>
+							<label for="rua" class="col-sm-1 control-label">Tipo</label>
+							<div class="col-sm-2">
+								<select class="form-control" name="tipoLogradouro">
+									<option th:each="item: ${tiposLogradouro}" th:value="${item}" th:text="${item.descricao}"></option>
+								</select>
+							</div>
+						</div>
+						<div th:classappend="${#fields.hasErrors('logradouro')} ? has-error">
+							<label for="logradouro" class="col-sm-1 control-label">Logradouro</label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control" id="logradouro"
+									placeholder="Logradouro" maxlength="50" th:field="*{logradouro}" />
+							</div>
+						</div>
+						<div th:classappend="${#fields.hasErrors('numero')} ? has-error">
+							<label for="numero" class="col-sm-1 control-label">Número</label>
+							<div class="col-sm-2">
+								<input type="number" class="form-control" id="numero"
+									placeholder="Número" maxlength="50" th:field="*{numero}" />
+							</div>
 						</div>
 					</div>
-					<div class="form-group"
-						th:classappend="${#fields.hasErrors('logradouro')} ? has-error">
-						<label for="logradouro" class="col-sm-2 control-label">Logradouro</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" id="logradouro"
-								placeholder="Logradouro" maxlength="50" th:field="*{logradouro}" />
+					<div class="form-group">
+						<div th:classappend="${#fields.hasErrors('bairro')} ? has-error">
+							<label for="bairro" class="col-sm-1 control-label">Bairro</label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control" id="bairro"
+									placeholder="Bairro" maxlength="50" th:field="*{bairro}" />
+							</div>
+						</div>
+						<div th:classappend="${#fields.hasErrors('cidade')} ? has-error">
+							<label for="cidade" class="col-sm-1 control-label">Cidade</label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control" id="cidade"
+									placeholder="Cidade" maxlength="50" th:field="*{cidade}" />
+							</div>
 						</div>
 					</div>
-					<div class="form-group"
-						th:classappend="${#fields.hasErrors('numero')} ? has-error">
-						<label for="numero" class="col-sm-2 control-label">Número</label>
-						<div class="col-sm-4">
-							<input type="number" class="form-control" id="numero"
-								placeholder="Número" maxlength="50" th:field="*{numero}" />
+					<div class="form-group">
+						<div th:classappend="${#fields.hasErrors('estado')} ? has-error">
+							<label for="estado" class="col-sm-1 control-label">Estado</label>
+							<div class="col-sm-5">
+								<select class="form-control" name="estado">
+									<option th:each="estado: ${estados}" th:value="${estado}" th:text="${estado.descricao}"></option>
+								</select>
+							</div>
+						</div>
+						<div th:classappend="${#fields.hasErrors('cep')} ? has-error">
+							<label for="cep" class="col-sm-1 control-label">CEP</label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control" id="cep"
+									placeholder="CEP" maxlength="50" th:field="*{cep}" />
+							</div>
 						</div>
 					</div>
-					<div class="form-group"
-						th:classappend="${#fields.hasErrors('bairro')} ? has-error">
-						<label for="bairro" class="col-sm-2 control-label">Bairro</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" id="bairro"
-								placeholder="Bairro" maxlength="50" th:field="*{bairro}" />
+					<hr/>
+					<div class="form-group">
+						<div th:classappend="${#fields.hasErrors('latitude')} ? has-error">
+							<label for="latitude" class="col-sm-1 control-label">Latitude</label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control" id="latitude"
+									placeholder="Latitude" maxlength="50" th:field="*{latitude}" />
+							</div>
+						</div>
+						<div th:classappend="${#fields.hasErrors('longitude')} ? has-error">
+							<label for="longitude" class="col-sm-1 control-label">Longitude</label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control" id="longitude"
+									placeholder="Longitude" maxlength="50" th:field="*{longitude}" />
+							</div>
 						</div>
 					</div>
-					<div class="form-group"
-						th:classappend="${#fields.hasErrors('cidade')} ? has-error">
-						<label for="cidade" class="col-sm-2 control-label">Cidade</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" id="cidade"
-								placeholder="Cidade" maxlength="50" th:field="*{cidade}" />
+					<hr/>
+					<div class="form-group">
+						<div th:classappend="${#fields.hasErrors('email')} ? has-error">
+							<label for="email" class="col-sm-1 control-label">E-mail</label>
+							<div class="col-sm-5">
+								<input type="email" class="form-control" id="email"
+									placeholder="E-mail" maxlength="50" th:field="*{email}" />
+							</div>
 						</div>
-					</div>
-					<div class="form-group"
-						th:classappend="${#fields.hasErrors('estado')} ? has-error">
-						<label for="estado" class="col-sm-2 control-label">Estado</label>
-						<div class="col-sm-4">
-							<select class="form-control" name="estado">
-								<option th:each="estado: ${estados}" th:value="${estado}" th:text="${estado.descricao}"></option>
-							</select>
-						</div>
-					</div>
-					<div class="form-group"
-						th:classappend="${#fields.hasErrors('latitude')} ? has-error">
-						<label for="latitude" class="col-sm-2 control-label">Latitude</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" id="latitude"
-								placeholder="Latitude" maxlength="50" th:field="*{latitude}" />
-						</div>
-					</div>
-					<div class="form-group"
-						th:classappend="${#fields.hasErrors('longitude')} ? has-error">
-						<label for="longitude" class="col-sm-2 control-label">Longitude</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" id="longitude"
-								placeholder="Longitude" maxlength="50" th:field="*{longitude}" />
-						</div>
-					</div>
-					<div class="form-group"
-						th:classappend="${#fields.hasErrors('email')} ? has-error">
-						<label for="email" class="col-sm-2 control-label">E-mail</label>
-						<div class="col-sm-4">
-							<input type="email" class="form-control" id="email"
-								placeholder="E-mail" maxlength="50" th:field="*{email}" />
-						</div>
-					</div>
-					<div class="form-group"
-						th:classappend="${#fields.hasErrors('longitude')} ? has-error">
-						<label for="telefone" class="col-sm-2 control-label">Telefone</label>
-						<div class="col-sm-4">
-							<input type="tel" class="form-control" id="telefone"
-								placeholder="Telefone" maxlength="50" th:field="*{telefone}" />
+						<div th:classappend="${#fields.hasErrors('longitude')} ? has-error">
+							<label for="telefone" class="col-sm-1 control-label">Telefone</label>
+							<div class="col-sm-5">
+								<input type="tel" class="form-control" id="telefone"
+									placeholder="Telefone" maxlength="50" th:field="*{telefone}" />
+							</div>
 						</div>
 					</div>
 

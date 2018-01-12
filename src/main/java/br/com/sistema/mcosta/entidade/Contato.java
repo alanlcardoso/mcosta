@@ -3,13 +3,19 @@ package br.com.sistema.mcosta.entidade;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
+
+import br.com.sistema.mcosta.enums.Estado;
+import br.com.sistema.mcosta.enums.TipoLogradouro;
 
 @Entity
 @Table(name = "contato")
@@ -25,8 +31,8 @@ public class Contato implements Serializable {
 	@NotBlank(message = "Título é obrigatório.")
 	private String titulo;
 	
-	@NotBlank(message = "Tipo de logradouro é obrigatório.")
-	private String tipoLogradouro;
+	@Enumerated(EnumType.STRING)
+	private TipoLogradouro tipoLogradouro;
 	
 	@NotBlank(message = "Logradouro é obrigatório.")
 	private String logradouro;
@@ -40,8 +46,11 @@ public class Contato implements Serializable {
 	@NotBlank(message = "Cidade é obrigatório.")
 	private String cidade;
 	
-	@NotBlank(message = "Estado é obrigatório.")
-	private String estado;
+	@Enumerated(EnumType.STRING)
+	private Estado estado;
+	
+	@NotBlank(message = "CEP é obrigatório.")
+	private String cep;
 	
 	@NotBlank(message = "Latitude é obrigatório.")
 	private String latitude;
@@ -49,6 +58,7 @@ public class Contato implements Serializable {
 	@NotBlank(message = "Longitude é obrigatório.")
 	private String longitude;
 	
+	@Email
 	@NotBlank(message = "Email é obrigatório.")
 	private String email;
 	
@@ -71,11 +81,11 @@ public class Contato implements Serializable {
 		this.titulo = titulo;
 	}
 
-	public String getTipoLogradouro() {
+	public TipoLogradouro getTipoLogradouro() {
 		return tipoLogradouro;
 	}
 
-	public void setTipoLogradouro(String tipoLogradouro) {
+	public void setTipoLogradouro(TipoLogradouro tipoLogradouro) {
 		this.tipoLogradouro = tipoLogradouro;
 	}
 
@@ -111,12 +121,20 @@ public class Contato implements Serializable {
 		this.cidade = cidade;
 	}
 
-	public String getEstado() {
+	public Estado getEstado() {
 		return estado;
 	}
 
-	public void setEstado(String estado) {
+	public void setEstado(Estado estado) {
 		this.estado = estado;
+	}
+	
+	public String getCep() {
+		return cep;
+	}
+	
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 
 	public String getLatitude() {

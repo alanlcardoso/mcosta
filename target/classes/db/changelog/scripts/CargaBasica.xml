@@ -285,5 +285,13 @@
 		</createTable>
 		
 	</changeSet>
+	
+	<changeSet author="Pedro" id="201801112206">
+	
+		<addColumn tableName="contato">
+	        <column name="cep" type="varchar(8)"/>
+	    </addColumn>
+	    
+    </changeSet>
 
 </databaseChangeLog>
