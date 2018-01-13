@@ -2,33 +2,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="pt-br">
-
 <head>
-  	<title>MCosta Engenharia</title>
-	<meta charset="utf-8"/>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-	<meta name="description" content=""/>
-	<meta name="_csrf" th:content="${_csrf.token}"/>
-	<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
-
-  <link th:href="@{/img/favicon.png}" rel="icon">
-  <link th:href="@{/img/apple-touch-icon.png}" rel="apple-touch-icon">
-
-  <link th:href="@{/lib/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
-  <link th:href="@{/lib/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
-  <link th:href="@{/lib/animate/animate.min.css}" rel="stylesheet" type="text/css">
-  <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
-  
+<title>MCosta Engenharia</title>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="" />
+<meta name="_csrf" th:content="${_csrf.token}" />
+<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+<link th:href="@{/img/favicon.png}" rel="icon">
+<link th:href="@{/img/apple-touch-icon.png}" rel="apple-touch-icon">
+<link th:href="@{/lib/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+<link th:href="@{/lib/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
+<link th:href="@{/lib/animate/animate.min.css}" rel="stylesheet" type="text/css">
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
 </head>
-
 <body>
-
-  <main id="main">	
+	<main id="main">
 	<section layout:fragment="conteudo"></section>
-  </main>
-
-  <th:block layout:fragment="javascript-extra"></th:block>
-
+	</main>
+	<script th:src="@{/lib/jquery/jquery.min.js}"></script>
+	<script th:src="@{/lib/bootstrap/js/bootstrap.min.js}"></script>
+	<th:block layout:fragment="javascript-extra"></th:block>
 </body>
 </html>
