@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.com.sistema.mcosta.entidade.Contato;
 import br.com.sistema.mcosta.entidade.Servico;
 import br.com.sistema.mcosta.entidade.Sobre;
 import br.com.sistema.mcosta.mail.Mailer;
@@ -63,7 +64,9 @@ public class IndexControlador {
 		mv.addObject("totalCliente", clienteBO.buscarTotalCliente());
 		mv.addObject("clientes", clienteBO.buscarClientesPorPagina(12));
 		mv.addObject("totalServico", servicos);
-		mv.addObject("contato", contatoBO.buscarTodos().get(0));
+		
+		List<Contato> contatos = contatoBO.buscarTodos();		
+		mv.addObject("contato", contatos.isEmpty() ? null : contatos.get(0));
 		mv.addObject(new Mensagem());
 		return mv;
 	}
