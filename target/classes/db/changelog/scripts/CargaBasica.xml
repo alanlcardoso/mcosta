@@ -308,6 +308,15 @@
 			insert into usuario values (1,'alan', 'alan','202cb962ac59075b964b07152d234b70',1);
 			insert into usuario_permissao values (1,1,1);
      	</sql>
+     </changeSet>
+     
+      <changeSet author="Alan" id="201801132114">
+     	<sql>
+     		update usuario 
+     		set nome = 'admin'
+     		    ,email = 'admin',
+     		    ,senha = '$2a$10$Z6kDAHROz0RhXC1OI7TDT.xnj/0zjgIWccwPr9mEgenIlFj98BdBO'
+     	</sql>
      </changeSet>    
 
 </databaseChangeLog>
