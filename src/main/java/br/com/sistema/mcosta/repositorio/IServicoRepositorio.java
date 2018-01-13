@@ -2,6 +2,8 @@ package br.com.sistema.mcosta.repositorio;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -11,4 +13,7 @@ public interface IServicoRepositorio extends JpaRepository<Servico, Long> {
 
 	@Query("SELECT new br.com.sistema.mcosta.entidade.Servico(cli.id, cli.nome, cli.descricao) FROM Servico cli")
 	List<Servico> buscarTodosReduzido();
+	
+	@Query("FROM Servico s ")
+	Page<Servico> buscarTodosPaginaPrincipal(Pageable pageRequest);
 }

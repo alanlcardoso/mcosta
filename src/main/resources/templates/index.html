@@ -112,7 +112,7 @@
 			<br/>
             <div class="row">
             	<div class="col-md-12">
-                	<a href="xxx.html" class="btn btn-default"><i class="fa fa-newspaper-o"></i> Todos Serviços</a>
+                	<a th:href="@{/servico}" class="btn btn-default"><i class="fa fa-newspaper-o"></i> Todos Serviços</a>
                 </div>
             </div>
 		</div>
@@ -227,4 +227,9 @@
     </section><!-- #contact -->
 
   </section>
+  
+  <th:block layout:fragment="javascript-extra">
+  	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8HeI8o-c1NppZA-92oYlXakhDPYR7XMY"></script>
+  </th:block>
+  
 </html>
