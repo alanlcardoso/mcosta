@@ -314,7 +314,7 @@
      	<sql>
      		update usuario 
      		set nome = 'admin'
-     		    ,email = 'admin',
+     		    ,email = 'admin'
      		    ,senha = '$2a$10$Z6kDAHROz0RhXC1OI7TDT.xnj/0zjgIWccwPr9mEgenIlFj98BdBO'
      	</sql>
      </changeSet>    
