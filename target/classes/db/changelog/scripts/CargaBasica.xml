@@ -301,5 +301,13 @@
 	    </addColumn>
 	    
     </changeSet>
+    
+     <changeSet author="Alan" id="201801132113">
+     	<sql>
+     		insert into permissao values (1,'ADMINISTRADOR');
+			insert into usuario values (1,'alan', 'alan','202cb962ac59075b964b07152d234b70');
+			insert into usuario_permissao values (1,1,1);
+     	</sql>
+     </changeSet>    
 
 </databaseChangeLog>
