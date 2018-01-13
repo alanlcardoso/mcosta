@@ -20,26 +20,23 @@
 <body>
 	<form>
 		<input type="hidden" id="contextPath" th:value="${#httpServletRequest.contextPath}"/>
-	</form>	
-	<main id="main">	
-	    <nav class="navbar navbar-inverse navbar-static-top ajuste-menu">
-	     	<div class="container-fluid">
-		        <div class="panel-heading">
-					<div class="clearfix">
-	  					<a class="navbar-brand" href="/">
-	                    	<img alt="MCosta" src="/img/logo2.jpg" />
-	                	</a>
-	                	<div class="ajuste-item-menu">
-	  						<a class="btn btn-link item-menu" href="/administracao/sobre">SOBRE</a>
-	  						<a class="btn btn-link item-menu" href="/administracao/servico">SERVIÇOS</a>
-	  						<a class="btn btn-link item-menu" href="/administracao/cliente">CLIENTES</a>
-	  						<a class="btn btn-link item-menu" href="/administracao/contato">CONTATOS</a>
-		                	<a class="btn btn-link item-menu home-menu" href="/"><i class="fa fa-home item-menu"></i></a>
-	  					</div>
-	  				</div>
-	  			</div>
-	      	</div>
-	    </nav>    
+	</form>
+	
+	<main id="main">
+    <nav class="navbar navbar-inverse navbar-static-top ajuste-menu">
+     	<div class="container-fluid">
+	        <div class="panel-heading">
+				<div class="clearfix">
+  					<a class="navbar-brand" href="/">
+                    	<img alt="MCosta" src="/img/logo2.jpg" width="150px" style="margin-top: -19px; margin-left: 75px;" />
+                	</a>
+                	<div layout:replace="menu"></div>
+  				</div>
+  			</div>
+      	</div>
+    </nav>
+
+  <main id="main">	
 		<section layout:fragment="conteudo"></section>
 	</main>
 		

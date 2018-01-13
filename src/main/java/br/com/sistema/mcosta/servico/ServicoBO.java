@@ -3,6 +3,8 @@ package br.com.sistema.mcosta.servico;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,5 +42,10 @@ public class ServicoBO {
 	@Transactional(readOnly = true)
 	public Servico buscarPorId(Long id) {
 		return servicoRepositorio.findOne(id);
+	}
+	
+	@Transactional(readOnly = true)
+	public Page<Servico> buscarClientesPorPagina(int quantidade) {
+		return servicoRepositorio.buscarTodosPaginaPrincipal(new PageRequest(0, quantidade));
 	}
 }

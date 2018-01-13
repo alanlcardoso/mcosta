@@ -2,23 +2,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="pt-br"
-	layout:decorate="~{home}">
+	layout:decorate="~{layout}">
 
 <section layout:fragment="conteudo" id="detalhe-servico">
-	<section id="about" >
+	<section id="about">
 		<div class="container">
 			<div class="row about-container">
-	 			<div class="section-header detalhe-servico">
-	          		<h3 class="section-title" th:text="${servico.nome}"></h3>
-	          		<div class="icon-box wow fadeInUp conteudo-servico">
+
+				<div class="content order-lg-1 order-2" th:each="servico, indice : ${servicos}">
+					<div class="icon-box wow fadeInUp" th:classappend="@{indice.index == 1 ? 'fundo-cinza' : 'fundo-branco'}">
 						<div class="icon">
 							<i th:classappend="'fa ' + ${servico.imagem}"></i>
 						</div>
+						<h4 class="title" th:text="${servico.nome}"></h4>
 						<p class="description" th:text="${servico.descricao}"></p>
+					<br/>
 					</div>
-	        	</div>
+				</div>
 			</div>
+
 		</div>
-	</section>	
+	</section>
 </section>
 </html>

@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
@@ -27,7 +28,7 @@ import br.com.sistema.mcosta.servico.SobreBO;
 public class IndexControlador {
 	
 	private static final String INDEX = "index";
-	private static final String SERVICO_DETALHE = "servico/detalhe";
+	private static final String SERVICO_DETALHE = "servicoDetalhe";
 
 	@Autowired
 	private SobreBO sobreBO;
@@ -50,7 +51,7 @@ public class IndexControlador {
 			sobre = sobres.get(0);
 		}
 		
-		List<Servico> servicos = servicoBO.buscarTodos();
+		Page<Servico> servicos = servicoBO.buscarClientesPorPagina(6);
 		servicos.forEach(servico -> {
 			String descricao = servico.getDescricao();
 			int tamanho = 110;
@@ -95,11 +96,20 @@ public class IndexControlador {
 	}
 	
 	@GetMapping("/servico/{id}")
-	public ModelAndView edicao(@PathVariable Long id) {
+	public ModelAndView detalheServico(@PathVariable Long id) {
 		Servico servico = servicoBO.buscarPorId(id);
 		
 		ModelAndView mv = new ModelAndView(SERVICO_DETALHE);
-		mv.addObject(servico);
+		mv.addObject("servicos", servico);
+		return mv;
+	}
+	
+	@GetMapping("/servico")
+	public ModelAndView detalheServico() {
+		List<Servico> servicos = servicoBO.buscarTodos();
+		
+		ModelAndView mv = new ModelAndView(SERVICO_DETALHE);
+		mv.addObject("servicos", servicos);
 		return mv;
 	}
 
