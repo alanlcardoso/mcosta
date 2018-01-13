@@ -68,7 +68,7 @@ public class ClienteBO {
 	public Cliente buscaPorId(Long id) {
 		Cliente cliente = clienteRepositorio.findOne(id);
 		cliente.setServicosIds(new ArrayList<>());
-		buscarServicosCliente(id).forEach(item -> cliente.getServicosIds().add(item.getId()));
+		buscarServicosCliente(id).forEach(item -> cliente.getServicosIds().add(item.getServico().getId()));
 		return cliente;
 	}
 

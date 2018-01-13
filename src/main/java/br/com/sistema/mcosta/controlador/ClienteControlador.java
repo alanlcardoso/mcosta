@@ -40,7 +40,7 @@ public class ClienteControlador {
 	private ClienteBO clienteBO;
 	
 	@Autowired
-	private ServicoBO servicoBO;;
+	private ServicoBO servicoBO;
 
 	@GetMapping("novo")
 	public ModelAndView cadastro() {

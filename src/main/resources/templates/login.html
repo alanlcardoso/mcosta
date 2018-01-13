@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{home}">
+
+<section layout:fragment="conteudo" id="portfolio" class="bg-light-gray">
+    
+    <div class="espaco_topo"></div>
+    <br/>
+    
+	<div class="container">
+		<div class="row">
+			
+			<div class="alert alert-danger col-sm-offset-3 col-sm-6" th:if="${param.error}">
+				<button type="button" class="close" data-dismiss="alert" >
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<p>Usuário ou senha inválidos.</p>
+			</div>
+			
+            <div class="col-sm-offset-3 col-sm-6">
+            
+                <form class="form-horizontal thumbnail form-largura" role="form" th:action="@{/login}" method="post">
+                    
+                    <div class="alert alert-info text-left login-alert login-topo">
+                        <i class="glyphicon glyphicon-lock"></i>&nbsp;LOGIN
+                    </div>
+                   
+                    <div class="form-group">
+                    	 <div class="col-xs-1"></div>
+                         <label for="usuario" class="col-sm-2 control-label">Usuário: </label>
+                         <div class="col-sm-8">
+                             <div class="input-group">
+                                <input type="text" placeholder="Usuário de Rede" autofocus="autofocus" class="form-control" id="usuario" name="usuario"/>
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-asterisk text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                     <div class="col-xs-1"></div>
+                         <label for="senha" class="col-sm-2 control-label">Senha: </label>
+                         <div class="col-sm-8">
+                            <div class="input-group">
+                             <input type="password" placeholder="Senha" class="form-control" id="senha"  name="senha"/>
+                                <div class="input-group-addon">
+                                 <span class="glyphicon glyphicon-asterisk text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                    	<div class="col-xs-offset-3 col-xs-7">
+                             <button type="submit" title="Entrar" rel="tooltip" class="btn btn-success">
+                             	<span class="glyphicon glyphicon-ok"></span> Entrar
+                             </button>
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+       </div>
+	</div>
+</section>
+</html>

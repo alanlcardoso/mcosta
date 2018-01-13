@@ -25,6 +25,9 @@ public class ClienteServico {
 	@ManyToOne
 	@JoinColumn(name = "id_servico", nullable = false, unique = false)
 	private Servico servico;
+	
+	public ClienteServico() {
+	}
 
 	public ClienteServico(Long clienteId, Long servicoId) {
 		this.cliente = new Cliente(clienteId);

@@ -25,7 +25,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.jdbcAuthentication().dataSource(dataSource).passwordEncoder(new Md5PasswordEncoder())
 				.usersByUsernameQuery("select nome, senha from usuario where nome = ?")
 		.authoritiesByUsernameQuery(
-				"select nome, 'ROLE_ADMINISTRADOR'  from usuario where nome = ?");
+				"select nome, 'ROLE_ADMINISTRADOR' from usuario where nome = ?");
 	}
 
 	@Override
@@ -34,6 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/administrador/**").access("hasRole('ROLE_ADMINISTRADOR')")
 			.and()
 				.formLogin().loginPage("/login").failureUrl("/login?error")
+				.usernameParameter("usuario").passwordParameter("senha")
 			.and()
 				.logout().logoutUrl("/logout").logoutSuccessUrl("/")
 			.and()
@@ -43,7 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		// .antMatchers("/admin/**").access("hasAnyRole('ROLE_SUP','ROLE_ADMIN')")
 		// .and()
 		// .formLogin().loginPage("/login").failureUrl("/login?error")
-		// .usernameParameter("usuario").passwordParameter("senha")
+		// 
 		// .and()
 		// .logout().logoutUrl("/logout").logoutSuccessUrl("/")
 		// .and()

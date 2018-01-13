@@ -15,9 +15,9 @@
 			<div class="panel panel-primary">
 				<div class="panel-heading">
 					<div class="clearfix">
-						<h1 class="panel-title titulo-panel">Cadastro de Cliente</h1>
-						<a class="btn btn-link link-panel branco" href="/administracao/cliente"
-							title="Voltar para pesquisa">Pesquisa</a>
+						<h1 class="panel-title titulo-panel">Cadastro</h1>
+						<a class="btn btn-link link-panel branco" th:href="@{/administracao/cliente}"
+							title="Voltar para pesquisa">Voltar para Pesquisa</a>
 					</div>
 				</div>
 
@@ -33,16 +33,19 @@
 								placeholder="Nome" th:field="*{nome}" />
 						</div>
 					</div>
-
+					
+					Informe os Serviços Realizados no Cliente
 					<div class="form-group">
 						<table class="table table-striped table-inverse">
 							<tbody>
 								<tr class="text-left">
 									<div class="input-group" th:each="item : ${servicos}">
-										<span class="input-group-addon"> <input type="checkbox"
+										<span class="input-group-addon"> 
+										<input type="checkbox"
 											th:field="*{servicosIds}" th:value="${item.id}" />
-										</span> <input type="text" class="form-control" disabled="disabled"
-											th:title="${item.nome}" th:value="${item.descricao}" />
+										</span> 
+										<input type="text" class="form-control" disabled="disabled"
+											th:value="${item.descricao} + ' - ' + ${item.descricao}" />
 									</div>
 								</tr>
 							</tbody>

@@ -38,7 +38,6 @@ public class Servico implements Serializable {
 	}
 	
 	public Servico(Long id, String nome, String descricao) {
-		super();
 		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
