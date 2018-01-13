@@ -3,6 +3,7 @@ package br.com.sistema.mcosta.entidade;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -20,9 +21,17 @@ public class Usuario implements Serializable {
     @Id
     private Long id;
 
+    @Column(name = "nome")
     private String nome;
+    
+    @Column(name = "email")
     private String email;
+    
+    @Column(name = "senha")
     private String senha;
+    
+    @Column(name = "ativo")
+	private int ativo;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "usuario_permissao", joinColumns = @JoinColumn(name = "codigo_usuario"), inverseJoinColumns = @JoinColumn(name = "codigo_permissao"))

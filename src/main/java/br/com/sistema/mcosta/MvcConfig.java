@@ -2,7 +2,9 @@ package br.com.sistema.mcosta;
 
 import java.util.concurrent.TimeUnit;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.CacheControl;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -21,4 +23,10 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
                 .addResolver(new VersionResourceResolver().addContentVersionStrategy("/**"))
                 .addTransformer(new CssLinkResourceTransformer());
     }
+    
+    @Bean
+	public BCryptPasswordEncoder passwordEncoder() {
+		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+		return bCryptPasswordEncoder;
+	}
 }
