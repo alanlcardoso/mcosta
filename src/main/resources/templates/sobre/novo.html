@@ -7,14 +7,14 @@
 <section layout:fragment="conteudo" id="cadastro">
 	<div class="container">
 	  <h2>Sobre nós</h2>
-	  	<form class="form-horizontal" method="POST" action="/administracao/sobre" th:object="${sobre}">
+	  	<form class="form-horizontal" method="POST" th:action="@{/administracao/sobre}" th:object="${sobre}">
 			<div layout:replace="mensagem"></div>
 			
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<div class="clearfix">
 	  				<h1 class="panel-title titulo-panel">Cadastro</h1>
-	  				<a class="btn btn-link link-panel" href="/administracao/sobre" title="Voltar para pesquisa">Pesquisa</a>
+	  				<a class="btn btn-link link-panel" th:href="@{/administracao/sobre}" title="Voltar para pesquisa">Pesquisa</a>
 	  			</div>
 				</div>
 				

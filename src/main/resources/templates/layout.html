@@ -18,6 +18,11 @@
 <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
 </head>
 <body>
+
+	<form>
+		<input type="hidden" id="contextPath" th:value="${#httpServletRequest.contextPath}"/>
+	</form>
+	
 	<main id="main">
 	<section layout:fragment="conteudo"></section>
 	</main>

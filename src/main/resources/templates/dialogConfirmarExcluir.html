@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<div class="modal fade" id="confirmarRemocao" tabindex="-1"
+		data-keyboard="false" data-backdrop="static" style="margin-top: 25px;">
+		<div class="modal-dialog">
+			<form action="" method="GET">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Excluir item</h4>
+					</div>
+					<div class="alert alert-danger hidden js-mensagem-erro" role="alert"></div>
+					<div class="modal-body">
+						<span></span>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-link" id="confirmarNao" data-dismiss="modal">Não</button>
+						<button type="button" class="btn btn-danger" id="confirmarSim">Sim</button>
+						<button type="submit" class="btn btn-danger hidden" id="confirmarSimHtml">Sim</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</html>

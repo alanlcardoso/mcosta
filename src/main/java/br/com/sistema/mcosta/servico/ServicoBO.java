@@ -12,28 +12,33 @@ import br.com.sistema.mcosta.repositorio.IServicoRepositorio;
 @Service
 public class ServicoBO {
 
-    @Autowired
-    private IServicoRepositorio servicoRepositorio;
+	@Autowired
+	private IServicoRepositorio servicoRepositorio;
 
-    public void salvar(Servico servico) {
-        servicoRepositorio.save(servico);
-    }
+	public void salvar(Servico servico) {
+		servicoRepositorio.save(servico);
+	}
 
-    public void excluir(Long id) {
-        excluir(new Servico(id));
-    }
+	public void excluir(Long id) {
+		excluir(new Servico(id));
+	}
 
-    public void excluir(Servico servico) {
-        servicoRepositorio.delete(servico);
-    }
+	public void excluir(Servico servico) {
+		servicoRepositorio.delete(servico);
+	}
 
-    @Transactional(readOnly = true)
-    public List<Servico> buscarTodos() {
-        return servicoRepositorio.findAll();
-    }
-    
-    @Transactional(readOnly = true)
-    public Servico buscarPorId(Long id) {
-        return servicoRepositorio.findOne(id);
-    }
+	@Transactional(readOnly = true)
+	public List<Servico> buscarTodos() {
+		return servicoRepositorio.findAll();
+	}
+	
+	@Transactional(readOnly = true)
+	public List<Servico> buscarTodosReduzido() {
+		return servicoRepositorio.buscarTodosReduzido();
+	}
+
+	@Transactional(readOnly = true)
+	public Servico buscarPorId(Long id) {
+		return servicoRepositorio.findOne(id);
+	}
 }

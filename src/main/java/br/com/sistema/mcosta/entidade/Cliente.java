@@ -1,5 +1,6 @@
 package br.com.sistema.mcosta.entidade;
 
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
@@ -7,8 +8,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.NotBlank;
@@ -26,13 +27,12 @@ public class Cliente {
 
 	@NotBlank(message = "Nome é obrigatório.")
 	private String nome;
-	
+
 	@Column(name = "logo", nullable = true, unique = false)
 	private Byte[] logo;
 
-	@OneToMany(mappedBy = "cliente")
-	private List<ClienteServico> servicos;
-	
+	@Transient
+	private List<Long> servicosIds = new ArrayList<>();
 	
 	public Cliente() {
 	}
@@ -41,7 +41,11 @@ public class Cliente {
 		this.id = id;
 		this.nome = nome;
 	}
-	
+
+	public Cliente(Long id) {
+		this.id = id;
+	}
+
 	public Byte[] getLogo() {
 		return logo;
 	}
@@ -49,7 +53,7 @@ public class Cliente {
 	public void setLogo(Byte[] logo) {
 		this.logo = logo;
 	}
-	
+
 	public String getLogoBase64() {
 		return Base64.getEncoder().encodeToString(Util.toPrimitives(this.logo));
 	}
@@ -70,11 +74,11 @@ public class Cliente {
 		this.nome = nome;
 	}
 
-	public List<ClienteServico> getServicos() {
-		return servicos;
+	public List<Long> getServicosIds() {
+		return servicosIds;
 	}
 
-	public void setServicos(List<ClienteServico> servicos) {
-		this.servicos = servicos;
+	public void setServicosIds(List<Long> servicosIds) {
+		this.servicosIds = servicosIds;
 	}
 }

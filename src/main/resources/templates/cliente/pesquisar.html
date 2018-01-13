@@ -38,10 +38,12 @@
 								th:href="@{/administracao/cliente/upload/{id}(id=${item.id})}"> <span
 									class="glyphicon glyphicon-upload"></span>
 								</a>
-								
-								<a class="btn btn-link btn-xs" style="color:red" title="Excluir"
-								th:href="@{/administracao/cliente/excluir/{id}(id=${item.id})}"> <span
-									class="glyphicon glyphicon-trash"></span>
+
+								<a class="btn btn-link btn-xs" data-toggle="modal"
+									data-target="#confirmarRemocao"
+									th:attr="data-id=${item.id}, data-url='/administracao/cliente/excluir/', data-mensagem='Deseja mesmo excluir este item?'"
+									title="Excluir" rel="tooltip" data-placement="top"> 
+									<span style="color: red" class="glyphicon glyphicon-trash"></span>								
 								</a>
 							</td>
 						</tr>
@@ -54,5 +56,9 @@
 			</div>
 		</div>
 	</div>
+	<div layout:replace="~{dialogConfirmarExcluir}"></div>
 </section>
+<th:block layout:fragment="javascript-extra">
+	<script th:src="@{/js/dialogExcluir.js}"></script>
+</th:block>
 </html>

@@ -6,17 +6,9 @@
 
 <section layout:fragment="conteudo" id="cadastro">
 	<div class="container">
-		
-						<ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="#">Home</a></li>
-  <li role="presentation"><a href="#">Profile</a></li>
-  <li role="presentation"><a href="#">Messages</a></li>
-</ul>
-
 		<br/>
 		<form class="form-horizontal" enctype="multipart/form-data" method="POST" action="/administracao/cliente/upload" th:object="${cliente}">
 			<div layout:replace="mensagem"></div>
-
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<div class="clearfix">
@@ -24,7 +16,6 @@
 						<a class="btn btn-link link-panel" href="/administracao/cliente" title="Voltar para pesquisa">Pesquisa</a>
 					</div>
 				</div>
-
 				<div class="panel-body">
 					<input type="hidden" th:field="*{id}" />
 					<input type="hidden" th:field="*{logo}" />
@@ -34,7 +25,6 @@
 				</div>
 			</div>
 		</form>
-		
 	</div>
 </section>
 </html>

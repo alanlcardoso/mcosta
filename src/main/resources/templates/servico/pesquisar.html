@@ -8,16 +8,15 @@
 	<div class="container">
 		<h2>Serviço</h2>
 		<div class="panel panel-default">
-			<div class="panel-heading">			
-				<div class="clearfix">					
+			<div class="panel-heading">
+				<div class="clearfix">
 					<h1 class="panel-title titulo-panel">Pesquisa</h1>
-					<a class="btn btn-link link-panel" href="/administracao/servico/novo" title="Novo Serviço">Cadastro</a>
+					<a class="btn btn-link link-panel"
+						th:href="@{/administracao/servico/novo}" title="Novo Serviço">Cadastro</a>
 				</div>
 			</div>
-
 			<div class="panel-body">
 				<table class="table table-bordered table-striped">
-					
 					<thead>
 						<tr>
 							<th>Nome</th>
@@ -26,7 +25,6 @@
 							<th class="col-md-2">Ações</th>
 						</tr>
 					</thead>
-					
 					<tbody>
 						<tr th:each="item : ${servicos}">
 							<td th:text="${item.nome}"></td>
@@ -34,24 +32,31 @@
 							<td th:text="${item.imagem}"></td>
 							<td class="text-center">
 								<a class="btn btn-link btn-xs" title="Editar"
-								th:href="@{/administracao/servico/{id}(id=${item.id})}"> <span
-									class="glyphicon glyphicon-pencil"></span>
-								</a>
-								
-								<a class="btn btn-link btn-xs" style="color:red" title="Excluir"
-								th:href="@{/administracao/servico/excluir/{id}(id=${item.id})}"> <span
-									class="glyphicon glyphicon-trash"></span>
+								th:href="@{/administracao/servico/{id}(id=${item.id})}"> 
+								<span class="glyphicon glyphicon-pencil"></span>
+								</a> 
+								<a class="btn btn-link btn-xs" data-toggle="modal"
+									data-target="#confirmarRemocao"
+									th:attr="data-id=${item.id}, data-url='/administracao/servico/excluir/', data-mensagem='Deseja mesmo excluir este item?'"
+									title="Excluir" rel="tooltip" data-placement="top"> 
+									<span style="color: red" class="glyphicon glyphicon-trash"></span>								
 								</a>
 							</td>
 						</tr>
-						
+
 						<tr>
-							<td colspan="12" th:if="${#lists.isEmpty(servicos)}">Nenhum registro encontrado</td>
+							<td colspan="12" th:if="${#lists.isEmpty(servicos)}">Nenhum
+								registro encontrado</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
 	</div>
+	<div layout:replace="~{dialogConfirmarExcluir}"></div>
 </section>
+
+<th:block layout:fragment="javascript-extra">
+	<script th:src="@{/js/dialogExcluir.js}"></script>
+</th:block>
 </html>

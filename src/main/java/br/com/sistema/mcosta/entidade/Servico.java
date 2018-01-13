@@ -36,6 +36,13 @@ public class Servico implements Serializable {
 
 	public Servico() {
 	}
+	
+	public Servico(Long id, String nome, String descricao) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.descricao = descricao;
+	}
 
 	public Servico(Long id) {
 		this.id = id;

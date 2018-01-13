@@ -26,6 +26,16 @@ public class ClienteServico {
 	@JoinColumn(name = "id_servico", nullable = false, unique = false)
 	private Servico servico;
 
+	public ClienteServico(Long clienteId, Long servicoId) {
+		this.cliente = new Cliente(clienteId);
+		this.servico = new Servico(servicoId);
+	}
+	
+	public ClienteServico(Cliente cliente, Servico servico) {
+		this.cliente = cliente;
+		this.servico = servico;
+	}
+
 	public Long getId() {
 		return id;
 	}

@@ -1,5 +1,6 @@
 package br.com.sistema.mcosta.servico;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.sistema.mcosta.entidade.Cliente;
 import br.com.sistema.mcosta.entidade.ClienteServico;
+import br.com.sistema.mcosta.entidade.Servico;
 import br.com.sistema.mcosta.repositorio.IClienteRepositorio;
 import br.com.sistema.mcosta.repositorio.IClienteServicoRepositorio;
 
@@ -23,15 +25,20 @@ public class ClienteBO {
 	@Autowired
 	private IClienteServicoRepositorio clienteServicoRepositorio;
 
+	@Autowired
+	private ServicoBO servicoBO;
+
 	@Transactional(propagation = Propagation.REQUIRED)
 	public Cliente salvar(Cliente cliente) {
 
-		List<ClienteServico> servicos = cliente.getServicos();
+		List<Long> servicos = cliente.getServicosIds();
 		cliente = clienteRepositorio.save(cliente);
 
 		if (servicos != null) {
 			clienteServicoRepositorio.deleteByClienteId(cliente.getId());
-			servicos.forEach(clienteServicoRepositorio::save);
+			for (Long item : servicos) {
+				clienteServicoRepositorio.save(new ClienteServico(cliente.getId(), item));
+			}
 		}
 
 		return cliente;
@@ -60,8 +67,24 @@ public class ClienteBO {
 	@Transactional(readOnly = true)
 	public Cliente buscaPorId(Long id) {
 		Cliente cliente = clienteRepositorio.findOne(id);
-		cliente.setServicos(clienteServicoRepositorio.findByClienteId(id));
+		cliente.setServicosIds(new ArrayList<>());
+		buscarServicosCliente(id).forEach(item -> cliente.getServicosIds().add(item.getId()));
 		return cliente;
+	}
+
+	@Transactional(readOnly = true)
+	public List<ClienteServico> buscaClienteEServicoPorId(Long id) {
+		Cliente cliente = clienteRepositorio.findOne(id);
+		List<Servico> servicos = servicoBO.buscarTodosReduzido();
+		List<ClienteServico> list = new ArrayList<>();
+		buscarServicosCliente(id).forEach(
+				item -> list.add(new ClienteServico(cliente, servicos.stream().filter(x -> x.getId().equals(item.getId())).findAny().get())));
+		return list;
+	}
+
+	@Transactional(readOnly = true)
+	public List<ClienteServico> buscarServicosCliente(Long id) {
+		return clienteServicoRepositorio.findByClienteId(id);
 	}
 
 	@Transactional(readOnly = true)
