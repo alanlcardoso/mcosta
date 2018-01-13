@@ -979,3 +979,25 @@ li > a, li > a:hover {
 .conteudo-servico {
 	margin-top: 50px;
 }
+
+.ajuste-menu {
+	background: #343b40;
+}
+
+.ajuste-item-menu {
+	margin-top: 8px;
+	margin-right: 70px;
+}
+
+.item-menu {
+	float: right;
+	color: #fff !important;
+}
+
+.home-menu {
+	margin-top: 3px;
+}
+
+.branco, .branco:hover {
+	color: #fff;
+}
