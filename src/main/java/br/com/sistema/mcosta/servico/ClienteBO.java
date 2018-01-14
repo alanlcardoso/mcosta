@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -31,7 +29,6 @@ public class ClienteBO {
 	private ServicoBO servicoBO;
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	@CacheEvict(value = "paginaInicial", allEntries = true)
 	public Cliente salvar(Cliente cliente) {
 
 		List<Long> servicos = cliente.getServicosIds();
@@ -96,7 +93,6 @@ public class ClienteBO {
 	}
 
 	@Transactional(readOnly = true)
-	@Cacheable("paginaInicial")	
 	public Page<Cliente> buscarClientesPorPagina(int quantidade) {
 		return clienteRepositorio.buscarTodosPaginaPrincipal(new PageRequest(0, quantidade));
 	}

@@ -5,8 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,7 +29,6 @@ public class SobreBO {
 	private IIdentificacaoSobreDetalheRepositorio identificacaoSobreDetalheRepositorio;
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	@CacheEvict(value = "paginaInicial", allEntries = true)
 	public Sobre salvarSobre(Sobre sobre) {
 
 		if (sobre.getId() == null) {
@@ -89,7 +86,6 @@ public class SobreBO {
 		return identificacaoSobreDetalheRepositorio.findAll();
 	}
 
-	@Cacheable("paginaInicial")
 	public List<Sobre> buscaDetalheSobre() {
 		Object[][] obj = sobreRepositorio.buscaDetalheSobre();
 
