@@ -11,7 +11,7 @@
 			<div class="panel-heading">
 				<div class="clearfix">
 	  				<h1 class="panel-title titulo-panel">Pesquisa</h1>
-	  				<a class="btn btn-link link-panel branco" href="/administracao/sobre/novo" th:if="${todosSobre == null}" title="Novo Sobre">Cadastro</a>
+	  				<a class="btn btn-link link-panel branco" href="/administracao/sobre/novo" th:if="${#lists.isEmpty(todosSobre)}" title="Novo Sobre">Novo Registro</a>
 	  			</div>
 			</div>
 		
@@ -21,35 +21,35 @@
 						<tr>
 							<th>Título</th>
 							<th>Descrição</th>
-							<th>Qtd Projetos</th>
-							<th>Horas de Trabalho</th>
+							<th class="text-center col-md-1">Quantidade de Projetos</th>
+							<th class="text-center col-md-1">Horas de Trabalho</th>
 							<th>1º Nome</th>
 							<th>1º Descrição</th>
-							<th>1º Ícone</th>
+							<th class="text-center">1º Ícone</th>
 							<th>2º Nome</th>
 							<th>2º Descrição</th>
-							<th>2º Ícone</th>
+							<th class="text-center">2º Ícone</th>
 							<th>3º Nome</th>
 							<th>3º Descrição</th>
-							<th>3º Ícone</th>
-							<th class="col-md-1">Ações</th>
+							<th class="text-center">3º Ícone</th>
+							<th class="text-center col-md-1">Ações</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="sobre : ${todosSobre}">
 							<td th:text="${sobre.titulo}"></td>
 							<td th:text="${sobre.descricao}"></td>
-							<td th:text="${{sobre.qtdProjetos}}"></td>
-							<td th:text="${{sobre.horasTrabalho}}"></td>
+							<td class="text-center" th:text="${{sobre.qtdProjetos}}"></td>
+							<td class="text-center" th:text="${{sobre.horasTrabalho}}"></td>
 							<td th:text="${sobre.sobreDetalhe1.nome}"></td>
 							<td th:text="${sobre.sobreDetalhe1.descricao}"></td>
-							<td th:text="${sobre.sobreDetalhe1.icone}"></td>
+							<td class="text-center" th:text="${sobre.sobreDetalhe1.icone}"></td>
 							<td th:text="${sobre.sobreDetalhe2.nome}"></td>
 							<td th:text="${sobre.sobreDetalhe2.descricao}"></td>
-							<td th:text="${sobre.sobreDetalhe2.icone}"></td>
+							<td class="text-center" th:text="${sobre.sobreDetalhe2.icone}"></td>
 							<td th:text="${sobre.sobreDetalhe3.nome}"></td>
 							<td th:text="${sobre.sobreDetalhe3.descricao}"></td>
-							<td th:text="${sobre.sobreDetalhe3.icone}"></td>
+							<td class="text-center" th:text="${sobre.sobreDetalhe3.icone}"></td>
 							<td class="text-center">
 								<a class="btn btn-link btn-xs" title="Editar" th:href="@{/administracao/sobre/{id}(id=${sobre.id})}">
 									<span class="glyphicon glyphicon-pencil"></span>
@@ -57,7 +57,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td colspan="12" th:if="${#lists.isEmpty(todosSobre)}">Nenhum cadastro encontrado</td>
+							<td colspan="14" th:if="${#lists.isEmpty(todosSobre)}">Nenhum cadastro encontrado</td>
 						</tr>
 					</tbody>
 				</table>

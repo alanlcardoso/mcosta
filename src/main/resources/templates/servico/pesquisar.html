@@ -11,24 +11,24 @@
 			<div class="panel-heading">			
 				<div class="clearfix">					
 					<h1 class="panel-title titulo-panel">Pesquisa</h1>
-					<a class="btn btn-link link-panel branco"th:href="@{/administracao/servico/novo}" title="Novo Serviço">Cadastro</a>
+					<a class="btn btn-link link-panel branco"th:href="@{/administracao/servico/novo}" title="Novo Serviço">Novo Registro</a>
 				</div>
 			</div>
 			<div class="panel-body">
 				<table class="table table-bordered table-striped">
 					<thead>
 						<tr>
-							<th>Nome</th>
+							<th class="col-md-3">Nome</th>
 							<th>Descrição</th>
-							<th>Ícone</th>
-							<th class="col-md-2">Ações</th>
+							<th class="text-center col-md-2">Ícone</th>
+							<th class="text-center col-md-1">Ações</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="item : ${servicos}">
 							<td th:text="${item.nome}"></td>
 							<td th:text="${item.descricao}"></td>
-							<td th:text="${item.imagem}"></td>
+							<td class="text-center" th:text="${item.imagem}"></td>
 							<td class="text-center">
 								<a class="btn btn-link btn-xs" title="Editar"
 								th:href="@{/administracao/servico/{id}(id=${item.id})}"> 

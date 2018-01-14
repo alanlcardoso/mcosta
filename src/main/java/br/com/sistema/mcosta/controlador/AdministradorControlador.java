@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.sistema.mcosta.entidade.Sobre;
+import br.com.sistema.mcosta.entidade.SobreDetalhe;
 import br.com.sistema.mcosta.servico.SobreBO;
 import br.com.sistema.mcosta.util.Validacao;
 
@@ -38,25 +39,17 @@ public class AdministradorControlador {
 	public ModelAndView salvar(@Validated Sobre sobre, Errors errors, RedirectAttributes attributes) {
 		ModelAndView mv = new ModelAndView(CADASTRO);
 		
-		if (errors.hasErrors()) {
-			return mv;
-		}
+		if (errors.hasErrors()) return mv;
 		
-		if(!Validacao.iconeValido(sobre.getSobreDetalhe1().getIcone())) {
-			mv.addObject("mensagemErro", "Ícone do 1º detalhe com formato inválido!");
-			return mv;
-		}
+		mv = validaSobreDetalhe(sobre.getSobreDetalhe1(), "1º");
+		if (mv.getModelMap().size() > 0) return mv;
 		
-		if(!Validacao.iconeValido(sobre.getSobreDetalhe2().getIcone())) {
-			mv.addObject("mensagemErro", "Ícone do 2º detalhe com formato inválido!");
-			return mv;
-		}
+		mv = validaSobreDetalhe(sobre.getSobreDetalhe2(), "2º");
+		if (mv.getModelMap().size() > 0) return mv;
 		
-		if(!Validacao.iconeValido(sobre.getSobreDetalhe3().getIcone())) {
-			mv.addObject("mensagemErro", "Ícone do 3º detalhe com formato inválido!");
-			return mv;
-		}
-		
+		mv = validaSobreDetalhe(sobre.getSobreDetalhe3(), "3º");
+		if (mv.getModelMap().size() > 0) return mv;
+			
 		sobre.setTitulo(sobre.getTitulo().toUpperCase());
 		sobreBO.salvarSobre(sobre);
 		mv.addObject("mensagem", "Salvo com sucesso!");
@@ -79,6 +72,27 @@ public class AdministradorControlador {
 		
 		ModelAndView mv = new ModelAndView(CADASTRO);
 		mv.addObject(sobre);
+		return mv;
+	}
+	
+	private ModelAndView validaSobreDetalhe(SobreDetalhe sobreDetalhe, String mensagem) {
+		ModelAndView mv = new ModelAndView(CADASTRO);
+		
+		if (sobreDetalhe.getNome().equals("")) {
+			mv.addObject("mensagemErro", "Nome do " + mensagem + " detalhe é obrigatório!");
+			return mv;
+		}
+		
+		if (sobreDetalhe.getDescricao().equals("")) {
+			mv.addObject("mensagemErro", "Descrição do " + mensagem + " detalhe é obrigatório!");
+			return mv;
+		}
+		
+		if(!Validacao.iconeValido(sobreDetalhe.getIcone())) {
+			mv.addObject("mensagemErro", "Ícone do " + mensagem + " detalhe com formato inválido!");
+			return mv;
+		}
+		
 		return mv;
 	}
 

@@ -89,7 +89,7 @@
     <!--==========================
       Services Section
     ============================-->
-	<section id="services" th:if="${!#lists.isEmpty(totalServico)}">
+	<section id="services" th:if="${!#lists.isEmpty(totalServico.content)}">
 		<div class="container wow fadeIn">
 			<div class="section-header">
 				<h3 class="section-title">Serviços</h3>
@@ -122,7 +122,7 @@
      <!--==========================
       Portfolio Section
     ============================-->
-    <section id="portfolio">
+    <section id="portfolio" th:if="${totalCliente > 0}">
 		<div class="container wow fadeInUp">
 			<div class="section-header">
 				<h3 class="section-title">Clientes</h3>

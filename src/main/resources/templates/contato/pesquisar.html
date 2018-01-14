@@ -14,7 +14,7 @@
 					<a class="btn btn-link link-panel branco" 
 						href="/administracao/contato/novo" 
 						th:if="${#lists.isEmpty(contatos)}" 
-						title="Novo Serviço">Cadastro</a>
+						title="Novo Serviço">Novo Registro</a>
 				</div>
 			</div>
 
@@ -26,16 +26,16 @@
 							<th>Título</th>
 							<th>Tipo Logradouro</th>
 							<th>Logradouro</th>
-							<th>Número</th>
+							<th class="text-right">Número</th>
 							<th>Bairro</th>
 							<th>Cidade</th>
-							<th>Estado</th>
-							<th>CEP</th>
-							<th>Latitude</th>
-							<th>Longitude</th>
+							<th class="text-center">Estado</th>
+							<th class="text-center">CEP</th>
+							<th class="text-center">Latitude</th>
+							<th class="text-center">Longitude</th>
 							<th>Email</th>
-							<th>Telefone</th>
-							<th class="col-md-2">Ações</th>
+							<th class="text-center">Telefone</th>
+							<th class="text-center col-md-1">Ações</th>
 						</tr>
 					</thead>
 					
@@ -44,15 +44,15 @@
 							<td th:text="${item.titulo}"></td>
 							<td th:text="${item.tipoLogradouro}"></td>
 							<td th:text="${item.logradouro}"></td>
-							<td th:text="${item.numero}"></td>
+							<td class="text-right" th:text="${item.numero}"></td>
 							<td th:text="${item.bairro}"></td>
 							<td th:text="${item.cidade}"></td>
-							<td th:text="${item.estado}"></td>
-							<td th:text="${item.cep}"></td>
-							<td th:text="${item.latitude}"></td>
-							<td th:text="${item.longitude}"></td>
+							<td class="text-center" th:text="${item.estado}"></td>
+							<td class="text-center" th:text="${item.cep}"></td>
+							<td class="text-center" th:text="${item.latitude}"></td>
+							<td class="text-center" th:text="${item.longitude}"></td>
 							<td th:text="${item.email}"></td>
-							<td th:text="${item.telefone}"></td>
+							<td class="text-center" th:text="${item.telefone}"></td>
 							<td class="text-center">
 								<a class="btn btn-link btn-xs" title="Editar"
 								th:href="@{/administracao/contato/{id}(id=${item.id})}"> <span
@@ -62,7 +62,7 @@
 						</tr>
 						
 						<tr>
-							<td colspan="12" th:if="${#lists.isEmpty(contatos)}">Nenhum registro encontrado</td>
+							<td colspan="13" th:if="${#lists.isEmpty(contatos)}">Nenhum registro encontrado</td>
 						</tr>
 					</tbody>
 				</table>
