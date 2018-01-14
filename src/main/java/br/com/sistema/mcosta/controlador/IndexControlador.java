@@ -42,6 +42,11 @@ public class IndexControlador {
 	@Autowired
 	private ContatoBO contatoBO;
 
+	@GetMapping("404")
+	public ModelAndView pagina404() {
+		return new ModelAndView("404");
+	}
+	
 	@GetMapping("/")
 	public ModelAndView index() {
 		

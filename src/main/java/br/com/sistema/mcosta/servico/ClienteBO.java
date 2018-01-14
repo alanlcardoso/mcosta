@@ -28,7 +28,6 @@ public class ClienteBO {
 	@Autowired
 	private ServicoBO servicoBO;
 
-	@Transactional(propagation = Propagation.REQUIRED)
 	public Cliente salvar(Cliente cliente) {
 
 		List<Long> servicos = cliente.getServicosIds();
