@@ -3,6 +3,8 @@ package br.com.sistema.mcosta.servico;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,7 @@ public class ServicoBO {
 	@Autowired
 	private IServicoRepositorio servicoRepositorio;
 
+	@CacheEvict(value = "paginaInicial", allEntries = true)
 	public void salvar(Servico servico) {
 		servicoRepositorio.save(servico);
 	}
@@ -30,6 +33,7 @@ public class ServicoBO {
 	}
 
 	@Transactional(readOnly = true)
+	@Cacheable("paginaInicial")
 	public List<Servico> buscarTodos() {
 		return servicoRepositorio.findAll();
 	}

@@ -42,7 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.anyRequest().permitAll()
 			.and()
 				.formLogin().loginPage("/login").permitAll()
-				.failureUrl("/login?error=true").defaultSuccessUrl("/")
+				.failureUrl("/login?error=true").defaultSuccessUrl("/administracao/cliente")
 				.usernameParameter("nome").passwordParameter("senha")
 			.and()
 				.csrf();
