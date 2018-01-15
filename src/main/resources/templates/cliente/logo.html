@@ -6,14 +6,14 @@
 
 <section layout:fragment="conteudo" id="cadastro">
 	<div class="container">
-		<br/>
-		<form class="form-horizontal" enctype="multipart/form-data" method="POST" action="/administracao/cliente/upload" th:object="${cliente}">
+		<h2>Cliente</h2>
+		<form class="form-horizontal" enctype="multipart/form-data" method="POST" th:action="@{/administracao/cliente/upload}" th:object="${cliente}">
 			<div layout:replace="mensagem"></div>
-			<div class="panel panel-default">
+			<div class="panel panel-primary">
 				<div class="panel-heading">
 					<div class="clearfix">
 						<h1 class="panel-title titulo-panel">Upload de Logo</h1>
-						<a class="btn btn-link link-panel" href="/administracao/cliente" title="Voltar para pesquisa">Pesquisa</a>
+						<a class="btn btn-link link-panel branco" href="/administracao/cliente" title="Voltar para pesquisa">Voltar para Pesquisa</a>
 					</div>
 				</div>
 				<div class="panel-body">
@@ -21,7 +21,8 @@
 					<input type="hidden" th:field="*{logo}" />
 					
 					<input type="file" name="file" />
-					<input type="submit" value="Enviar" />
+					<!-- <input type="submit" value="Enviar" /> -->
+					<button type="submit" class="btn btn-primary" title="Enviar" style="margin-top: 10px;">Enviar</button>
 				</div>
 			</div>
 		</form>

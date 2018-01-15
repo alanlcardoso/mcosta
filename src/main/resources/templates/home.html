@@ -38,7 +38,7 @@
         <ul class="nav-menu">
           <li class="menu-active"><a href="#hero"><i class="fa fa-home" aria-hidden="true"></i></a></li>
           <li><a href="#about" th:if="${sobre != null}">Empresa</a></li>
-          <li><a href="#services"  th:if="${!#lists.isEmpty(totalServico.content)}">Serviços</a></li>
+          <li><a href="#services"  th:if="${totalServico != null}">Serviços</a></li>
           <li><a href="#portfolio" th:if="${totalCliente > 0}">Clientes</a></li>
           <li><a href="#contact"   th:if="${contato != null}">Contato</a></li>
         </ul>

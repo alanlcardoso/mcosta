@@ -111,6 +111,13 @@ public class ClienteControlador {
 			if (this.cliente == null) {
 				this.cliente = new Cliente();
 			}
+
+			if (file.getBytes().length >= 65535) {
+				mv.addObject("mensagemErro", "Máximo permitido 65KB!");
+				mv.setViewName(UPLOAD);
+				return mv;
+			}
+			
 			cliente.setLogo(Util.toObjects(file.getBytes()));
 			clienteBO.salvarImagem(cliente);
 

@@ -89,7 +89,7 @@
     <!--==========================
       Services Section
     ============================-->
-	<section id="services" th:if="${!#lists.isEmpty(totalServico.content)}">
+	<section id="services" th:if="${totalServico != null}">
 		<div class="container wow fadeIn">
 			<div class="section-header">
 				<h3 class="section-title">Serviços</h3>
