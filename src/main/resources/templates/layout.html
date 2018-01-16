@@ -27,7 +27,8 @@
 	        <div class="panel-heading">
 				<div class="clearfix">
   					<div class="navbar-brand">
-                		<img alt="MCosta" src="/img/logo2.jpg" width="150px" style="margin-top: -19px; margin-left: 75px;" />
+                		<img alt="MCosta" src="/img/logo2.jpg" width="150px" style="margin-top: -19px; margin-left: 75px;" th:if="${menuAdmin == null}" />
+                		<a href="/#hero" th:if="${menuAdmin != null}"><img src="/img/logo2.jpg" width="150px" style="margin-top: -19px; margin-left: 75px;" alt="MCosta" /></img></a>
   					</div>
                 	<div layout:replace="menu"></div>
   				</div>

@@ -3,12 +3,20 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="pt-br">
 
-	<div class="ajuste-item-menu">
+	<div class="ajuste-item-menu" th:if="${menuAdmin == null}">
 	  	<a class="btn btn-link item-menu home-menu" href="/logout" title="Sair"><i class="fa fa-sign-out item-menu"></i></a>
 		<a class="btn btn-link item-menu" href="/administracao/sobre">SOBRE</a>
 		<a class="btn btn-link item-menu" href="/administracao/servico">SERVIÇOS</a>
 		<a class="btn btn-link item-menu" href="/administracao/cliente">CLIENTES</a>
 		<a class="btn btn-link item-menu" href="/administracao/contato">CONTATO</a>
+	</div>
+	
+	<div class="ajuste-item-menu" th:if="${menuAdmin != null}">
+		<a class="btn btn-link item-menu" href="/#contact">CONTATO</a>
+		<a class="btn btn-link item-menu" href="/#portfolio">CLIENTES</a>
+		<a class="btn btn-link item-menu" href="/#services">SERVIÇOS</a>
+		<a class="btn btn-link item-menu" href="/#about">EMPRESA</a>
+		<a class="btn btn-link item-menu home-menu" href="/#hero" title="Home"><i class="fa fa-home item-menu"></i></a>
 	</div>
 	
 </html>
