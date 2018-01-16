@@ -106,6 +106,7 @@ public class IndexControlador {
 		
 		ModelAndView mv = new ModelAndView(SERVICO_DETALHE);
 		mv.addObject("servicos", servico);
+		mv.addObject("menuAdmin", "nao");
 		return mv;
 	}
 	

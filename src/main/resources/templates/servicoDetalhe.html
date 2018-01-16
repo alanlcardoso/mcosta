@@ -6,21 +6,18 @@
 
 <section layout:fragment="conteudo" id="detalhe-servico">
 	<section id="about">
-		<div class="container">
-			<div class="row about-container">
-
-				<div class="content order-lg-1 order-2" th:each="servico, indice : ${servicos}">
-					<div class="icon-box wow fadeInUp" th:classappend="@{indice.index == 1 ? 'fundo-cinza' : 'fundo-branco'}">
+		<div class="row about-container">
+			<div class="content order-lg-1 order-2" th:each="servico, indice : ${servicos}">
+				<div class="icon-box wow fadeInUp servico" th:classappend="${indice.index % 2 == 0 ? 'fundo-branco' : 'fundo-cinza'}">
+					<div class="lista-servico">
 						<div class="icon">
 							<i th:classappend="'fa ' + ${servico.imagem}"></i>
 						</div>
 						<h4 class="title" th:text="${servico.nome}"></h4>
 						<p class="description" th:text="${servico.descricao}"></p>
-					<br/>
 					</div>
 				</div>
 			</div>
-
 		</div>
 	</section>
 </section>

@@ -1003,10 +1003,19 @@ li > a, li > a:hover {
 }
 
 .fundo-cinza {
-	/* background: #f7f7f7 !important; */
-	background: red !important;
+	background: #f7f7f7 !important;
 }
 
 .fundo-branco {
 	background: #fff !important;
+}
+
+.servico {
+	padding-top: 60px !important;
+    padding-bottom: 70px !important;
+}
+
+.lista-servico {
+	margin-left: 115px;
+    margin-right: 115px;
 }
