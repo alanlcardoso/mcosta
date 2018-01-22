@@ -273,7 +273,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   text-transform: uppercase;
-  font-size: 13px;
+  font-size: 15px;
   outline: none;
 }
 
@@ -992,6 +992,7 @@ li > a, li > a:hover {
 .item-menu {
 	float: right;
 	color: #fff !important;
+	font-size: 15px;
 }
 
 .home-menu {
