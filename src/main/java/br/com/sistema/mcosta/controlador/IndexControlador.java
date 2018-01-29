@@ -1,7 +1,9 @@
 package br.com.sistema.mcosta.controlador;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,12 +17,14 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.sistema.mcosta.entidade.Contato;
+import br.com.sistema.mcosta.entidade.ItemServico;
 import br.com.sistema.mcosta.entidade.Servico;
 import br.com.sistema.mcosta.entidade.Sobre;
 import br.com.sistema.mcosta.mail.Mailer;
 import br.com.sistema.mcosta.mail.Mensagem;
 import br.com.sistema.mcosta.servico.ClienteBO;
 import br.com.sistema.mcosta.servico.ContatoBO;
+import br.com.sistema.mcosta.servico.ItemServicoBO;
 import br.com.sistema.mcosta.servico.ServicoBO;
 import br.com.sistema.mcosta.servico.SobreBO;
 
@@ -41,6 +45,9 @@ public class IndexControlador {
 	
 	@Autowired
 	private ContatoBO contatoBO;
+	
+	@Autowired
+	private ItemServicoBO itemServicoBO;
 
 	@GetMapping("404")
 	public ModelAndView pagina404() {
@@ -70,6 +77,16 @@ public class IndexControlador {
 		mv.addObject("totalCliente", clienteBO.buscarTotalCliente());
 		mv.addObject("clientes", clienteBO.buscarClientesPorPagina(12));
 		mv.addObject("totalServico", servicos.getContent().isEmpty() ? null : servicos);
+		
+		List<ItemServico> itensServico = new ArrayList<>();
+		
+		for (Servico servico : servicos) {
+			for (ItemServico itemServico : servico.getItens()) {
+				itensServico.add(itemServico);
+			}
+		}
+		
+		mv.addObject("itensServico", itensServico);
 		
 		List<Contato> contatos = contatoBO.buscarTodos();		
 		mv.addObject("contato", contatos.isEmpty() ? null : contatos.get(0));
@@ -102,11 +119,15 @@ public class IndexControlador {
 	
 	@GetMapping("/servico/{id}")
 	public ModelAndView detalheServico(@PathVariable Long id) {
-		Servico servico = servicoBO.buscarPorId(id);
+		/*Servico servico = servicoBO.buscarPorId(id);
 		
 		ModelAndView mv = new ModelAndView(SERVICO_DETALHE);
 		mv.addObject("servicos", servico);
 		mv.addObject("menuAdmin", false);
+		return mv;*/
+		
+		ModelAndView mv = new ModelAndView(INDEX);
+		//mv.addObject("itensServico", itemServicoBO.buscarPorIdServico(id));
 		return mv;
 	}
 	
