@@ -1,10 +1,12 @@
 package br.com.sistema.mcosta.entidade;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -33,6 +35,9 @@ public class Servico implements Serializable {
 	@NotBlank(message = "Ícone é obrigatório.")
 	@Size(max = 50, message = "O ícone não pode conter mais de 50 caracteres")
 	private String imagem;
+	
+	@OneToMany(mappedBy="servico")
+	private List<ItemServico> itens;
 
 	public Servico() {
 	}
@@ -77,5 +82,13 @@ public class Servico implements Serializable {
 
 	public void setImagem(String imagem) {
 		this.imagem = imagem;
+	}
+	
+	public List<ItemServico> getItens() {
+		return itens;
+	}
+	
+	public void setItens(List<ItemServico> itens) {
+		this.itens = itens;
 	}
 }

@@ -317,6 +317,57 @@
      		    ,email = 'admin'
      		    ,senha = '$2a$10$Z6kDAHROz0RhXC1OI7TDT.xnj/0zjgIWccwPr9mEgenIlFj98BdBO'
      	</sql>
-     </changeSet>    
+     </changeSet>   
+     
+     <changeSet author="Pedro" id="201801281247">
+
+		<createTable tableName="item_servico">
+	
+			<column name="id" type="numeric(18)">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="pk_item_servico" />
+			</column>
+	
+			<column name="id_servico" type="numeric(18)">
+				<constraints nullable="false" />
+			</column>
+			
+			<column name="descricao" type="varchar(200)">
+				<constraints nullable="false" />
+			</column>
+	
+		</createTable>
+		
+		<createTable tableName="imagem">
+	
+			<column name="id" type="numeric(18)">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="pk_imagem" />
+			</column>
+	
+			<column name="foto" type="blob">
+				<constraints nullable="false" />
+			</column>
+	
+		</createTable>
+		
+		<createTable tableName="imagem_item_servico">
+	
+			<column name="id" type="numeric(18)">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="pk_imagem_item_servico" />
+			</column>
+	
+			<column name="id_item_servico" type="numeric(18)">
+				<constraints nullable="false" />
+			</column>
+			
+			<column name="id_imagem" type="numeric(18)">
+				<constraints nullable="false" />
+			</column>
+	
+		</createTable>
+		
+	</changeSet> 
 
 </databaseChangeLog>

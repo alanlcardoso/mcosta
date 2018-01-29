@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="pt-br"
+	layout:decorate="~{layout}">
+
+<section layout:fragment="conteudo" id="cadastro">
+	<div class="container">
+		<h2>Item Serviço</h2>
+		<form class="form-horizontal" enctype="multipart/form-data" method="POST" th:action="@{/administracao/servico/{id}/item/upload(id=${idEntidade})}" th:object="${imagem}">
+			<div layout:replace="mensagem"></div>
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<div class="clearfix">
+						<h1 class="panel-title titulo-panel">Upload de Imagem</h1>
+						<a class="btn btn-link link-panel branco" href="administracao/servico/1" title="Voltar para pesquisa">Voltar para Pesquisa</a>
+					</div>
+				</div>
+				<div class="panel-body">
+					<input type="hidden" th:field="*{id}" />
+					<input type="hidden" th:field="*{foto}" />
+					
+					<input type="file" name="file" />
+					<button type="submit" class="btn btn-primary" title="Enviar" style="margin-top: 10px;">Enviar</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</section>
+</html>

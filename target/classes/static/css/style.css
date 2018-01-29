@@ -1020,3 +1020,11 @@ li > a, li > a:hover {
 	margin-left: 115px;
     margin-right: 115px;
 }
+
+.icone-modal {
+	margin-right: 10px;
+}
+
+.item-modal {
+	color: #666666;;
+}

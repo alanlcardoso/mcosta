@@ -50,15 +50,76 @@
 								Consulte aqui a biblioteca de ícones </a>
 						</div>
 					</div>
-
+					
 					<div class="form-group">
 						<div class="col-sm-offset-1 col-sm-10">
 							<button type="submit" class="btn btn-primary" title="Salvar">Salvar</button>
 						</div>
 					</div>
+					
+					<hr/>
+					
+					<!-- Item serviço -->
+					<div class="panel panel-primary">
+						<div class="panel-heading">			
+							<div class="clearfix">					
+								<h1 class="panel-title titulo-panel">Itens do serviço</h1>
+								<a class="btn btn-link link-panel branco" 
+										th:href="@{/administracao/servico/{id}/novo/item(id=*{id})}"
+										th:if="${id != null}" 
+										title="Novo item do serviço">
+									Novo Registro
+								</a>
+							</div>
+						</div>
+						<div class="panel-body">
+							<table class="table table-bordered table-striped">
+								<thead>
+									<tr>
+										<th>Descrição</th>
+										<th class="text-center col-md-2">Ações</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="item : ${itensServico}">
+										<td th:text="${item.descricao}"></td>
+										<td class="text-center">
+											<a class="btn btn-link btn-xs" title="Editar"
+											th:href="@{/administracao/servico/{id}/item(id=${item.id})}"> 
+											<span class="glyphicon glyphicon-pencil"></span>
+											</a>
+											
+											<a class="btn btn-link btn-xs" title="Anexar Imagem"
+												th:href="@{/administracao/servico/{id}/item/upload(id=${item.id})}"><span
+												class="glyphicon glyphicon-upload"></span>
+											</a>
+											
+											<a class="btn btn-link btn-xs" data-toggle="modal"
+												data-target="#confirmarRemocao"
+												th:attr="data-id=${item.id}, data-url='/administracao/servico/excluir/item', data-mensagem='Deseja mesmo excluir este item?'"
+												title="Excluir" rel="tooltip" data-placement="top"> 
+												<span style="color: red" class="glyphicon glyphicon-trash"></span>								
+											</a>
+										</td>
+									</tr>
+			
+									<tr>
+										<td colspan="12" th:if="${#lists.isEmpty(itensServico)}">Nenhum
+											registro encontrado</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					
 				</div>
 			</div>
 		</form>
 	</div>
+	<div layout:replace="~{dialogConfirmarExcluir}"></div>
 </section>
+
+<th:block layout:fragment="javascript-extra">
+	<script th:src="@{/js/dialogExcluir.js}"></script>
+</th:block>
 </html>

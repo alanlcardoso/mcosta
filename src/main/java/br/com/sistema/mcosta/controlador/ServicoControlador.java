@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.sistema.mcosta.entidade.Servico;
+import br.com.sistema.mcosta.servico.ItemServicoBO;
 import br.com.sistema.mcosta.servico.ServicoBO;
 import br.com.sistema.mcosta.util.Validacao;
 
@@ -33,6 +34,9 @@ public class ServicoControlador {
 
 	@Autowired
 	private ServicoBO servicoBO;
+	
+	@Autowired
+	private ItemServicoBO itemServicoBO;
 
 	@GetMapping("/novo")
 	public ModelAndView cadastro() {
@@ -73,6 +77,7 @@ public class ServicoControlador {
 		this.servico = servicoBO.buscarPorId(id);
 		ModelAndView mv = new ModelAndView(CADASTRO);
 		mv.addObject(this.servico);
+		mv.addObject("itensServico", itemServicoBO.buscarPorIdServico(id));
 		return mv;
 	}
 
