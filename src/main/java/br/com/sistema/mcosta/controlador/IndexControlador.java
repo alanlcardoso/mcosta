@@ -48,7 +48,7 @@ public class IndexControlador {
 	
 	@Autowired
 	private ItemServicoBO itemServicoBO;
-
+	
 	@GetMapping("404")
 	public ModelAndView pagina404() {
 		return new ModelAndView("404");
@@ -77,16 +77,6 @@ public class IndexControlador {
 		mv.addObject("totalCliente", clienteBO.buscarTotalCliente());
 		mv.addObject("clientes", clienteBO.buscarClientesPorPagina(12));
 		mv.addObject("totalServico", servicos.getContent().isEmpty() ? null : servicos);
-		
-		List<ItemServico> itensServico = new ArrayList<>();
-		
-		for (Servico servico : servicos) {
-			for (ItemServico itemServico : servico.getItens()) {
-				itensServico.add(itemServico);
-			}
-		}
-		
-		mv.addObject("itensServico", itensServico);
 		
 		List<Contato> contatos = contatoBO.buscarTodos();		
 		mv.addObject("contato", contatos.isEmpty() ? null : contatos.get(0));
@@ -126,9 +116,8 @@ public class IndexControlador {
 		mv.addObject("menuAdmin", false);
 		return mv;*/
 		
-		ModelAndView mv = new ModelAndView(INDEX);
 		//mv.addObject("itensServico", itemServicoBO.buscarPorIdServico(id));
-		return mv;
+		return new ModelAndView();
 	}
 	
 	@GetMapping("/servico")

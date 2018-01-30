@@ -107,34 +107,34 @@
 						<h4 class="title" >
 							<a href="" data-toggle="modal" data-target="#modalServico" th:text="${servico.nome}"></a>
 						</h4>
-						
-						  <!-- Modal -->
-						  <div class="modal fade" id="modalServico" role="dialog">
-						    <div class="modal-dialog">
-						    
-						      <!-- Modal content-->
-						      <div class="modal-content">
-						        <div class="modal-header">
-						          <button type="button" class="close" data-dismiss="modal">&times;</button>
-						          <h2 class="modal-title">Modal</h2>
-						        </div>
-						        <div class="modal-body">
-						          <ul class="list-group">
-									<li class="list-group-item" th:each="item : ${itensServico}">
-									  <a href="">
-									    <i class="fa fa-minus icone-modal"></i>
-									    <span class="item-modal" th:text="${item.descricao}">Item do modal</span>
-									  </a>
-									</li>
-								  </ul>
-						        </div>
-						      </div>
-						      
-						    </div>
-						  </div>
 						  
 						<p class="description" th:text="${servico.descricao}"></p>
 					</div>
+					
+					  <!-- Modal -->
+					  <div class="modal fade" id="modalServico" role="dialog">
+					    <div class="modal-dialog">
+					    
+					      <!-- Modal content-->
+					      <div class="modal-content">
+					        <div class="modal-header">
+					          <button type="button" class="close" data-dismiss="modal">&times;</button>
+					          <h2 class="modal-title" th:text="${servico.nome}"></h2>
+					        </div>
+					        <div class="modal-body">
+					          <ul class="list-group">
+								<li class="list-group-item" th:each="item : ${servico.itens}">
+								  <a href="">
+								    <i class="fa fa-minus icone-modal"></i>
+								    <span class="item-modal" th:text="${item.descricao}"></span>
+								  </a>
+								</li>
+							  </ul>
+					        </div>
+					      </div>
+					      
+					    </div>
+					  </div>
 				</div>
 			</div>
 			<br/>
