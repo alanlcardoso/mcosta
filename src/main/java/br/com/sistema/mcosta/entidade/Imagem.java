@@ -1,6 +1,7 @@
 package br.com.sistema.mcosta.entidade;
 
 import java.io.Serializable;
+import java.util.Base64;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -11,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import br.com.sistema.mcosta.util.Util;
 
 @Entity
 @Table(name = "imagem")
@@ -43,6 +46,10 @@ public class Imagem implements Serializable {
 	
 	public void setFoto(Byte[] foto) {
 		this.foto = foto;
+	}
+	
+	public String getFotoBase64() {
+		return Base64.getEncoder().encodeToString(Util.toPrimitives(this.foto));
 	}
 	
 	public List<ImagemItemServico> getImagensItemServico() {

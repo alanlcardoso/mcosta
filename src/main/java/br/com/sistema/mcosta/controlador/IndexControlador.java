@@ -1,9 +1,7 @@
 package br.com.sistema.mcosta.controlador;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.sistema.mcosta.entidade.Contato;
-import br.com.sistema.mcosta.entidade.ItemServico;
 import br.com.sistema.mcosta.entidade.Servico;
 import br.com.sistema.mcosta.entidade.Sobre;
 import br.com.sistema.mcosta.mail.Mailer;
@@ -33,6 +30,7 @@ public class IndexControlador {
 	
 	private static final String INDEX = "index";
 	private static final String SERVICO_DETALHE = "servicoDetalhe";
+	private static final String ITEM_SERVICO = "itemServico";
 
 	@Autowired
 	private SobreBO sobreBO;
@@ -107,17 +105,12 @@ public class IndexControlador {
 		return mv;
 	}
 	
-	@GetMapping("/servico/{id}")
-	public ModelAndView detalheServico(@PathVariable Long id) {
-		/*Servico servico = servicoBO.buscarPorId(id);
-		
-		ModelAndView mv = new ModelAndView(SERVICO_DETALHE);
-		mv.addObject("servicos", servico);
+	@GetMapping("/servico/item/{id}")
+	public ModelAndView itemServico(@PathVariable Long id) {
+		ModelAndView mv = new ModelAndView(ITEM_SERVICO);
+		mv.addObject("itensServico", itemServicoBO.buscarPorId(id));
 		mv.addObject("menuAdmin", false);
-		return mv;*/
-		
-		//mv.addObject("itensServico", itemServicoBO.buscarPorIdServico(id));
-		return new ModelAndView();
+		return mv;
 	}
 	
 	@GetMapping("/servico")

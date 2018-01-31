@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="pt-br"
+	layout:decorate="~{layout}">
+
+<section layout:fragment="conteudo" id="item-servico">
+	<section id="about">
+		<div class="row about-container">
+			<div class="content order-lg-1 order-2" th:each="item, indice : ${itensServico}">
+				<div class="icon-box wow fadeInUp servico" th:classappend="${indice.index % 2 == 0 ? 'fundo-branco' : 'fundo-cinza'}">
+					<div class="lista-servico">
+						<div class="icon">
+							<i th:classappend="'fa ' + ${item.servico.imagem}"></i>
+						</div>
+						<h4 class="title" th:text="${item.servico.nome}"></h4>
+						<p class="description" th:text="${item.servico.descricao}"></p>
+						<hr/>
+						<p class="description" th:text="${item.descricao}"></p>
+						<div class="row">
+				          <div class="col-lg-3 col-md-6" th:each="imagemItem : ${item.imagensItemServico}">
+				            <div class="member">
+				              <div class="pic"><img th:src="@{'data:image/jpeg;base64,'+${imagemItem.imagem.fotoBase64}}" alt="Imagem" width="300px"></div>
+				            </div>
+				          </div>
+			          	</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</section>
+</html>
