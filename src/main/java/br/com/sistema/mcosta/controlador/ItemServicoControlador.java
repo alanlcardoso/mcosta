@@ -71,7 +71,7 @@ public class ItemServicoControlador {
 
 		itemServicoBO.salvar(itemServico);
 		mv.addObject("mensagem", "Salvo com sucesso!");
-		mv.addObject(new Servico());
+		mv.addObject(new ItemServico());
 		mv.addObject("idServico", id);
 		return mv;
 	}
@@ -81,6 +81,7 @@ public class ItemServicoControlador {
 		this.itemServico = itemServicoBO.buscarPorId(id);
 		ModelAndView mv = new ModelAndView(CADASTRO);
 		mv.addObject(this.itemServico);
+		mv.addObject("idServico", this.itemServico.getServico().getId());
 		return mv;
 	}
 

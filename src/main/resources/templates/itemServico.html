@@ -5,29 +5,40 @@
 	layout:decorate="~{layout}">
 
 <section layout:fragment="conteudo" id="item-servico">
-	<section id="about">
-		<div class="row about-container">
-			<div class="content order-lg-1 order-2" th:each="item, indice : ${itensServico}">
-				<div class="icon-box wow fadeInUp servico" th:classappend="${indice.index % 2 == 0 ? 'fundo-branco' : 'fundo-cinza'}">
-					<div class="lista-servico">
-						<div class="icon">
-							<i th:classappend="'fa ' + ${item.servico.imagem}"></i>
+
+	<section id="team">
+		<div class="container wow fadeInUp" th:each="item : ${itensServico}">
+			<div class="section-header">
+				<h3 class="section-title">Serviço</h3>
+			</div>
+
+			<section id="about" style="margin-left: 15px; margin-bottom: -40px;">
+				<div class="row about-container">
+					<div class="content order-lg-1 order-2">
+						<div class="icon-box wow fadeInUp">
+							<div class="icon">
+								<i th:classappend="'fa ' + ${item.servico.imagem}"></i>
+							</div>
+							<h4 class="title" th:text="${item.servico.nome}"></h4>
+							<p class="description" th:text="${item.servico.descricao}"></p>
+							<hr />
+							<p class="description" th:text="${item.descricao}"></p>
 						</div>
-						<h4 class="title" th:text="${item.servico.nome}"></h4>
-						<p class="description" th:text="${item.servico.descricao}"></p>
-						<hr/>
-						<p class="description" th:text="${item.descricao}"></p>
-						<div class="row">
-				          <div class="col-lg-3 col-md-6" th:each="imagemItem : ${item.imagensItemServico}">
-				            <div class="member">
-				              <div class="pic"><img th:src="@{'data:image/jpeg;base64,'+${imagemItem.imagem.fotoBase64}}" alt="Imagem" width="300px"></div>
-				            </div>
-				          </div>
-			          	</div>
+					</div>
+				</div>
+			</section>
+
+			<div class="row">
+				<div class="col-lg-3 col-md-6" th:each="imagemItem : ${item.imagensItemServico}">
+					<div class="member">
+						<div class="pic">
+							<img th:src="@{'data:image/jpeg;base64,'+${imagemItem.imagem.fotoBase64}}" alt="">
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+
 </section>
 </html>
