@@ -49,6 +49,8 @@ public class ItemServicoControlador {
 	@Autowired
 	private ImagemBO imagemBO;
 	
+	private Long idEntidade;
+	
 	@GetMapping("/{id}/novo/item")
 	public ModelAndView cadastro(@PathVariable Long id) {
 		ModelAndView mv = new ModelAndView(CADASTRO);
@@ -65,6 +67,7 @@ public class ItemServicoControlador {
 		Servico servico = servicoBO.buscarPorId(id);
 		itemServico.setServico(servico);
 
+		mv.addObject("idServico", id);
 		if (errors.hasErrors()) {
 			return mv;
 		}
@@ -72,7 +75,6 @@ public class ItemServicoControlador {
 		itemServicoBO.salvar(itemServico);
 		mv.addObject("mensagem", "Salvo com sucesso!");
 		mv.addObject(new ItemServico());
-		mv.addObject("idServico", id);
 		return mv;
 	}
 
@@ -96,15 +98,22 @@ public class ItemServicoControlador {
 	
 	@GetMapping("/{id}/item/upload")
 	public ModelAndView upload(@PathVariable Long id) {
+		this.idEntidade = id;
+		
 		ModelAndView mv = new ModelAndView(UPLOAD);
 		mv.addObject(new Imagem());
 		mv.addObject("idEntidade", id);
+		mv.addObject("imagensItemServico", itemServicoBO.buscarPorId(id).getImagensItemServico());
 		return mv;
 	}
 	
 	@PostMapping(value = "/{id}/item/upload")
 	public ModelAndView tratarArquivoUpload(@RequestParam("file") MultipartFile file, @PathVariable Long id) {
 		ModelAndView mv = new ModelAndView(UPLOAD);
+		
+		mv.addObject(new Imagem());
+		mv.addObject("idEntidade", id);
+		mv.addObject("imagensItemServico", itemServicoBO.buscarPorId(id).getImagensItemServico());
 		
 		try {
 
@@ -138,7 +147,16 @@ public class ItemServicoControlador {
 			System.out.println("Erro ao tentar ler arquivo para verificar se é imagem.");
 		}
 
-		return cadastro(id);
+		return mv;
+	}
+	
+	@GetMapping("/item/{idItem}/imagem/{idImagem}/excluir")
+	public ModelAndView excluir(@PathVariable Long idItem, @PathVariable Long idImagem) {
+		ImagemItemServico imagemItemServico = imagemBO.buscarPorId(idItem, idImagem);
+		imagemBO.excluir(idImagem);
+		imagemBO.excluirImagemItemServico(imagemItemServico.getId());
+		
+		return upload(this.idEntidade);
 	}
 
 }
