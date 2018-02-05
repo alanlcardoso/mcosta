@@ -1,5 +1,5 @@
 var contextPath = document.getElementById("contextPath").value;
-var token = $("meta[name='_csrf']").attr("content");
+var token = $("meta[name='_csrf']").attr('content');
 var header = $("meta[name='_csrf_header']").attr("content");
 var containerMensagemErro = $('.js-mensagem-erro');
 var button = {};

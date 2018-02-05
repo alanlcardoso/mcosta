@@ -4,45 +4,54 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="pt-br">
 <head>
 <title>MCosta Engenharia</title>
-<meta charset="utf-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<meta name="description" content=""/>
-<meta name="_csrf" th:content="${_csrf.token}"/>
-<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="" />
+<meta name="_csrf" th:content="${_csrf.token}" />
+<meta name="_csrf_header" th:content="${_csrf.headerName}" />
 <link th:href="@{/img/favicon.png}" rel="icon">
 <link th:href="@{/img/apple-touch-icon.png}" rel="apple-touch-icon">
 <link th:href="@{/lib/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
 <link th:href="@{/lib/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
 <link th:href="@{/lib/animate/animate.min.css}" rel="stylesheet" type="text/css">
-<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">  
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<form>
-		<input type="hidden" id="contextPath" th:value="${#httpServletRequest.contextPath}"/>
+		<input type="hidden" id="contextPath"
+			th:value="${#httpServletRequest.contextPath}" />
 	</form>
-	
-    <nav class="navbar navbar-inverse navbar-static-top ajuste-menu">
-     	<div class="container-fluid">
-	        <div class="panel-heading">
-				<div class="clearfix">
-  					<div class="navbar-brand">
-                		<img alt="MCosta" src="/img/logo2.jpg" width="150px" style="margin-top: -19px; margin-left: 75px;" th:if="${menuAdmin == null}" />
-                		<a href="/#hero" th:if="${menuAdmin != null}"><img src="/img/logo2.jpg" width="150px" style="margin-top: -19px; margin-left: 75px;" alt="MCosta" /></img></a>
-  					</div>
-                	<div layout:replace="menu"></div>
-  				</div>
-  			</div>
-      	</div>
-    </nav>
 
-  <main id="main">	
+	<nav class="navbar navbar-inverse navbar-static-top ajuste-menu">
+		<div class="container-fluid">
+			<div class="panel-heading">
+				<div class="clearfix">
+					<div class="navbar-brand">
+						<img alt="MCosta" src="/img/logo2.jpg" width="150px"
+							style="margin-top: -19px; margin-left: 75px;"
+							th:if="${menuAdmin == null}" /> <a href="/#hero"
+							th:if="${menuAdmin != null}"><img src="/img/logo2.jpg"
+							width="150px" style="margin-top: -19px; margin-left: 75px;"
+							alt="MCosta" /></img></a>
+					</div>
+					<div layout:replace="menu"></div>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<main id="main">
 		<section layout:fragment="conteudo"></section>
 	</main>
-		
+
 	<div layout:replace="footer"></div>
-  	<th:block layout:fragment="javascript-extra"></th:block>
-  	<script th:src="@{/lib/jquery/jquery.min.js}"></script>
-  	<script th:src="@{/lib/bootstrap/js/bootstrap.min.js}"></script>
+	
+	
+	<script th:src="@{/lib/jquery/jquery.min.js}"></script>
+	<script th:src="@{/lib/bootstrap/js/bootstrap.min.js}"></script>
+	<th:block layout:fragment="javascript-extra"></th:block>
+	
+
 </body>
 </html>
