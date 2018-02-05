@@ -42,4 +42,13 @@ public class ImagemBO {
 		imagemItemServicoRepositorio.save(imagemItemServico);
 	}
 	
+	public void excluirImagemItemServico(Long id) {
+		imagemItemServicoRepositorio.delete(id);
+	}
+	
+	@Transactional(readOnly = true)
+	public ImagemItemServico buscarPorId(Long idItem, Long idImagem) {
+		return imagemItemServicoRepositorio.buscarPor(idItem, idImagem);
+	}
+	
 }

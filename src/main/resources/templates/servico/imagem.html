@@ -13,7 +13,7 @@
 				<div class="panel-heading">
 					<div class="clearfix">
 						<h1 class="panel-title titulo-panel">Upload de Imagem</h1>
-						<a class="btn btn-link link-panel branco" href="administracao/servico/1" title="Voltar para pesquisa">Voltar para Pesquisa</a>
+						<a class="btn btn-link link-panel branco" th:href="@{/administracao/servico/{id}(id=${idEntidade})}" title="Voltar para pesquisa">Voltar para Pesquisa</a>
 					</div>
 				</div>
 				<div class="panel-body">
@@ -22,6 +22,27 @@
 					
 					<input type="file" name="file" />
 					<button type="submit" class="btn btn-primary" title="Enviar" style="margin-top: 10px;">Enviar</button>
+					
+					<hr/>
+					
+					<section id="team" style="padding-top: 0px; padding-bottom: 0px;">
+						<div class="row">
+							<div class="col-lg-3 col-md-6" th:each="imagemItem : ${imagensItemServico}">
+								<div class="member hover">
+									<div class="pic figure">
+										<img th:src="@{'data:image/jpeg;base64,'+${imagemItem.imagem.fotoBase64}}" alt="">
+										<div class="middle">
+									      <a th:href="@{/administracao/servico/item/{idItem}/imagem/{idImagem}/excluir(idItem=${imagemItem.itemServico.id}, idImagem=${imagemItem.imagem.id})}" 
+									      		title="Excluir">
+									      	<span class="glyphicon glyphicon-remove" style="color: #fff; font-size: 25px;"></span>
+									      </a>
+									    </div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+			
 				</div>
 			</div>
 		</form>
