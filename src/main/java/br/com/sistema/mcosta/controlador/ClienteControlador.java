@@ -125,6 +125,6 @@ public class ClienteControlador {
 			System.out.println("Erro ao tentar ler arquivo para verificar se é imagem.");
 		}
 
-		return pesquisar();
+		return upload(this.cliente.getId());
 	}
 }

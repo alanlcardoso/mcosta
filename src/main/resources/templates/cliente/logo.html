@@ -23,6 +23,21 @@
 					<input type="file" name="file" />
 					<!-- <input type="submit" value="Enviar" /> -->
 					<button type="submit" class="btn btn-primary" title="Enviar" style="margin-top: 10px;">Enviar</button>
+					
+					<hr/>
+					
+					<section id="team" style="padding-top: 0px; padding-bottom: 0px;">
+						<div class="row">
+							<div class="col-lg-3 col-md-6">
+							<div class="member">
+								<div class="pic">
+									<img th:src="@{'data:image/jpeg;base64,'+*{logoBase64}}" alt="">
+								</div>
+							</div>
+							</div>
+						</div>
+					</section>
+					
 				</div>
 			</div>
 		</form>

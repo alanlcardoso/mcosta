@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -30,6 +31,9 @@ public class Cliente {
 
 	@Column(name = "logo", nullable = true, unique = false)
 	private Byte[] logo;
+	
+	@OneToMany(mappedBy="cliente")
+	private List<ClienteServico> servicos;
 
 	@Transient
 	private List<Long> servicosIds = new ArrayList<>();
@@ -72,6 +76,14 @@ public class Cliente {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	public List<ClienteServico> getServicos() {
+		return servicos;
+	}
+	
+	public void setServicos(List<ClienteServico> servicos) {
+		this.servicos = servicos;
 	}
 
 	public List<Long> getServicosIds() {

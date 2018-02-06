@@ -61,7 +61,7 @@ public class IndexControlador {
 			sobre = sobres.get(0);
 		}
 		
-		Page<Servico> servicos = servicoBO.buscarClientesPorPagina(6);
+		Page<Servico> servicos = servicoBO.buscarClientesPorPagina(Integer.MAX_VALUE);
 		servicos.forEach(servico -> {
 			String descricao = servico.getDescricao();
 			int tamanho = 110;
@@ -73,7 +73,7 @@ public class IndexControlador {
 		ModelAndView mv = new ModelAndView(INDEX);
 		mv.addObject("sobre", sobre);
 		mv.addObject("totalCliente", clienteBO.buscarTotalCliente());
-		mv.addObject("clientes", clienteBO.buscarClientesPorPagina(12));
+		mv.addObject("clientes", clienteBO.buscarClientesPorPagina(Integer.MAX_VALUE));
 		mv.addObject("totalServico", servicos.getContent().isEmpty() ? null : servicos);
 		
 		List<Contato> contatos = contatoBO.buscarTodos();		
