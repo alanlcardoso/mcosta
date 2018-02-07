@@ -6,7 +6,7 @@
 
 <section layout:fragment="conteudo" id="index">
 
-    <!--==========================
+	<!--==========================
       About Us Section
     ============================-->
 	<section id="about" th:if="${sobre != null}">
@@ -26,7 +26,7 @@
 						</h4>
 						<p class="description" th:text="${sobre.sobreDetalhe1.descricao}"></p>
 					</div>
-					
+
 					<div class="icon-box wow fadeInUp">
 						<div class="icon">
 							<i th:classappend="'fa ' + ${sobre.sobreDetalhe2.icone}"></i>
@@ -36,7 +36,7 @@
 						</h4>
 						<p class="description" th:text="${sobre.sobreDetalhe2.descricao}"></p>
 					</div>
-					
+
 					<div class="icon-box wow fadeInUp">
 						<div class="icon">
 							<i th:classappend="'fa ' + ${sobre.sobreDetalhe3.icone}"></i>
@@ -55,7 +55,7 @@
 	</section>
 	<!-- #about -->
 
-    <!--==========================
+	<!--==========================
       Facts Section
     ============================-->
 	<section id="facts" th:if="${sobre != null}">
@@ -84,9 +84,8 @@
 			</div>
 		</div>
 	</section>
-	<!-- #facts -->
 
-    <!--==========================
+	<!--==========================
       Services Section
     ============================-->
 	<section id="services" th:if="${totalServico != null}">
@@ -99,191 +98,190 @@
 				<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s"
 					th:each="servico : ${totalServico}">
 					<div class="box">
+
 						<div class="icon">
-							<a href="" data-toggle="modal" th:attr="data-target='#modalServico'+${servico.id}"><i th:classappend="'fa ' + ${servico.imagem}"></i></a>
+							<a data-toggle="modal" th:attr="data-target='#modalServico'+${servico.id}" th:if="${servico.itens.size() == 0}">
+								<i	th:classappend="'fa ' + ${servico.imagem}"></i>
+							</a>
+							
+							<a href="" data-toggle="modal" th:attr="data-target='#modalServico'+${servico.id}" th:if="${servico.itens.size() > 0}">
+								<i	th:classappend="'fa ' + ${servico.imagem}"></i>
+							</a>
 						</div>
- 						 <!-- Trigger the modal with a button -->
-						<h4 class="title" >
-							<a href="" data-toggle="modal" th:attr="data-target='#modalServico'+${servico.id}" th:text="${servico.nome}"></a>
+						<h4 class="title">
+							<a href="" data-toggle="modal"	th:attr="data-target='#modalServico'+${servico.id}"
+								th:text="${servico.nome}">
+							</a>
 						</h4>
-						  
 						<p class="description" th:text="${servico.descricao}"></p>
 					</div>
-					
-					  <!-- Modal Serviço -->
-					  <div class="modal fade" th:id="'modalServico' + ${servico.id}" role="dialog">
-					    <div class="modal-dialog">
-					    
-					      <!-- Modal content-->
-					      <div class="modal-content">
-					        <div class="modal-header">
-					          <button type="button" class="close" data-dismiss="modal">&times;</button>
-					          <h2 class="modal-title" th:text="${servico.nome}"></h2>
-					        </div>
-					        <div class="modal-body">
-					          <ul class="list-group">
-								<li class="list-group-item" th:each="item : ${servico.itens}">
-								  <a th:href="@{/servico/item/{id}(id=${item.id})}">
-								    <i class="fa fa-minus icone-modal"></i>
-								    <span class="item-modal" th:text="${item.descricao}"></span>
-								  </a>
-								</li>
-							  </ul>
-					        </div>
-					      </div>
-					      
-					    </div>
-					  </div>
+
+					<!-- Modal -->
+					<div class="modal fade" th:id="'modalServico' + ${servico.id}" role="dialog" th:if="${servico.itens.size() > 0}">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h2 class="modal-title" th:text="${servico.nome}"></h2>
+								</div>
+
+								<div class="modal-body">
+									<ul class="list-group">
+										<li class="list-group-item" th:each="item : ${servico.itens}">
+											<a th:href="@{/servico/item/{id}(id=${item.id})}"> 
+												<i class="fa fa-check icone-modal"></i> 
+												<span class="item-modal" th:text="${item.descricao}"></span>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-			<!-- <br/>
-            <div class="row">
-            	<div class="col-md-12">
-                	<a th:href="@{/servico}" class="btn btn-default"><i class="fa fa-newspaper-o"></i> Todos Serviços</a>
-                </div>
-            </div> -->
+			<br />
+		
+			<div class="row">
+			<div class="col-md-12">
+				<a th:href="@{/servico}" class="btn btn-default"><i
+					class="fa fa-newspaper-o"></i> Mais Serviços</a>
+			</div>
 		</div>
+		</div>
+		
 	</section>
 	<!-- #services -->
 
-     <!--==========================
+	<!--==========================
       Portfolio Section
     ============================-->
-    <section id="portfolio" th:if="${totalCliente > 0}">
+	<section id="portfolio" th:if="${totalCliente > 0}">
 		<div class="container wow fadeInUp">
 			<div class="section-header">
 				<h3 class="section-title">Clientes</h3>
 				<p class="section-description"></p>
 			</div>
+
 			<div class="row">
 				<div class="row" id="portfolio-wrapper">
 					<div th:each="item : ${clientes}"
 						class="col-lg-3 col-md-6 portfolio-item filter-app">
-						<a href="" data-toggle="modal" th:attr="data-target='#modalCliente' + ${item.id}"> <img
-							th:src="@{'data:image/jpeg;base64,'+${item.getLogoBase64()}}"
+						<a href=""> 
+							<img th:src="@{'data:image/jpeg;base64,'+${item.getLogoBase64()}}"
 							th:title="${item.nome}" alt="" width="300px">
 							<div class="details">
 								<h4 th:text="${item.nome}"></h4>
 							</div>
 						</a>
-					  </div>
-					  
-					  <!-- Modal Cliente -->
-					  <div class="modal fade" th:each="item : ${clientes}" th:id="'modalCliente' + ${item.id}" role="dialog">
-					    <div class="modal-dialog">
-					    
-					      <!-- Modal content-->
-					      <div class="modal-content">
-					        <div class="modal-header">
-					          <button type="button" class="close" data-dismiss="modal">&times;</button>
-					          <h2 class="modal-title" th:text="${item.nome}"></h2>
-					        </div>
-					        <div class="modal-body">
-					          <ul class="list-group">
-								<li class="list-group-item" th:each="servico : ${item.servicos}">
-								  <a th:href="@{/servico/item/{id}(id=${servico.id})}">
-								    <i class="fa fa-minus icone-modal"></i>
-								    <span class="item-modal" th:text="${servico.servico.nome}"></span>
-								  </a>
-								</li>
-							  </ul>
-					        </div>
-					      </div>
-					      
-					    </div>
-					  </div>
-				  
+					</div>
+				</div>
+				<br />
+				<div class="row">
+					<div class="col-md-12">
+						<a href="xxx.html" class="btn btn-default">
+							<i class="fa fa-newspaper-o"></i> Todos Clientes
+						</a>
+					</div>
 				</div>
 			</div>
-			<!-- <br/>
-            <div class="row">
-            	<div class="col-md-12">
-                	<a href="xxx.html" class="btn btn-default"><i class="fa fa-newspaper-o"></i> Todos Clientes</a>
-                </div>
-            </div> -->
-        </div>
-	</section><!-- #portfolio -->
 
-    <!--==========================
+		</div>
+	</section>
+	<!-- #portfolio -->
+
+	<!--==========================
       Contact Section
     ============================-->
-    <section id="contact" th:if="${contato != null}">
-      <div class="container wow fadeInUp">
-        <div class="section-header">
-          <h3 class="section-title" th:text="${contato.titulo}"></h3>
-          <p class="section-description">Entre em contato conosco</p>
-        </div>
-      </div>
+	<section id="contact" th:if="${contato != null}">
+		<div class="container wow fadeInUp">
+			<div class="section-header">
+				<h3 class="section-title" th:text="${contato.titulo}"></h3>
+				<p class="section-description">Entre em contato conosco</p>
+			</div>
+		</div>
 
-      <div id="google-map" th:data-latitude="${contato.latitude}" th:data-longitude="${contato.longitude}"></div>
+		<div id="google-map" th:data-latitude="${contato.latitude}"
+			th:data-longitude="${contato.longitude}"></div>
 
-      <div class="container wow fadeInUp">
-        <div class="row justify-content-center">
+		<div class="container wow fadeInUp">
+			<div class="row justify-content-center">
 
-          <div class="col-lg-3 col-md-4">
+				<div class="col-lg-3 col-md-4">
 
-            <div class="info">
-              <div>
-                <i class="fa fa-map-marker"></i>
-                <p th:text="${contato.tipoLogradouro.descricao} + ' ' +
+					<div class="info">
+						<div>
+							<i class="fa fa-map-marker"></i>
+							<p
+								th:text="${contato.tipoLogradouro.descricao} + ' ' +
                 	${contato.logradouro} + ', ' +
                 	${contato.numero} + ' ' +
                 	${contato.bairro} + ', ' +
                 	${contato.cidade} + ' - ' +
                 	${contato.estado}+ ' ' +
                 	${contato.cep}"></p>
-              </div>
+						</div>
 
-              <div>
-                <i class="fa fa-envelope"></i>
-                <p th:text="${contato.email}"></p>
-              </div>
+						<div>
+							<i class="fa fa-envelope"></i>
+							<p th:text="${contato.email}"></p>
+						</div>
 
-              <div>
-                <i class="fa fa-phone"></i>
-                <p th:text="${{contato.telefone}}"></p>
-              </div>
-            </div>
+						<div>
+							<i class="fa fa-phone"></i>
+							<p th:text="${{contato.telefone}}"></p>
+						</div>
+					</div>
 
-          </div>
+				</div>
 
-          <div class="col-lg-5 col-md-8">
-            <div class="form">
-              <div id="sendmessage">Mensagem enviada com sucesso. Obrigado!</div>
-              <div id="errormessage"></div>
-              <form method="POST" action="/enviar" th:object="${mensagem}" role="form" class="contactForm">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="name" placeholder="Nome" th:field="*{nome}" />
-                  <div class="validation"></div>
-                </div>
-                <div class="form-group">
-                  <input type="email" class="form-control" id="email" placeholder="E-mail" data-rule="email" 
-                  		data-msg="E-mail inválido" th:field="*{remetente}" />
-                  <div class="validation"></div>
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" id="subject" placeholder="Assunto" data-rule="minlen:4" 
-                  		data-msg="Please enter at least 8 chars of subject" th:field="*{assunto}" />
-                  <div class="validation"></div>
-                </div>
-                <div class="form-group">
-                  <textarea class="form-control" rows="5" data-rule="required"
-                   		data-msg="Mensagem" placeholder="Mensagem" th:field="*{corpo}"></textarea>
-                  <div class="validation"></div>
-                </div>
-                <div class="text-center"><button type="submit">Enviar</button></div>
-              </form>
-            </div>
-          </div>
-        </div>
+				<div class="col-lg-5 col-md-8">
+					<div class="form">
+						<div id="sendmessage">Mensagem enviada com sucesso.
+							Obrigado!</div>
+						<div id="errormessage"></div>
+						<form method="POST" action="/enviar" th:object="${mensagem}"
+							role="form" class="contactForm">
+							<div class="form-group">
+								<input type="text" class="form-control" id="name"
+									placeholder="Nome" th:field="*{nome}" />
+								<div class="validation"></div>
+							</div>
+							<div class="form-group">
+								<input type="email" class="form-control" id="email"
+									placeholder="E-mail" data-rule="email"
+									data-msg="E-mail inválido" th:field="*{remetente}" />
+								<div class="validation"></div>
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" id="subject"
+									placeholder="Assunto" data-rule="minlen:4"
+									data-msg="Please enter at least 8 chars of subject"
+									th:field="*{assunto}" />
+								<div class="validation"></div>
+							</div>
+							<div class="form-group">
+								<textarea class="form-control" rows="5" data-rule="required"
+									data-msg="Mensagem" placeholder="Mensagem" th:field="*{corpo}"></textarea>
+								<div class="validation"></div>
+							</div>
+							<div class="text-center">
+								<button type="submit">Enviar</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
 
-      </div>
-    </section><!-- #contact -->
+		</div>
+	</section>
+	<!-- #contact -->
 
-  </section>
-  
-  <th:block layout:fragment="javascript-extra">                                                             
-  	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6nxvS7OEt_EirUgNlqrnscpS1CfIGkpc"></script>
-  </th:block>
-  
+</section>
+
+<th:block layout:fragment="javascript-extra">
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6nxvS7OEt_EirUgNlqrnscpS1CfIGkpc"></script>
+</th:block>
+
 </html>
