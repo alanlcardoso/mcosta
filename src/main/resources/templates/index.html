@@ -53,7 +53,6 @@
 
 		</div>
 	</section>
-	<!-- #about -->
 
 	<!--==========================
       Facts Section
@@ -100,24 +99,35 @@
 					<div class="box">
 
 						<div class="icon">
-							<a data-toggle="modal" th:attr="data-target='#modalServico'+${servico.id}" th:if="${servico.itens.size() == 0}">
+							<a data-toggle="modal"
+								th:attr="data-target='#modalServico'+${servico.id}"
+								th:if="${servico.itens.size() == 0}"> 
 								<i	th:classappend="'fa ' + ${servico.imagem}"></i>
-							</a>
-							
-							<a href="" data-toggle="modal" th:attr="data-target='#modalServico'+${servico.id}" th:if="${servico.itens.size() > 0}">
-								<i	th:classappend="'fa ' + ${servico.imagem}"></i>
+							</a> 
+							<a href="" data-toggle="modal"
+								th:attr="data-target='#modalServico'+${servico.id}"
+								th:if="${servico.itens.size() > 0}"> 
+								<i th:classappend="'fa ' + ${servico.imagem}"></i>
 							</a>
 						</div>
 						<h4 class="title">
-							<a href="" data-toggle="modal"	th:attr="data-target='#modalServico'+${servico.id}"
-								th:text="${servico.nome}">
+							<a data-toggle="modal"
+								th:attr="data-target='#modalServico'+${servico.id}"
+								th:text="${servico.nome}" th:if="${servico.itens.size() == 0}"> 
+							</a>
+							
+							<a href="" data-toggle="modal"
+								th:attr="data-target='#modalServico'+${servico.id}"
+								th:text="${servico.nome}"
+								th:if="${servico.itens.size() > 0}">
 							</a>
 						</h4>
 						<p class="description" th:text="${servico.descricao}"></p>
 					</div>
 
 					<!-- Modal -->
-					<div class="modal fade" th:id="'modalServico' + ${servico.id}" role="dialog" th:if="${servico.itens.size() > 0}">
+					<div class="modal fade" th:id="'modalServico' + ${servico.id}"
+						role="dialog" th:if="${servico.itens.size() > 0}">
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-header">
@@ -128,10 +138,10 @@
 								<div class="modal-body">
 									<ul class="list-group">
 										<li class="list-group-item" th:each="item : ${servico.itens}">
-											<a th:href="@{/servico/item/{id}(id=${item.id})}"> 
-												<i class="fa fa-check icone-modal"></i> 
-												<span class="item-modal" th:text="${item.descricao}"></span>
-											</a>
+											<a th:href="@{/servico/item/{id}(id=${item.id})}"> <i
+												class="fa fa-check icone-modal"></i> <span
+												class="item-modal" th:text="${item.descricao}"></span>
+										</a>
 										</li>
 									</ul>
 								</div>
@@ -141,15 +151,8 @@
 				</div>
 			</div>
 			<br />
-		
-			<div class="row">
-			<div class="col-md-12">
-				<a th:href="@{/servico}" class="btn btn-default"><i
-					class="fa fa-newspaper-o"></i> Mais Serviços</a>
-			</div>
 		</div>
-		</div>
-		
+
 	</section>
 	<!-- #services -->
 
@@ -167,20 +170,12 @@
 				<div class="row" id="portfolio-wrapper">
 					<div th:each="item : ${clientes}"
 						class="col-lg-3 col-md-6 portfolio-item filter-app">
-						<a href=""> 
-							<img th:src="@{'data:image/jpeg;base64,'+${item.getLogoBase64()}}"
+						<a href=""> <img
+							th:src="@{'data:image/jpeg;base64,'+${item.getLogoBase64()}}"
 							th:title="${item.nome}" alt="" width="300px">
 							<div class="details">
 								<h4 th:text="${item.nome}"></h4>
 							</div>
-						</a>
-					</div>
-				</div>
-				<br />
-				<div class="row">
-					<div class="col-md-12">
-						<a href="xxx.html" class="btn btn-default">
-							<i class="fa fa-newspaper-o"></i> Todos Clientes
 						</a>
 					</div>
 				</div>
