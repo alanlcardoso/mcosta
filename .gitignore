@@ -22,5 +22,5 @@
 hs_err_pid*
 /target/
 heroku.txt
-target/classes/templates/index.html
-target/classes/templates/index.html
+target/classes/templates/*
+
