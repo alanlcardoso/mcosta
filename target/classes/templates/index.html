@@ -125,7 +125,7 @@
 						<p class="description" th:text="${servico.descricao}"></p>
 					</div>
 
-					<!-- Modal -->
+					<!-- Modal Serviço -->
 					<div class="modal fade" th:id="'modalServico' + ${servico.id}"
 						role="dialog" th:if="${servico.itens.size() > 0}">
 						<div class="modal-dialog">
@@ -170,14 +170,50 @@
 				<div class="row" id="portfolio-wrapper">
 					<div th:each="item : ${clientes}"
 						class="col-lg-3 col-md-6 portfolio-item filter-app">
-						<a href=""> <img
+						<a href="" data-toggle="modal" th:attr="data-target='#modalCliente' + ${item.id}"> <img
 							th:src="@{'data:image/jpeg;base64,'+${item.getLogoBase64()}}"
-							th:title="${item.nome}" alt="" width="300px">
+							th:title="${item.nome}" alt="" width="300px"
+							th:if="${item.servicos.size() > 0}">
+							<div class="details">
+								<h4 th:text="${item.nome}"></h4>
+							</div>
+						</a>
+						<a data-toggle="modal" th:attr="data-target='#modalCliente' + ${item.id}"> <img
+							th:src="@{'data:image/jpeg;base64,'+${item.getLogoBase64()}}"
+							th:title="${item.nome}" alt="" width="300px"
+							th:if="${item.servicos.size() == 0}">
 							<div class="details">
 								<h4 th:text="${item.nome}"></h4>
 							</div>
 						</a>
 					</div>
+					
+					<!-- Modal Cliente -->
+					<div class="modal fade" th:each="item : ${clientes}" th:id="'modalCliente' + ${item.id}" 
+						role="dialog" th:if="${item.servicos.size() > 0}">
+ 						<div class="modal-dialog">
+ 					    
+ 					    	<!-- Modal content-->
+ 					      	<div class="modal-content">
+ 					        	<div class="modal-header">
+ 					          		<button type="button" class="close" data-dismiss="modal">&times;</button>
+ 					          		<h2 class="modal-title" th:text="${item.nome}"></h2>
+ 					        	</div>
+ 					          	<p style="margin: 10px 0px -10px 17px">Serviços prestados</p>
+	 					       	<div class="modal-body">
+	 					          	<ul class="list-group">
+	 									<li class="list-group-item" th:each="servico : ${item.servicos}">
+	 								  		<a th:href="@{/servico/item/{id}(id=${servico.id})}">
+	 								    		<i class="fa fa-minus icone-modal"></i>
+	 								    		<span class="item-modal" th:text="${servico.servico.nome}"></span>
+	 								  		</a>
+	 									</li>
+	 							  	</ul>
+	 					        </div>
+	 						</div>
+ 					    </div>
+ 					  </div>
+ 					  
 				</div>
 			</div>
 
