@@ -31,6 +31,7 @@ public class IndexControlador extends AbstractControlador {
 	private static final String INDEX = "index";
 	private static final String SERVICO_DETALHE = "servicoDetalhe";
 	private static final String ITEM_SERVICO = "itemServico";
+	private static final String CLIENTE_SERVICO = "clienteServico";
 
 	@Autowired
 	private SobreBO sobreBO;
@@ -119,6 +120,15 @@ public class IndexControlador extends AbstractControlador {
 		
 		ModelAndView mv = new ModelAndView(SERVICO_DETALHE);
 		mv.addObject("servicos", servicos);
+		mv.addObject("menuAdmin", false);
+		return mv;
+	}
+	
+	@GetMapping("/cliente/{idCliente}/servico/{idServico}")
+	public ModelAndView itemServico(@PathVariable Long idCliente, @PathVariable Long idServico) {
+		ModelAndView mv = new ModelAndView(CLIENTE_SERVICO);
+		mv.addObject("cliente", clienteBO.buscaPorId(idCliente));
+		mv.addObject("servico", servicoBO.buscarPorId(idServico));
 		mv.addObject("menuAdmin", false);
 		return mv;
 	}

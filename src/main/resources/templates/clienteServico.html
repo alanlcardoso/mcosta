@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="pt-br"
+	layout:decorate="~{layout}">
+
+<section layout:fragment="conteudo" id="cliente-servico">
+
+	<section id="team">
+		<div class="container wow fadeInUp">
+			<div class="section-header">
+				<h3 class="section-title" th:text="${cliente.nome}"></h3>
+			</div>
+
+			<section id="about" style="margin-left: 15px; margin-bottom: -40px;">
+				<div class="row about-container">
+					<div class="content order-lg-1 order-2">
+						<div class="icon-box wow fadeInUp">
+							<div class="icon">
+								<i th:classappend="'fa ' + ${servico.imagem}"></i>
+							</div>
+							<h4 class="title" th:text="${servico.nome}"></h4>
+							<p class="description" th:text="${servico.descricao}"></p>
+							<div th:each="item : ${servico.itens}">
+								<hr />
+								<p class="description" th:text="${item.descricao}"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<p th:text="${servico.itens.imagensItemServico}"></p>
+			<!-- <div class="row">
+				<div class="col-lg-3 col-md-6" th:each="item : ${servico.itens.imagensItemServico}">
+					<div class="member">
+						<div class="pic">
+							<img th:src="@{'data:image/jpeg;base64,'+${item.imagem.fotoBase64}}" alt="">
+						</div>
+					</div>
+				</div>
+			</div> -->
+		</div>
+	</section>
+
+</section>
+</html>
