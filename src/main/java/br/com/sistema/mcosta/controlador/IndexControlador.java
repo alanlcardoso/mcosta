@@ -26,7 +26,7 @@ import br.com.sistema.mcosta.servico.ServicoBO;
 import br.com.sistema.mcosta.servico.SobreBO;
 
 @Controller
-public class IndexControlador {
+public class IndexControlador extends AbstractControlador {
 	
 	private static final String INDEX = "index";
 	private static final String SERVICO_DETALHE = "servicoDetalhe";
@@ -106,9 +106,9 @@ public class IndexControlador {
 	}
 	
 	@GetMapping("/servico/item/{id}")
-	public ModelAndView itemServico(@PathVariable Long id) {
+	public ModelAndView itemServico(@PathVariable String id) {
 		ModelAndView mv = new ModelAndView(ITEM_SERVICO);
-		mv.addObject("itensServico", itemServicoBO.buscarPorId(id));
+		mv.addObject("itensServico", itemServicoBO.buscarPorId(super.decodificarBase64Long(id)));
 		mv.addObject("menuAdmin", false);
 		return mv;
 	}

@@ -20,7 +20,7 @@ import br.com.sistema.mcosta.util.Validacao;
 
 @Controller
 @RequestMapping("/administracao")
-public class AdministradorControlador {
+public class AdministradorControlador extends AbstractControlador {
 	
 	private static final String CADASTRO = "sobre/novo";
 	private static final String PESQUISAR = "sobre/pesquisar";
@@ -67,9 +67,8 @@ public class AdministradorControlador {
 	}
 
 	@GetMapping("/sobre/{id}")
-	public ModelAndView edicao(@PathVariable Long id) {
-		Sobre sobre = sobreBO.buscaDetalheSobrePorId(id);
-		
+	public ModelAndView edicao(@PathVariable String id) {
+		Sobre sobre = sobreBO.buscaDetalheSobrePorId(super.decodificarBase64Long(id));
 		ModelAndView mv = new ModelAndView(CADASTRO);
 		mv.addObject(sobre);
 		return mv;

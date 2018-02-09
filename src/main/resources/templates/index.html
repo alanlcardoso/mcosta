@@ -66,17 +66,17 @@
 			<div class="row counters">
 
 				<div class="col-lg-4 col-6 text-center">
-					<span data-toggle="counter-up" th:text="${totalCliente}"></span>
+					<span th:text="${totalCliente}"></span>
 					<p>Clientes</p>
 				</div>
 
 				<div class="col-lg-4 col-6 text-center">
-					<span data-toggle="counter-up" th:text="${{sobre.qtdProjetos}}"></span>
+					<span th:text="${{sobre.qtdProjetos}}"></span>
 					<p>Projetos</p>
 				</div>
 
 				<div class="col-lg-4 col-6 text-center">
-					<span data-toggle="counter-up" th:text="${{sobre.horasTrabalho}}"></span>
+					<span th:text="${{sobre.horasTrabalho}}"></span>
 					<p>Horas de Trabalho</p>
 				</div>
 
@@ -138,7 +138,7 @@
 								<div class="modal-body">
 									<ul class="list-group">
 										<li class="list-group-item" th:each="item : ${servico.itens}">
-											<a th:href="@{/servico/item/{id}(id=${item.id})}"> <i
+											<a th:href="@{/servico/item/{id}(id=${item.idBase64})}"> <i
 												class="fa fa-check icone-modal"></i> <span
 												class="item-modal" th:text="${item.descricao}"></span>
 										</a>
@@ -203,7 +203,7 @@
 	 					       	<div class="modal-body">
 	 					          	<ul class="list-group">
 	 									<li class="list-group-item" th:each="servico : ${item.servicos}">
-	 								  		<a th:href="@{/servico/item/{id}(id=${servico.id})}">
+	 								  		<a th:href="@{/servico/item/{id}(id=${servico.idBase64})}">
 	 								    		<i class="fa fa-minus icone-modal"></i>
 	 								    		<span class="item-modal" th:text="${servico.servico.nome}"></span>
 	 								  		</a>

@@ -33,7 +33,7 @@ import br.com.sistema.mcosta.util.Util;
 
 @Controller
 @RequestMapping("/administracao/servico")
-public class ItemServicoControlador {
+public class ItemServicoControlador extends AbstractControlador {
 
 	private static final String CADASTRO = "servico/novoItemServico";
 	private static final String UPLOAD = "servico/imagem";
@@ -52,7 +52,7 @@ public class ItemServicoControlador {
 	private Long idEntidade;
 	
 	@GetMapping("/{id}/novo/item")
-	public ModelAndView cadastro(@PathVariable Long id) {
+	public ModelAndView cadastro(@PathVariable String id) {
 		ModelAndView mv = new ModelAndView(CADASTRO);
 		this.itemServico = new ItemServico();
 		mv.addObject(this.itemServico);
@@ -61,10 +61,10 @@ public class ItemServicoControlador {
 	}
 
 	@PostMapping("/{id}/item")
-	public ModelAndView salvar(@PathVariable Long id, @Validated ItemServico itemServico, Errors errors, RedirectAttributes attributes) {
+	public ModelAndView salvar(@PathVariable String id, @Validated ItemServico itemServico, Errors errors, RedirectAttributes attributes) {
 		ModelAndView mv = new ModelAndView(CADASTRO);
 		
-		Servico servico = servicoBO.buscarPorId(id);
+		Servico servico = servicoBO.buscarPorId(super.decodificarBase64Long(id));
 		itemServico.setServico(servico);
 
 		mv.addObject("idServico", id);
@@ -79,8 +79,8 @@ public class ItemServicoControlador {
 	}
 
 	@GetMapping("/{id}/item")
-	public ModelAndView edicao(@PathVariable Long id) {
-		this.itemServico = itemServicoBO.buscarPorId(id);
+	public ModelAndView edicao(@PathVariable String id) {
+		this.itemServico = itemServicoBO.buscarPorId(super.decodificarBase64Long(id));
 		ModelAndView mv = new ModelAndView(CADASTRO);
 		mv.addObject(this.itemServico);
 		mv.addObject("idServico", this.itemServico.getServico().getId());
@@ -92,42 +92,41 @@ public class ItemServicoControlador {
 		if (id == null) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Favor selecionar um Item.");
 		}
-		itemServicoBO.excluir(Long.parseLong(id));
+		itemServicoBO.excluir(super.decodificarBase64Long(id));
 		return ResponseEntity.ok("Registro excluído com sucesso.");
 	}
 	
 	@GetMapping("/{id}/item/upload")
-	public ModelAndView upload(@PathVariable Long id) {
-		this.idEntidade = id;
-		
+	public ModelAndView upload(@PathVariable String id) {
+		this.idEntidade = super.decodificarBase64Long(id);		
 		ModelAndView mv = new ModelAndView(UPLOAD);
 		mv.addObject(new Imagem());
-		mv.addObject("idEntidade", id);
-		mv.addObject("imagensItemServico", itemServicoBO.buscarPorId(id).getImagensItemServico());
+		mv.addObject("idEntidade", super.decodificarBase64Long(id));
+		mv.addObject("imagensItemServico", itemServicoBO.buscarPorId(super.decodificarBase64Long(id)).getImagensItemServico());
 		return mv;
 	}
 	
 	@PostMapping(value = "/{id}/item/upload")
-	public ModelAndView tratarArquivoUpload(@RequestParam("file") MultipartFile file, @PathVariable Long id) {
+	public ModelAndView tratarArquivoUpload(@RequestParam("file") MultipartFile file, @PathVariable String id) {
 		ModelAndView mv = new ModelAndView(UPLOAD);
 		
 		mv.addObject(new Imagem());
-		mv.addObject("idEntidade", id);
-		mv.addObject("imagensItemServico", itemServicoBO.buscarPorId(id).getImagensItemServico());
+		mv.addObject("idEntidade", super.decodificarBase64Long(id));
+		mv.addObject("imagensItemServico", itemServicoBO.buscarPorId(super.decodificarBase64Long(id)).getImagensItemServico());
 		
 		try {
 
 			if (file.isEmpty() || !(file.getOriginalFilename().endsWith("jpg") || file.getOriginalFilename().endsWith("png")
 					|| file.getOriginalFilename().endsWith("jpeg"))) {
 				mv.addObject("imagem", new Imagem());
-				mv.addObject("idEntidade", id);
+				mv.addObject("idEntidade", super.decodificarBase64Long(id));
 				mv.addObject("mensagemErro", "Logo inválido.");
 				return mv;
 			}
 
 			if (file.getBytes().length >= 65535) {
 				mv.addObject("imagem", new Imagem());
-				mv.addObject("idEntidade", id);
+				mv.addObject("idEntidade", super.decodificarBase64Long(id));
 				mv.addObject("mensagemErro", "Máximo permitido 65KB!");
 				return mv;
 			}
@@ -136,7 +135,7 @@ public class ItemServicoControlador {
 			imagem.setFoto(Util.toObjects(file.getBytes()));
 			imagem = imagemBO.salvar(imagem);
 			
-			ItemServico itemServico = itemServicoBO.buscarPorId(id);
+			ItemServico itemServico = itemServicoBO.buscarPorId(super.decodificarBase64Long(id));
 			
 			ImagemItemServico imagemItemServico = new ImagemItemServico();
 			imagemItemServico.setImagem(imagem);
@@ -154,9 +153,8 @@ public class ItemServicoControlador {
 	public ModelAndView excluir(@PathVariable Long idItem, @PathVariable Long idImagem) {
 		ImagemItemServico imagemItemServico = imagemBO.buscarPorId(idItem, idImagem);
 		imagemBO.excluir(idImagem);
-		imagemBO.excluirImagemItemServico(imagemItemServico.getId());
-		
-		return upload(this.idEntidade);
+		imagemBO.excluirImagemItemServico(imagemItemServico.getId());		
+		return upload(super.codificarBase64(this.idEntidade));
 	}
 
 }

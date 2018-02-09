@@ -28,3 +28,7 @@ target/classes/templates/index.html
 target/classes/META-INF/maven/br.com.sistema/mcosta/pom.properties
 target/classes/META-INF/MANIFEST.MF
 target/classes/templates/index.html
+target/classes/application.properties
+target/classes/application.properties
+target/classes/static/lib/counterup/counterup.min.js
+target/classes/application.properties

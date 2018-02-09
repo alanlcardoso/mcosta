@@ -13,7 +13,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "identificacao_sobre_detalhe")
-public class IdentificacaoSobreDetalhe implements Serializable {
+public class IdentificacaoSobreDetalhe extends AbstractEntidade implements Serializable {
 
 	private static final long serialVersionUID = 8684062315905211824L;
 	

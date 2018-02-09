@@ -13,7 +13,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "imagem_item_servico")
-public class ImagemItemServico implements Serializable {
+public class ImagemItemServico extends AbstractEntidade implements Serializable {
 
 	private static final long serialVersionUID = -4599296916868617909L;
 

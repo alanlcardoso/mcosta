@@ -11,7 +11,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "cliente_servico")
-public class ClienteServico {
+public class ClienteServico extends AbstractEntidade {
 
 	@Id
 	@GenericGenerator(name = "generator_cliente", strategy = "increment")

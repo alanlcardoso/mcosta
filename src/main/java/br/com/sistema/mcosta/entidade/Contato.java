@@ -19,7 +19,7 @@ import br.com.sistema.mcosta.enums.TipoLogradouro;
 
 @Entity
 @Table(name = "contato")
-public class Contato implements Serializable {
+public class Contato extends AbstractEntidade implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

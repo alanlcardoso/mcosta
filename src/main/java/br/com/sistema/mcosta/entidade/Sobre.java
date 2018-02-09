@@ -18,7 +18,7 @@ import org.springframework.format.annotation.NumberFormat;
 
 @Entity
 @Table(name = "sobre")
-public class Sobre implements Serializable {
+public class Sobre extends AbstractEntidade implements Serializable {
 
 	private static final long serialVersionUID = 8684062315905211824L;
 	

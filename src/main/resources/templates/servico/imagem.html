@@ -17,7 +17,7 @@
 					</div>
 				</div>
 				<div class="panel-body">
-					<input type="hidden" th:field="*{id}" />
+					<input type="hidden" th:field="*{idBase64}" />
 					<input type="hidden" th:field="*{foto}" />
 					
 					<input type="file" name="file" />
@@ -32,7 +32,7 @@
 									<div class="pic figure">
 										<img th:src="@{'data:image/jpeg;base64,'+${imagemItem.imagem.fotoBase64}}" alt="">
 										<div class="middle">
-									      <a th:href="@{/administracao/servico/item/{idItem}/imagem/{idImagem}/excluir(idItem=${imagemItem.itemServico.id}, idImagem=${imagemItem.imagem.id})}" 
+									      <a th:href="@{/administracao/servico/item/{idItem}/imagem/{idImagem}/excluir(idItem=${imagemItem.itemServico.idBase64}, idImagem=${imagemItem.imagem.id})}" 
 									      		title="Excluir">
 									      	<span class="glyphicon glyphicon-remove" style="color: #fff; font-size: 25px;"></span>
 									      </a>

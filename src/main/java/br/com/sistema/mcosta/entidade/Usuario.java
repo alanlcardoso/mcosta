@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "usuario")
-public class Usuario implements Serializable {
+public class Usuario extends AbstractEntidade implements Serializable {
 
     private static final long serialVersionUID = 201711212139L;
 
@@ -37,11 +37,11 @@ public class Usuario implements Serializable {
     @JoinTable(name = "usuario_permissao", joinColumns = @JoinColumn(name = "codigo_usuario"), inverseJoinColumns = @JoinColumn(name = "codigo_permissao"))
     private List<Permissao> permissoes;
 
-    public Long getCodigo() {
+    public Long getId() {
         return id;
     }
 
-    public void setCodigo(Long codigo) {
+    public void setId(Long codigo) {
         this.id = codigo;
     }
 
@@ -76,8 +76,8 @@ public class Usuario implements Serializable {
     public void setPermissoes(List<Permissao> permissoes) {
         this.permissoes = permissoes;
     }
-
-    @Override
+    
+	@Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;

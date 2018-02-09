@@ -15,7 +15,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "Servico")
-public class Servico implements Serializable {
+public class Servico extends AbstractEntidade implements Serializable {
 
 	private static final long serialVersionUID = 201711261509l;
 

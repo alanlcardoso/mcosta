@@ -19,7 +19,7 @@ import br.com.sistema.mcosta.util.Util;
 
 @Entity
 @Table(name = "cliente")
-public class Cliente {
+public class Cliente extends AbstractEntidade {
 
 	@Id
 	@GenericGenerator(name = "generator_cliente", strategy = "increment")

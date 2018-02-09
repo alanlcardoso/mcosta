@@ -25,7 +25,7 @@ import br.com.sistema.mcosta.util.Validacao;
 
 @Controller
 @RequestMapping("/administracao/servico")
-public class ServicoControlador {
+public class ServicoControlador extends AbstractControlador {
 
 	private static final String CADASTRO = "servico/novo";
 	private static final String PESQUISAR = "servico/pesquisar";
@@ -73,11 +73,11 @@ public class ServicoControlador {
 	}
 
 	@GetMapping("/{id}")
-	public ModelAndView edicao(@PathVariable Long id) {
-		this.servico = servicoBO.buscarPorId(id);
+	public ModelAndView edicao(@PathVariable String id) {
+		this.servico = servicoBO.buscarPorId(super.decodificarBase64Long(id));
 		ModelAndView mv = new ModelAndView(CADASTRO);
 		mv.addObject(this.servico);
-		mv.addObject("itensServico", itemServicoBO.buscarPorIdServico(id));
+		mv.addObject("itensServico", itemServicoBO.buscarPorIdServico(super.decodificarBase64Long(id)));
 		return mv;
 	}
 
@@ -86,7 +86,7 @@ public class ServicoControlador {
 		if (id == null) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Favor selecionar um Item.");
 		}
-		servicoBO.excluir(Long.parseLong(id));
+		servicoBO.excluir(super.decodificarBase64Long(id));
 		return ResponseEntity.ok("Registro excluído com sucesso.");
 	}
 

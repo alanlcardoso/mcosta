@@ -23,7 +23,7 @@ import br.com.sistema.mcosta.servico.ContatoBO;
 
 @Controller
 @RequestMapping("/administracao/contato")
-public class ContatoControlador {
+public class ContatoControlador extends AbstractControlador {
 
 	private static final String CADASTRO = "contato/novo";
 	private static final String PESQUISAR = "contato/pesquisar";
@@ -63,8 +63,8 @@ public class ContatoControlador {
 	}
 
 	@GetMapping("/{id}")
-	public ModelAndView edicao(@PathVariable Long id) {
-		this.contato = contatoBO.buscarPorId(id);
+	public ModelAndView edicao(@PathVariable String id) {
+		this.contato = contatoBO.buscarPorId(super.decodificarBase64Long(id));
 		ModelAndView mv = new ModelAndView(CADASTRO);
 		mv.addObject(this.contato);
 		return mv;

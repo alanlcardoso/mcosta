@@ -17,7 +17,7 @@ import br.com.sistema.mcosta.util.Util;
 
 @Entity
 @Table(name = "imagem")
-public class Imagem implements Serializable {
+public class Imagem extends AbstractEntidade implements Serializable {
 
 	private static final long serialVersionUID = 2590326424009104950L;
 

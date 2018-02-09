@@ -29,16 +29,16 @@ import br.com.sistema.mcosta.util.Util;
 
 @Controller
 @RequestMapping("/administracao/cliente")
-public class ClienteControlador {
+public class ClienteControlador extends AbstractControlador {
 
 	private static final String CADASTRO = "cliente/novo";
 	private static final String PESQUISAR = "cliente/pesquisar";
 	private static final String UPLOAD = "cliente/logo";
 	private Cliente cliente;
-	
+
 	@Autowired
 	private ClienteBO clienteBO;
-	
+
 	@Autowired
 	private ServicoBO servicoBO;
 
@@ -46,7 +46,7 @@ public class ClienteControlador {
 	public ModelAndView cadastro() {
 		ModelAndView mv = new ModelAndView(CADASTRO);
 		this.cliente = new Cliente();
-		mv.addObject(this.cliente);	
+		mv.addObject(this.cliente);
 		mv.addObject("servicos", servicoBO.buscarTodos());
 		return mv;
 	}
@@ -70,8 +70,8 @@ public class ClienteControlador {
 	}
 
 	@GetMapping("/{id}")
-	public ModelAndView edicao(@PathVariable Long id) {
-		this.cliente = clienteBO.buscaPorId(id);
+	public ModelAndView edicao(@PathVariable String id) {
+		this.cliente = clienteBO.buscaPorId(super.decodificarBase64Long(id));
 		ModelAndView mv = new ModelAndView(CADASTRO);
 		mv.addObject(this.cliente);
 		mv.addObject("servicos", servicoBO.buscarTodos());
@@ -79,8 +79,8 @@ public class ClienteControlador {
 	}
 
 	@GetMapping("/upload/{id}")
-	public ModelAndView upload(@PathVariable Long id) {
-		this.cliente = clienteBO.buscaPorId(id);
+	public ModelAndView upload(@PathVariable String id) {
+		this.cliente = clienteBO.buscaPorId(super.decodificarBase64Long(id));
 		ModelAndView mv = new ModelAndView(UPLOAD);
 		mv.addObject(this.cliente);
 		return mv;
@@ -117,7 +117,7 @@ public class ClienteControlador {
 				mv.setViewName(UPLOAD);
 				return mv;
 			}
-			
+
 			cliente.setLogo(Util.toObjects(file.getBytes()));
 			clienteBO.salvarImagem(cliente);
 
@@ -125,6 +125,6 @@ public class ClienteControlador {
 			System.out.println("Erro ao tentar ler arquivo para verificar se é imagem.");
 		}
 
-		return upload(this.cliente.getId());
+		return upload(this.cliente.getIdBase64());
 	}
 }
