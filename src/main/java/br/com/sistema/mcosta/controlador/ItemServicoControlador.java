@@ -83,7 +83,7 @@ public class ItemServicoControlador extends AbstractControlador {
 		this.itemServico = itemServicoBO.buscarPorId(super.decodificarBase64Long(id));
 		ModelAndView mv = new ModelAndView(CADASTRO);
 		mv.addObject(this.itemServico);
-		mv.addObject("idServico", this.itemServico.getServico().getId());
+		mv.addObject("idServico", this.itemServico.getServico().getIdBase64());
 		return mv;
 	}
 

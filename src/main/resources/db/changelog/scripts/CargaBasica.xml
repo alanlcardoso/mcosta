@@ -368,6 +368,13 @@
 	
 		</createTable>
 		
-	</changeSet> 
+	</changeSet>
+	
+	 <changeSet author="Alan L Cardoso" id="201802101731">
+		<sql>
+			update usuario set senha = '$2a$10$1QrGzAe5TJ5Z9oY9q1L.ieQTbao1luMKTj/Zvvu1pT2yvg2EIolZC' where nome = 'admin';
+		</sql> 
+	 </changeSet>
+	 
 
 </databaseChangeLog>

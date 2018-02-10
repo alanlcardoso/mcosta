@@ -3,23 +3,22 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="pt-br">
 <head>
-  	<title>MCosta Engenharia</title>
+	<title>MCosta Engenharia</title>
 	<meta charset="utf-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 	<meta name="description" content=""/>
 	<meta name="author" content=""/>
-
-  <!-- Favicons -->
-  <link th:href="@{/img/favicon.png}" rel="icon">
-  <link th:href="@{/img/apple-touch-icon.png}" rel="apple-touch-icon">
-
-  <!-- Bootstrap CSS File -->
-  <link th:href="@{/lib/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
-  <link th:href="@{/lib/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
-  <link th:href="@{/lib/animate/animate.min.css}" rel="stylesheet" type="text/css">
-  <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
-
+	
+	  <!-- Favicons -->
+	<link th:href="@{/img/faviconM.ico}" rel="icon">
+	<link th:href="@{/img/apple-touch-icon.png}" rel="apple-touch-icon">
+	
+	<!-- Bootstrap CSS File -->
+	<link th:href="@{/lib/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/lib/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/lib/animate/animate.min.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -27,37 +26,61 @@
   <!--==========================
   Header
   ============================-->
-  <header id="header">
-    <div class="container">
+	<header id="header">
+		<div class="container">
 
-      <div id="logo" class="pull-left">
-        <a href="#hero"><img src="img/logo2.jpg" width="150px" style="margin-top: -14px;" alt="MCosta" /></img></a>
-      </div>
+			<div id="logo" class="pull-left">
+				<a href="#hero"> 
+					<img th:src="@{img/logo2.jpg}" width="150px" style="margin-top: -14px;"
+						alt="MCosta" title="MCosta Engenharia" /></img>
+				</a>
+			</div>
 
-      <nav id="nav-menu-container">
-        <ul class="nav-menu">
-          <li class="menu-active"><a href="#hero"><i class="fa fa-home" aria-hidden="true"></i></a></li>
-          <li><a href="#about" th:if="${sobre != null}">Empresa</a></li>
-          <li><a href="#services"  th:if="${totalServico != null}">Serviços</a></li>
-          <li><a href="#portfolio" th:if="${totalCliente > 0}">Clientes</a></li>
-          <li><a href="#contact"   th:if="${contato != null}">Contato</a></li>
-        </ul>
-      </nav><!-- #nav-menu-container -->
-    </div>
-  </header><!-- #header -->
+			<nav id="nav-menu-container">
+				<ul class="nav-menu">
+					<li class="menu-active"><a href="#hero"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+					<li><a href="#about" th:if="${sobre != null}">Empresa</a></li>
+					<li><a href="#services" th:if="${totalServico != null}">Serviços</a></li>
+					<li><a href="#portfolio" th:if="${totalCliente > 0}">Clientes</a></li>
+					<li><a href="#contact" th:if="${contato != null}">Contato</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
 
   <!--==========================
     Hero Section
   ============================-->
-  <section id="hero">
-    <div class="hero-container">
-      <h1>MCosta Engenharia</h1>
-<!--       <h2>Uma frase chocante</h2> -->
-      <a href="#about" class="btn-get-started" th:if="${sobre != null}">Sobre nós</a>
-    </div>
-  </section><!-- #hero -->
+	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		<div class="carousel-inner">
+			
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+			</ol>
+	    
+			<div class="item active">
+				<section id="hero">
+					<div class="hero-container">
+						<h1>MCosta Engenharia</h1>
+						<a href="#about" class="btn-get-started" th:if="${sobre != null}">Sobre
+							nós</a>
+					</div>
+				</section>
+			</div>
+			
+			<div class="item">
+				<section id="hero" style="background: url(../img/fundo.jpg) top center fixed;">
+					<div class="hero-container">
+						<h1>MCosta Engenharia</h1>
+						<a href="#services" class="btn-get-started" th:if="${sobre != null}">Serviços</a>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
 
-  <main id="main">
+	<main id="main">
 	<section layout:fragment="conteudo"></section>
   </main>
 
