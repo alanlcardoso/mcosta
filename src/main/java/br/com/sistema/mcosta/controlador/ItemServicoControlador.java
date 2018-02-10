@@ -49,7 +49,7 @@ public class ItemServicoControlador extends AbstractControlador {
 	@Autowired
 	private ImagemBO imagemBO;
 	
-	private Long idEntidade;
+	private String idEntidade;
 	
 	@GetMapping("/{id}/novo/item")
 	public ModelAndView cadastro(@PathVariable String id) {
@@ -98,10 +98,10 @@ public class ItemServicoControlador extends AbstractControlador {
 	
 	@GetMapping("/{id}/item/upload")
 	public ModelAndView upload(@PathVariable String id) {
-		this.idEntidade = super.decodificarBase64Long(id);		
+		this.idEntidade = id;		
 		ModelAndView mv = new ModelAndView(UPLOAD);
 		mv.addObject(new Imagem());
-		mv.addObject("idEntidade", super.decodificarBase64Long(id));
+		mv.addObject("idEntidade", id);
 		mv.addObject("imagensItemServico", itemServicoBO.buscarPorId(super.decodificarBase64Long(id)).getImagensItemServico());
 		return mv;
 	}
@@ -111,7 +111,7 @@ public class ItemServicoControlador extends AbstractControlador {
 		ModelAndView mv = new ModelAndView(UPLOAD);
 		
 		mv.addObject(new Imagem());
-		mv.addObject("idEntidade", super.decodificarBase64Long(id));
+		mv.addObject("idEntidade", id);
 		mv.addObject("imagensItemServico", itemServicoBO.buscarPorId(super.decodificarBase64Long(id)).getImagensItemServico());
 		
 		try {
@@ -119,14 +119,14 @@ public class ItemServicoControlador extends AbstractControlador {
 			if (file.isEmpty() || !(file.getOriginalFilename().endsWith("jpg") || file.getOriginalFilename().endsWith("png")
 					|| file.getOriginalFilename().endsWith("jpeg"))) {
 				mv.addObject("imagem", new Imagem());
-				mv.addObject("idEntidade", super.decodificarBase64Long(id));
+				mv.addObject("idEntidade", id);
 				mv.addObject("mensagemErro", "Logo inválido.");
 				return mv;
 			}
 
 			if (file.getBytes().length >= 65535) {
 				mv.addObject("imagem", new Imagem());
-				mv.addObject("idEntidade", super.decodificarBase64Long(id));
+				mv.addObject("idEntidade", id);
 				mv.addObject("mensagemErro", "Máximo permitido 65KB!");
 				return mv;
 			}
@@ -154,7 +154,7 @@ public class ItemServicoControlador extends AbstractControlador {
 		ImagemItemServico imagemItemServico = imagemBO.buscarPorId(idItem, idImagem);
 		imagemBO.excluir(idImagem);
 		imagemBO.excluirImagemItemServico(imagemItemServico.getId());		
-		return upload(super.codificarBase64(this.idEntidade));
+		return upload(this.idEntidade);
 	}
 
 }

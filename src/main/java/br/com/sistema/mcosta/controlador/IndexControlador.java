@@ -76,7 +76,6 @@ public class IndexControlador extends AbstractControlador {
 		mv.addObject("totalCliente", clienteBO.buscarTotalCliente());
 		mv.addObject("clientes", clienteBO.buscarClientesPorPagina(Integer.MAX_VALUE));
 		mv.addObject("totalServico", servicos.getContent().isEmpty() ? null : servicos);
-		
 		List<Contato> contatos = contatoBO.buscarTodos();		
 		mv.addObject("contato", contatos.isEmpty() ? null : contatos.get(0));
 		mv.addObject(new Mensagem());

@@ -21,24 +21,25 @@
 							</div>
 							<h4 class="title" th:text="${servico.nome}"></h4>
 							<p class="description" th:text="${servico.descricao}"></p>
-							<div th:each="item : ${servico.itens}">
-								<hr />
-								<p class="description" th:text="${item.descricao}"></p>
+
+							<div th:each="app, stat : ${servico.itens}">
+								<p class="description" th:text="${app.descricao}"></p>
+
+								<div class="row">
+									<div class="col-lg-3 col-md-6" th:each="img : ${servico.itens[__${stat.index}__].imagensItemServico}">
+										<div class="member">
+											<div class="pic">
+												<img th:src="@{'data:image/jpeg;base64,'+${img.imagem.fotoBase64}}" alt="">
+											</div>
+										</div>
+									</div>
+								</div>
+								
 							</div>
 						</div>
 					</div>
 				</div>
 			</section>
-			<p th:text="${servico.itens.imagensItemServico}"></p>
-			<!-- <div class="row">
-				<div class="col-lg-3 col-md-6" th:each="item : ${servico.itens.imagensItemServico}">
-					<div class="member">
-						<div class="pic">
-							<img th:src="@{'data:image/jpeg;base64,'+${item.imagem.fotoBase64}}" alt="">
-						</div>
-					</div>
-				</div>
-			</div> -->
 		</div>
 	</section>
 
