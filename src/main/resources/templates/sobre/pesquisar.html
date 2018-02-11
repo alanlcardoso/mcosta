@@ -51,7 +51,7 @@
 							<td th:text="${sobre.sobreDetalhe3.descricao}"></td>
 							<td class="text-center" th:text="${sobre.sobreDetalhe3.icone}"></td>
 							<td class="text-center">
-								<a class="btn btn-link btn-xs" title="Editar" th:href="@{/administracao/sobre/{id}(id=${sobre.id})}">
+								<a class="btn btn-link btn-xs" title="Editar" th:href="@{/administracao/sobre/{id}(id=${sobre.idBase64})}">
 									<span class="glyphicon glyphicon-pencil"></span>
 								</a>
 							</td>
