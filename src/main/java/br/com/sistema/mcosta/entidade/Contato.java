@@ -55,7 +55,7 @@ public class Contato extends AbstractEntidade implements Serializable {
 	private Estado estado;
 	
 	@NotBlank(message = "CEP é obrigatório.")
-	@Size(max = 10, message = "O CEP não pode conter mais que 10 caracteres")
+	@Size(max = 8, message = "O CEP não pode conter mais que 8 caracteres")
 	private String cep;
 	
 	@NotBlank(message = "Latitude é obrigatório.")
