@@ -124,10 +124,10 @@ public class IndexControlador extends AbstractControlador {
 	}
 	
 	@GetMapping("/cliente/{idCliente}/servico/{idServico}")
-	public ModelAndView itemServico(@PathVariable Long idCliente, @PathVariable Long idServico) {
+	public ModelAndView itemServico(@PathVariable String idCliente, @PathVariable String idServico) {
 		ModelAndView mv = new ModelAndView(CLIENTE_SERVICO);
-		mv.addObject("cliente", clienteBO.buscaPorId(idCliente));
-		mv.addObject("servico", servicoBO.buscarPorId(idServico));
+		mv.addObject("cliente", clienteBO.buscaPorId(super.decodificarBase64Long(idCliente)));
+		mv.addObject("servico", servicoBO.buscarPorId(super.decodificarBase64Long(idServico)));
 		mv.addObject("menuAdmin", false);
 		return mv;
 	}

@@ -203,7 +203,7 @@
 	 					       	<div class="modal-body">
 	 					          	<ul class="list-group">
 	 									<li class="list-group-item" th:each="servico : ${item.servicos}">
-	 								  		<a th:href="@{/cliente/{idCliente}/servico/{idServico}(idCliente=${item.id}, idServico=${servico.id})}">
+	 								  		<a th:href="@{/cliente/{idCliente}/servico/{idServico}(idCliente=${item.idBase64}, idServico=${servico.idBase64})}">
 	 								    		<i class="fa fa-minus icone-modal"></i>
 	 								    		<span class="item-modal" th:text="${servico.servico.nome}"></span>
 	 								  		</a>

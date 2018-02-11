@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.Email;
@@ -29,40 +30,49 @@ public class Contato extends AbstractEntidade implements Serializable {
 	private Long id;
 
 	@NotBlank(message = "Título é obrigatório.")
+	@Size(max = 60, message = "O título não pode conter mais que 60 caracteres")
 	private String titulo;
 	
 	@Enumerated(EnumType.STRING)
 	private TipoLogradouro tipoLogradouro;
 	
 	@NotBlank(message = "Logradouro é obrigatório.")
+	@Size(max = 80, message = "O logradouro não pode conter mais que 80 caracteres")
 	private String logradouro;
 	
 	@NotNull(message = "Número é obrigatório.")
 	private Integer numero;
 	
 	@NotBlank(message = "Bairro é obrigatório.")
+	@Size(max = 60, message = "O bairro não pode conter mais que 60 caracteres")
 	private String bairro;
 	
 	@NotBlank(message = "Cidade é obrigatório.")
+	@Size(max = 60, message = "A cidade não pode conter mais que 60 caracteres")
 	private String cidade;
 	
 	@Enumerated(EnumType.STRING)
 	private Estado estado;
 	
 	@NotBlank(message = "CEP é obrigatório.")
+	@Size(max = 10, message = "O CEP não pode conter mais que 10 caracteres")
 	private String cep;
 	
 	@NotBlank(message = "Latitude é obrigatório.")
+	@Size(max = 20, message = "A latitude não pode conter mais que 20 caracteres")
 	private String latitude;
 	
 	@NotBlank(message = "Longitude é obrigatório.")
+	@Size(max = 20, message = "A longitude não pode conter mais que 20 caracteres")
 	private String longitude;
 	
 	@Email
 	@NotBlank(message = "Email é obrigatório.")
+	@Size(max = 100, message = "O email não pode conter mais que 100 caracteres")
 	private String email;
 	
 	@NotBlank(message = "Telefone é obrigatório.")
+	@Size(max = 11, message = "O telefone não pode conter mais que 11 caracteres")
 	private String telefone;
 
 	public Long getId() {

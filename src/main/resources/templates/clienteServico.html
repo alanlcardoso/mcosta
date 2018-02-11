@@ -8,10 +8,10 @@
 
 	<section id="team">
 		<div class="container wow fadeInUp">
-			<div class="section-header">
-				<h3 class="section-title" th:text="${cliente.nome}"></h3>
+			<div style="margin: auto; width: 20%;">
+				<img th:src="@{'data:image/jpeg;base64,'+${cliente.logoBase64}}" alt="Cliente" width="200">
 			</div>
-
+			
 			<section id="about" style="margin-left: 15px; margin-bottom: -40px;">
 				<div class="row about-container">
 					<div class="content order-lg-1 order-2">
@@ -19,19 +19,33 @@
 							<div class="icon">
 								<i th:classappend="'fa ' + ${servico.imagem}"></i>
 							</div>
-							<h4 class="title" th:text="${servico.nome}"></h4>
-							<p class="description" th:text="${servico.descricao}"></p>
+							<h4 class="title" th:text="${servico.nome}" style="font-size: 20px"></h4>
+							<p class="description" th:text="${servico.descricao}" style="font-size: 18px"></p>
 
 							<div th:each="app, stat : ${servico.itens}">
-								<p class="description" th:text="${app.descricao}"></p>
+							
+								<hr/>
+								
+								<p class="description" th:text="${app.descricao}" style="font-size: 18px"></p>
 
 								<div class="row">
 									<div class="col-lg-3 col-md-6" th:each="img : ${servico.itens[__${stat.index}__].imagensItemServico}">
-										<div class="member">
-											<div class="pic">
-												<img th:src="@{'data:image/jpeg;base64,'+${img.imagem.fotoBase64}}" alt="">
+										<div class="member hover">
+											<div class="pic figure">
+												<a href="" data-toggle="modal" th:attr="data-target='#modalImagem' + ${img.imagem.id}">
+											    	<img th:src="@{'data:image/jpeg;base64,'+${img.imagem.fotoBase64}}">
+											  	</a>
 											</div>
 										</div>
+										
+										<!-- Modal Imagem -->
+									  	<div class="modal fade" th:id="'modalImagem' + ${img.imagem.id}" role="dialog" style="background-color: rgba(0,0,0,0.9);">
+									    	<div class="modal-dialog">
+									        	<button type="button" class="close" data-dismiss="modal" style="color: #fff; font-size: 35px;">&times;</button>
+									          	<img th:src="@{'data:image/jpeg;base64,'+${img.imagem.fotoBase64}}" style="float:left; width:100%;">
+									    	</div>
+								      	</div>
+								      	
 									</div>
 								</div>
 								

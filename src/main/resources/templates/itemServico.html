@@ -30,11 +30,21 @@
 
 			<div class="row">
 				<div class="col-lg-3 col-md-6" th:each="imagemItem : ${item.imagensItemServico}">
-					<div class="member">
-						<div class="pic">
-							<img th:src="@{'data:image/jpeg;base64,'+${imagemItem.imagem.fotoBase64}}" alt="">
+					<div class="member hover">
+						<div class="pic figure">
+							<a href="" data-toggle="modal" th:attr="data-target='#modalImagem' + ${imagemItem.id}">
+						    	<img th:src="@{'data:image/jpeg;base64,'+${imagemItem.imagem.fotoBase64}}" alt="">
+						  	</a>
 						</div>
 					</div>
+					
+					<!-- Modal Imagem -->
+				  	<div class="modal fade" th:id="'modalImagem' + ${imagemItem.id}" role="dialog" style="background-color: rgba(0,0,0,0.9);">
+				    	<div class="modal-dialog">
+				        	<button type="button" class="close" data-dismiss="modal" style="color: #fff; font-size: 35px;">&times;</button>
+				          	<img th:src="@{'data:image/jpeg;base64,'+${imagemItem.imagem.fotoBase64}}" style="float:left; width:100%;">
+				    	</div>
+			      	</div>
 				</div>
 			</div>
 		</div>
