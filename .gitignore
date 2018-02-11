@@ -32,3 +32,5 @@ target/classes/application.properties
 target/classes/application.properties
 target/classes/static/lib/counterup/counterup.min.js
 target/classes/application.properties
+target/classes/META-INF/maven/br.com.sistema/mcosta/pom.properties
+target/classes/static/lib/bootstrap/css/bootstrap.min.css
