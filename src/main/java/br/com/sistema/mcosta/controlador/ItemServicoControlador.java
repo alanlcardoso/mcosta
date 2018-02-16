@@ -120,14 +120,14 @@ public class ItemServicoControlador extends AbstractControlador {
 					|| file.getOriginalFilename().endsWith("jpeg"))) {
 				mv.addObject("imagem", new Imagem());
 				mv.addObject("idEntidade", id);
-				mv.addObject("mensagemErro", "Logo inválido.");
+				mv.addObject("mensagemErro", "Imagem inválida.");
 				return mv;
 			}
 
-			if (file.getBytes().length >= 65535) {
+			if (file.getBytes().length >= 16777215) {
 				mv.addObject("imagem", new Imagem());
 				mv.addObject("idEntidade", id);
-				mv.addObject("mensagemErro", "Máximo permitido 65KB!");
+				mv.addObject("mensagemErro", "Máximo permitido 16MB!");
 				return mv;
 			}
 			
@@ -150,9 +150,9 @@ public class ItemServicoControlador extends AbstractControlador {
 	}
 	
 	@GetMapping("/item/{idItem}/imagem/{idImagem}/excluir")
-	public ModelAndView excluir(@PathVariable Long idItem, @PathVariable Long idImagem) {
-		ImagemItemServico imagemItemServico = imagemBO.buscarPorId(idItem, idImagem);
-		imagemBO.excluir(idImagem);
+	public ModelAndView excluir(@PathVariable String idItem, @PathVariable String idImagem) {
+		ImagemItemServico imagemItemServico = imagemBO.buscarPorId(super.decodificarBase64Long(idItem), super.decodificarBase64Long(idImagem));
+		imagemBO.excluir(super.decodificarBase64Long(idImagem));
 		imagemBO.excluirImagemItemServico(imagemItemServico.getId());		
 		return upload(this.idEntidade);
 	}

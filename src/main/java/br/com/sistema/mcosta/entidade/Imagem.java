@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -26,6 +27,7 @@ public class Imagem extends AbstractEntidade implements Serializable {
 	@GeneratedValue(generator = "generator_imagem")
 	private Long id;
 
+	@Lob
 	@Column(name = "foto", nullable = true, unique = false)
 	private Byte[] foto;
 	

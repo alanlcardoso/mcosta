@@ -10,7 +10,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.NotBlank;
@@ -31,7 +30,6 @@ public class ItemServico extends AbstractEntidade implements Serializable {
 	private Servico servico;
 
 	@NotBlank(message = "Descrição é obrigatória.")
-	@Size(max = 200, message = "A descrição não pode conter mais de 200 caracteres")
 	private String descricao;
 	
 	@OneToMany(mappedBy="itemServico")

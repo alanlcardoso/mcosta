@@ -8,9 +8,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.NotBlank;
@@ -27,8 +29,10 @@ public class Cliente extends AbstractEntidade {
 	private Long id;
 
 	@NotBlank(message = "Nome é obrigatório.")
+	@Size(max = 300, message = "O nome não pode conter mais de 300 caracteres")
 	private String nome;
 
+	@Lob
 	@Column(name = "logo", nullable = true, unique = false)
 	private Byte[] logo;
 	

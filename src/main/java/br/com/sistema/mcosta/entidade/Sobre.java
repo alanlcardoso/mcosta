@@ -28,11 +28,10 @@ public class Sobre extends AbstractEntidade implements Serializable {
 	private Long id;
 
 	@NotBlank(message = "Título é obrigatório.")
-	@Size(max = 50, message = "O título não pode conter mais de 50 caracteres")
+	@Size(max = 300, message = "O título não pode conter mais de 300 caracteres")
 	private String titulo;
 	
 	@NotBlank(message = "Descrição é obrigatória.")
-	@Size(max = 500, message = "A descrição não pode conter mais de 500 caracteres")
 	private String descricao;
 	
 	@NotNull(message = "Quantidade de projetos é obrigatória.")

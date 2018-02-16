@@ -112,8 +112,8 @@ public class ClienteControlador extends AbstractControlador {
 				this.cliente = new Cliente();
 			}
 
-			if (file.getBytes().length >= 65535) {
-				mv.addObject("mensagemErro", "Máximo permitido 65KB!");
+			if (file.getBytes().length >= 16777215) {
+				mv.addObject("mensagemErro", "Máximo permitido 16MB!");
 				mv.setViewName(UPLOAD);
 				return mv;
 			}

@@ -28,7 +28,7 @@
 						<label for="titulo" class="col-sm-1 control-label">Título</label>
 						<div class="col-sm-11">
 							<input type="text" class="form-control" id="titulo"
-								placeholder="Título" maxlength="60" th:field="*{titulo}" />
+								placeholder="Título" maxlength="300" th:field="*{titulo}" />
 						</div>
 					</div>
 					<hr/>
@@ -45,7 +45,7 @@
 							<label for="logradouro" class="col-sm-1 control-label">Logradouro</label>
 							<div class="col-sm-5">
 								<input type="text" class="form-control" id="logradouro"
-									placeholder="Logradouro" maxlength="80" th:field="*{logradouro}" />
+									placeholder="Logradouro" maxlength="300" th:field="*{logradouro}" />
 							</div>
 						</div>
 						<div th:classappend="${#fields.hasErrors('numero')} ? has-error">
@@ -61,14 +61,14 @@
 							<label for="bairro" class="col-sm-1 control-label">Bairro</label>
 							<div class="col-sm-5">
 								<input type="text" class="form-control" id="bairro"
-									placeholder="Bairro" maxlength="60" th:field="*{bairro}" />
+									placeholder="Bairro" maxlength="300" th:field="*{bairro}" />
 							</div>
 						</div>
 						<div th:classappend="${#fields.hasErrors('cidade')} ? has-error">
 							<label for="cidade" class="col-sm-1 control-label">Cidade</label>
 							<div class="col-sm-5">
 								<input type="text" class="form-control" id="cidade"
-									placeholder="Cidade" maxlength="60" th:field="*{cidade}" />
+									placeholder="Cidade" maxlength="300" th:field="*{cidade}" />
 							</div>
 						</div>
 					</div>
@@ -85,7 +85,7 @@
 							<label for="cep" class="col-sm-1 control-label">CEP</label>
 							<div class="col-sm-5">
 								<input type="text" class="form-control" id="cep"
-									placeholder="CEP" maxlength="8" th:field="*{cep}" />
+									placeholder="CEP" maxlength="10" th:field="*{cep}" />
 							</div>
 						</div>
 					</div>
@@ -112,14 +112,14 @@
 							<label for="email" class="col-sm-1 control-label">E-mail</label>
 							<div class="col-sm-5">
 								<input type="email" class="form-control" id="email"
-									placeholder="E-mail" maxlength="100" th:field="*{email}" />
+									placeholder="E-mail" maxlength="300" th:field="*{email}" />
 							</div>
 						</div>
 						<div th:classappend="${#fields.hasErrors('longitude')} ? has-error">
 							<label for="telefone" class="col-sm-1 control-label">Telefone</label>
 							<div class="col-sm-5">
 								<input type="tel" class="form-control" id="telefone"
-									placeholder="Telefone" maxlength="11" th:field="*{telefone}" data-mask="(00) 0000-0000"/>
+									placeholder="Telefone" maxlength="16" th:field="*{telefone}"/>
 							</div>
 						</div>
 					</div>

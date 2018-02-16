@@ -376,5 +376,88 @@
 		</sql> 
 	 </changeSet>
 	 
+	 <changeSet author="Pedro" id="201802161955">
+	    <modifyDataType columnName="foto"
+	            newDataType="mediumblob"
+	            tableName="imagem"/>
+	            
+		<modifyDataType columnName="nome"
+	            newDataType="varchar(300)"
+	            tableName="cliente"/>
+	    
+	    <modifyDataType columnName="logo"
+	            newDataType="mediumblob"
+	            tableName="cliente"/>
+	            
+	    <modifyDataType columnName="titulo"
+	            newDataType="varchar(300)"
+	            tableName="contato"/>
+	            
+	    <modifyDataType columnName="logradouro"
+	            newDataType="varchar(300)"
+	            tableName="contato"/>
+	            
+	  	<modifyDataType columnName="bairro"
+	            newDataType="varchar(300)"
+	            tableName="contato"/>
+	            
+	    <modifyDataType columnName="cidade"
+	            newDataType="varchar(300)"
+	            tableName="contato"/>
+	            
+	    <modifyDataType columnName="email"
+	            newDataType="varchar(300)"
+	            tableName="contato"/>
+	            
+	    <modifyDataType columnName="telefone"
+	            newDataType="varchar(16)"
+	            tableName="contato"/>
+	            
+	    <modifyDataType columnName="cep"
+	            newDataType="varchar(10)"
+	            tableName="contato"/>
+	            
+	    <modifyDataType columnName="descricao"
+	            newDataType="text"
+	            tableName="item_servico"/>
+	            
+	    <modifyDataType columnName="nome"
+	            newDataType="varchar(300)"
+	            tableName="servico"/>
+	            
+	    <modifyDataType columnName="descricao"
+	            newDataType="text"
+	            tableName="servico"/>
+	            
+	    <modifyDataType columnName="titulo"
+	            newDataType="varchar(300)"
+	            tableName="sobre"/>
+	            
+		<modifyDataType columnName="descricao"
+	            newDataType="text"
+	            tableName="sobre"/>
+	            
+		<modifyDataType columnName="nome"
+	            newDataType="varchar(300)"
+	            tableName="sobre_detalhe"/>
+	            
+		<modifyDataType columnName="descricao"
+	            newDataType="text"
+	            tableName="sobre_detalhe"/>
+	          
+	    <modifyDataType columnName="nome"
+	            newDataType="varchar(300)"
+	            tableName="usuario"/>
+	            
+	    <modifyDataType columnName="email"
+	            newDataType="varchar(300)"
+	            tableName="usuario"/>
+	            
+	    <modifyDataType columnName="senha"
+	            newDataType="varchar(300)"
+	            tableName="usuario"/>
+	            
+	</changeSet>
+	 
 
 </databaseChangeLog>

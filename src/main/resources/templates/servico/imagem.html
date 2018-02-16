@@ -32,7 +32,7 @@
 									<div class="pic figure">
 										<img th:src="@{'data:image/jpeg;base64,'+${imagemItem.imagem.fotoBase64}}" alt="">
 										<div class="middle">
-									      <a th:href="@{/administracao/servico/item/{idItem}/imagem/{idImagem}/excluir(idItem=${imagemItem.itemServico.idBase64}, idImagem=${imagemItem.imagem.id})}" 
+									      <a th:href="@{/administracao/servico/item/{idItem}/imagem/{idImagem}/excluir(idItem=${imagemItem.itemServico.idBase64}, idImagem=${imagemItem.imagem.idBase64})}" 
 									      		title="Excluir">
 									      	<span class="glyphicon glyphicon-remove" style="color: #fff; font-size: 25px;"></span>
 									      </a>

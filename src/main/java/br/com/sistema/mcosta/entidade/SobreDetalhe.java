@@ -25,11 +25,10 @@ public class SobreDetalhe extends AbstractEntidade implements Serializable {
 	private Long id;
 
 	@NotBlank(message = "Nome é obrigatório.")
-	@Size(max = 50, message = "O nome não pode conter mais de 50 caracteres")
+	@Size(max = 300, message = "O nome não pode conter mais de 300 caracteres")
 	private String nome;
 	
 	@NotBlank(message = "Descrição é obrigatória.")
-	@Size(max = 500, message = "A descrição não pode conter mais de 500 caracteres")
 	private String descricao;
 	
 	@NotBlank(message = "Ícone é obrigatório.")
