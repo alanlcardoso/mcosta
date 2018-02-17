@@ -524,7 +524,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin-left: 80px;
   font-weight: 500;
   margin-bottom: 5px;
-  font-size: 18px;
+  font-size: 20px;
   text-transform: uppercase;
 }
 
@@ -535,7 +535,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 #about .about-container .icon-box .description {
   margin-left: 80px;
   line-height: 24px;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 /* Facts Section
@@ -555,7 +555,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   padding: 0;
   margin: 0 0 20px 0;
   font-family: "Poppins", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 /* Services Section
@@ -611,7 +611,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #services .title {
   font-weight: 700;
-  font-size: 18px;
+  font-size: 20px;
   margin-bottom: 15px;
   text-transform: uppercase;
 }
@@ -621,7 +621,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #services .description {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 24px;
 }
 
@@ -740,7 +740,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #portfolio .portfolio-item .details h4 {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   color: #fff;
   padding: 8px 0 2px 8px;
@@ -839,7 +839,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   padding: 0 0 10px 50px;
   margin-bottom: 20px;
   line-height: 22px;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 #contact .info .email p {
@@ -904,7 +904,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 #contact .form input, #contact .form textarea {
   border-radius: 0;
   box-shadow: none;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 #contact .form button[type="submit"] {
@@ -926,7 +926,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   background: #343b40;
   padding: 30px 0;
   color: #fff;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 #footer .copyright {
@@ -1038,7 +1038,7 @@ li > a, li > a:hover {
 }
 
 .hover .figure {
-	background: #000;
+	/* background: #000; */
 }
 .hover .figure img {
 	opacity: 1;
