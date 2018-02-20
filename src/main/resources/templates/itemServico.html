@@ -19,8 +19,8 @@
 							<div class="icon">
 								<i th:classappend="'fa ' + ${item.servico.imagem}"></i>
 							</div>
-							<h4 class="title" th:text="${item.servico.nome}"></h4>
-							<p class="description" th:text="${item.servico.descricao}"></p>
+							<h4 class="title" th:utext="${item.servico.nome}"></h4>
+							<p class="description" th:utext="${item.servico.descricao}"></p>
 							<hr />
 							<p style="font-size: 20px;word-wrap: break-word" class="description" th:utext="${item.descricao}"></p>
 						</div>
