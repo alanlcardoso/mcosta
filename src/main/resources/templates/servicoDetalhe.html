@@ -14,7 +14,7 @@
 							<i th:classappend="'fa ' + ${servico.imagem}"></i>
 						</div>
 						<h4 class="title" th:text="${servico.nome}"></h4>
-						<p class="description" th:text="${servico.descricao}"></p>
+						<p class="description" th:utext="${servico.descricao}"></p>
 					</div>
 				</div>
 			</div>

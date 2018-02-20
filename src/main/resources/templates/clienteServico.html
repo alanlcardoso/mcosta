@@ -20,7 +20,7 @@
 								<i th:classappend="'fa ' + ${servico.imagem}"></i>
 							</div>
 							<h4 class="title" th:text="${servico.nome}" style="font-size: 20px"></h4>
-							<p class="description" th:text="${servico.descricao}" style="font-size: 16px"></p>
+							<p class="description" uth:text="${servico.descricao}" style="font-size: 16px"></p>
 
 							<div th:each="app, stat : ${servico.itens}">
 							

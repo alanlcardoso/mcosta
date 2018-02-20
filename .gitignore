@@ -37,3 +37,6 @@ target/classes/static/lib/bootstrap/css/bootstrap.min.css
 target/classes/META-INF/maven/br.com.sistema/mcosta/pom.properties
 target/classes/META-INF/maven/br.com.sistema/mcosta/pom.properties
 target/classes/META-INF/MANIFEST.MF
+target/classes/templates/index.html
+target/classes/templates/index.html
+target/classes/templates/index.html

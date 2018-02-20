@@ -118,11 +118,11 @@
 							
 							<a href="" data-toggle="modal"
 								th:attr="data-target='#modalServico'+${servico.id}"
-								th:text="${servico.nome}"
+								th:utext="${servico.nome}"
 								th:if="${servico.itens.size() > 0}">
 							</a>
 						</h4>
-						<p class="description" th:text="${servico.descricao}"></p>
+						<p class="description" th:utext="${servico.descricao}"></p>
 					</div>
 
 					<!-- Modal Serviço -->
@@ -140,7 +140,7 @@
 										<li class="list-group-item" th:each="item : ${servico.itens}">
 											<a th:href="@{/servico/item/{id}(id=${item.idBase64})}"> <i
 												class="fa fa-check icone-modal"></i> <span
-												class="item-modal" th:text="${item.descricao}"></span>
+												class="item-modal" th:utext="${item.descricao}"></span>
 										</a>
 										</li>
 									</ul>
