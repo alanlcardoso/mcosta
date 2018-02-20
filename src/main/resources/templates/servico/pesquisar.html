@@ -27,7 +27,7 @@
 					<tbody>
 						<tr th:each="item : ${servicos}">
 							<td th:text="${item.nome}"></td>
-							<td th:text="${item.descricao}"></td>
+							<td th:utext="${item.descricao}"></td>
 							<td class="text-center" th:text="${item.imagem}"></td>
 							<td class="text-center">
 								<a class="btn btn-link btn-xs" title="Editar"

@@ -26,7 +26,7 @@
 					<div class="form-group"
 						th:classappend="${#fields.hasErrors('nome')} ? has-error">
 						<label for="nome" class="col-sm-2 control-label">Nome</label>
-						<div class="col-sm-4">
+						<div class="col-sm-10">
 							<input type="text" class="form-control" id="nome"
 								placeholder="Nome" maxlength="300" th:field="*{nome}" />
 						</div>
@@ -34,15 +34,18 @@
 					<div class="form-group"
 						th:classappend="${#fields.hasErrors('descricao')} ? has-error">
 						<label for="descricao" class="col-sm-2 control-label">Descrição</label>
-						<div class="col-sm-4">
-							<textarea class="form-control" id="descricao" rows="5" 
+						<div class="col-sm-10">
+							<textarea class="form-control" id="descricao" rows="10" 
 								placeholder="Descrição" th:field="*{descricao}"></textarea>
+							 <a class="btn btn-link btn-xs ajuste-link"
+								href="http://www.unit-conversion.info/texttools/text-to-html/" target="_blank">
+								Formate seu texto aqui</a>
 						</div>
 					</div>
 					<div class="form-group"
 						th:classappend="${#fields.hasErrors('imagem')} ? has-error">
 						<label for="icone" class="col-sm-2 control-label">Ícone</label>
-						<div class="col-sm-4">
+						<div class="col-sm-10">
 							<input type="text" class="form-control" id="icone"
 								placeholder="Ícone" maxlength="50" th:field="*{imagem}" /> <a
 								class="btn btn-link btn-xs ajuste-link"
@@ -82,7 +85,7 @@
 								</thead>
 								<tbody>
 									<tr th:each="item : ${itensServico}">
-										<td th:text="${item.descricao}"></td>
+										<td th:utext="${item.descricao}"></td>
 										<td class="text-center">
 											<a class="btn btn-link btn-xs" title="Editar"
 											th:href="@{/administracao/servico/{id}/item(id=${item.idBase64})}"> 
