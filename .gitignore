@@ -40,3 +40,4 @@ target/classes/META-INF/MANIFEST.MF
 target/classes/templates/index.html
 target/classes/templates/index.html
 target/classes/templates/index.html
+target/classes/META-INF/maven/br.com.sistema/mcosta/pom.properties
