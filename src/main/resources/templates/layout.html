@@ -3,51 +3,96 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="pt-br">
 <head>
-<title>MCosta Engenharia</title>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="" />
-<meta name="_csrf" th:content="${_csrf.token}" />
-<meta name="_csrf_header" th:content="${_csrf.headerName}" />
-<link th:href="@{/img/faviconM.ico}" rel="icon">
-<link th:href="@{/img/apple-touch-icon.png}" rel="apple-touch-icon">
-<link th:href="@{/lib/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
-<link th:href="@{/lib/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
-<link th:href="@{/lib/animate/animate.min.css}" rel="stylesheet" type="text/css">
-<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+	<title>MCosta Engenharia</title>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<meta name="description" content=""/>
+	<meta name="author" content=""/>
+	
+	  <!-- Favicons -->
+	<link th:href="@{/img/faviconM.ico}" rel="icon">
+	<link th:href="@{/img/apple-touch-icon.png}" rel="apple-touch-icon">
+	
+	<!-- Bootstrap CSS File -->
+	<link th:href="@{/lib/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/lib/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/lib/animate/animate.min.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
 </head>
-<body>
-	<form>
-		<input type="hidden" id="contextPath"
-			th:value="${#httpServletRequest.contextPath}" />
-	</form>
 
-	<nav class="navbar navbar-inverse navbar-static-top ajuste-menu">
-		<div class="container-fluid">
-			<div class="panel-heading">
-				<div class="clearfix">
-					<div class="navbar-brand">
-						<img alt="MCosta" src="/img/logo1.png" width="150px"
-							style="margin-top: -19px; margin-left: 75px;"
-							th:if="${menuAdmin == null}" /> <a href="/#hero"
-							th:if="${menuAdmin != null}"><img src="/img/logo1.png"
-							width="150px" style="margin-top: -19px; margin-left: 75px;"
-							alt="MCosta" /></img></a>
-					</div>
-					<div layout:replace="menu"></div>
-				</div>
+<body>
+
+  <!--==========================
+  Header
+  ============================-->
+	<header id="header" style="background: rgba(52, 59, 64, 0.9); height: 72px; padding: 20px 0;">
+		<div class="container">
+
+			<div id="logo" class="pull-left">
+				<a href="/#hero" th:if="${menuAdmin != null}"> 
+					<img th:src="@{/img/logo1.png}" width="150px" style="margin-top: -14px;"
+						alt="MCosta" title="MCosta Engenharia" /></img>
+				</a>
+				
+				<img th:if="${menuAdmin == null}" th:src="@{/img/logo1.png}" width="150px" style="margin-top: -14px;"
+					alt="MCosta" title="MCosta Engenharia" /></img>
 			</div>
+			
+			<nav id="nav-menu-container">
+
+				<ul class="nav-menu" th:if="${menuAdmin == null}">
+					<li><a href="/administracao/sobre">Sobre</a></li>
+					<li><a href="/administracao/servico">Serviços</a></li>
+					<li><a href="/administracao/cliente">Clientes</a></li>
+					<li><a href="/administracao/contato">Contato</a></li>
+					<li><a  href="/logout" title="Sair"><i class="fa fa-sign-out item-menu"></i></a></li>
+				</ul>
+				
+				<ul class="nav-menu" th:if="${menuAdmin != null}">
+					<li class="menu-active"><a href="/#hero"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+					<li><a href="/#about">Empresa</a></li>
+					<li><a href="/#services">Serviços</a></li>
+					<li><a href="/#portfolio">Clientes</a></li>
+					<li><a href="/#contact">Contato</a></li>
+				</ul>
+				
+			</nav>
 		</div>
-	</nav>
+	</header>
+
+  <!--==========================
+    Hero Section
+  ============================-->
+	<div class="item">
+		<section id="hero" style="background: url(../img/fundo-menu.jpg) top center fixed; height: 11vh;">
+			<div class="hero-container" style="background: rgba(0, 0, 0, 0.0);">
+				<h1></h1>
+			</div>
+		</section>
+	</div>
 
 	<main id="main">
-		<section layout:fragment="conteudo"></section>
-	</main>
+	<section layout:fragment="conteudo"></section>
+  </main>
 
-	<script th:src="@{/lib/jquery/jquery.min.js}"></script>
-	<script th:src="@{/lib/bootstrap/js/bootstrap.min.js}"></script>
-	<th:block layout:fragment="javascript-extra"></th:block>
+  <!-- JavaScript Libraries -->
+  <script th:src="@{/lib/jquery/jquery.min.js}"></script>
+  <script th:src="@{/lib/bootstrap/js/bootstrap.min.js}"></script>
+  <script th:src="@{/lib/jquery/jquery-migrate.min.js}"></script>
+  <!-- <script th:src="@{/lib/bootstrap/js/bootstrap.bundle.min.js}"></script> -->
+  <script th:src="@{/lib/easing/easing.min.js}"></script>
+  <script th:src="@{/lib/wow/wow.min.js}"></script>
 
+  <script th:src="@{/lib/waypoints/waypoints.min.js}"></script>
+  <script th:src="@{/lib/counterup/counterup.min.js}"></script>
+  <script th:src="@{/lib/superfish/hoverIntent.js}"></script>
+  <script th:src="@{/lib/superfish/superfish.min.js}"></script>
+
+  <!-- Template Main Javascript File -->
+  <script th:src="@{/js/main.js}"></script>
+  
+  <th:block layout:fragment="javascript-extra"></th:block>
+  
 </body>
 </html>
